@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+input,
+a {
+  all: unset;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 238px 0 252px;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: #f0f6ff;
+}
+
+.text-big {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.text-small {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.text-common {
+  color: #000;
+  font-family: Pretendard;
+  font-style: normal;
+  line-height: normal;
+}
+
+.sign-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sign-logo {
+  width: 210.583px;
+  height: 38px;
+}
+
+main .sign-linkbrary-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+main .sign-linkbrary-container > a {
+  color: #6d6afe;
+  border-bottom: 1px solid #6d6afe;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sign-logo,
+.signup-link,
+.sign-login,
+.social-icon {
+  cursor: pointer;
+}
+
+.sign-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sign-form-container > input {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #fff;
+}
+
+.sign-form-container > input:focus {
+  border: 1px solid #6d6afe;
+}
+
+.sign-login-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.sign-login-container .sign-social {
+  display: flex;
+  width: 100%;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #e7effb;
+}
+
+a.sign-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: #f5f5f5;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+input.sign-password[type="password"] {
+  background: url("/img/ic-eye-off.png") no-repeat 16px 16px white;
+  background-position-x: 370px;
+}
+
+input.sign-password {
+  background: url("/img/ic-eye-on.png") no-repeat 16px 16px white;
+  background-position-x: 370px;
+}
+
+.social-login {
+  color: #373740;
+}
+
+.social-icons {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.social-icons .ic-kakao {
+  border: 1.5px solid #d3d4dd;
+  border-radius: 50%;
+}
