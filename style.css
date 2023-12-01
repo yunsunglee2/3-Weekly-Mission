@@ -1,3 +1,16 @@
+:root {
+  --linkbrary-bg: #f0f6ff;
+  --linkbrary-primary-color: #6d6afe;
+  --linkbrary-red: #ff5b56;
+  --linkbrary-black: #111322;
+  --linkbrary-white: #ffffff;
+  --linkbrary-gray-100: #f0f6ff;
+  --linkbrary-gray-200: #e7effb;
+  --linkbrary-gray-300: #ccd5e3;
+  --linkbrary-gray-400: #9fa6b2;
+  --linkbrary-gray-500: #3e3e43;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -124,7 +137,7 @@ body {
       rgba(196, 196, 196, 0) 67.68%,
       #f0f6ff 94.76%
     ),
-    url(image01.png);
+    url(./asset/image01.png);
   background-size: cover;
   width: 1118px;
   height: 659px;
@@ -226,16 +239,16 @@ body {
 }
 
 .contents-02-img1 {
-  background-image: url("card01.png");
+  background-image: url("./asset/card01.png");
 }
 
 .contents-02-img2 {
-  background-image: url("card02.png");
+  background-image: url("./asset/card02.png");
   margin: auto -12px;
 }
 
 .contents-02-img3 {
-  background-image: url("card03.png");
+  background-image: url("./asset/card03.png");
 }
 
 .contents-03-highlight {
@@ -276,7 +289,7 @@ body {
 
 .contents-03-bg {
   position: relative;
-  background-image: url(image01.png);
+  background-image: url(./asset/image01.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -294,7 +307,7 @@ body {
 }
 
 .contents-03-popup {
-  background-image: url(popup.png);
+  background-image: url(./asset/popup.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -312,7 +325,7 @@ body {
       rgba(255, 255, 255, 0) 48.72%,
       #000 128.17%
     ),
-    url(image03.png);
+    url(./asset/image03.png);
   background-size: cover;
   width: 619px;
   height: 584px;

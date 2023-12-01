@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="./signin.css"
+    />
+    <title>Linkbrary</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="login-box">
+        <div class="login-top">
+          <a href="/">
+            <img
+              src="/asset/logo.svg"
+              alt="logo"
+            />
+          </a>
+          <div class="go-signup">
+            <span>회원이 아니신가요?</span>
+            <a href="/pages/signup.html">회원 가입하기</a>
+          </div>
+        </div>
+        <form action="submit">
+          <div class="login-form-box">
+            <div class="login-input login-email">
+              <label for="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="codeit@codeit.com"
+              />
+            </div>
+            <div class="login-input login-password">
+              <label for="password">비밀번호</label>
+              <div class="eye-box">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="password"
+                />
+                <div class="eye"></div>
+              </div>
+            </div>
+          </div>
+          <button class="login-btn">로그인</button>
+        </form>
+      </div>
+      <div class="snslogin">
+        <span>소셜 로그인</span>
+        <div class="snslogo">
+          <a href="https://google.com">
+            <div class="logo-bg google-logo-bg">
+              <div class="logo google-logo"></div>
+            </div>
+          </a>
+          <a href="https://kakao.com">
+            <div class="logo-bg kakao-logo-bg">
+              <div class="logo kakao-logo"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
