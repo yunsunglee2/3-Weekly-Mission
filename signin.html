@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>로그인</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="./src/reset.css" />
+    <link rel="stylesheet" href="./src/signin.css" />
+  </head>
+  <body>
+    <article>
+      <form>
+        <header>
+          <a href="index.html">
+            <img src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" class="linkbrary-logo"/>
+          </a>
+          <div class="goto-signup">
+            <span>회원이 아니신가요?</span>
+            <a href="signup.html">회원 가입하기</a>
+          </div>
+        </header>
+        <section>
+          <div class="email input">
+            <label>이메일</label>
+            <input type="email" name="user-email">
+          </div>
+          <div class="password input">
+            <label>비밀번호</label>
+            <div class="password-eye">
+              <input type="password" name="user-password">
+              <img src="images/eye-off.svg" alt="눈에 빗금친 아이콘" style="cursor: pointer;">
+            </div>
+          </div>
+        </section>
+        <button type="button" style="cursor: pointer;">로그인</button>
+      </form>
+      <footer>
+        <span>소셜 로그인</span>
+        <div class="icons">
+          <a href="https://www.google.com/">
+            <img src="images/google.png" alt="구글 아이콘" class="google">
+          </a>
+          <a href="https://www.kakaocorp.com/page/">
+            <img src="images/kakaotalk.png" alt="카카오톡 아이콘" class="kakao">
+          </a>
+        </div>
+      </footer>
+    </article>
+  </body>
+</html>
