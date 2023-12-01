@@ -124,6 +124,18 @@ input:focus {
   
 }
 
+.password-container {
+  position: relative;
+}
+
+.password-container img {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 47px;
+  right: 15px;
+}
+
 form button {
   display: flex;
   width: 400px;
