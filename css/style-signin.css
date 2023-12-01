@@ -120,7 +120,7 @@ form input {
 }
 
 input:focus {
-  outline-color: var(--linkbrary-primary-color, #6D6AFE);
+  outline-color: var(--linkbrary-primary-color);
   
 }
 
