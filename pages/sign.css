@@ -1,0 +1,214 @@
+:root {
+  --linkbrary-bg: #f0f6ff;
+  --linkbrary-primary-color: #6d6afe;
+  --linkbrary-red: #ff5b56;
+  --linkbrary-black: #111322;
+  --linkbrary-white: #ffffff;
+  --linkbrary-gray: #f0f6ff;
+  --linkbrary-gray-10: #e7effb;
+  --linkbrary-gray-20: #ccd5e3;
+  --linkbrary-gray-30: #9fa6b2;
+  --linkbrary-gray-40: #3e3e43;
+  --gra-purpleblue-to-skyblue: linear-gradient(
+    91deg,
+    #6d6afe 0.12%,
+    #6ae3fe 101.84%
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--linkbrary-bg);
+  display: flex;
+  padding: 238px 0 252px 0;
+  justify-content: center;
+  align-items: center;
+  font-family: Pretendard;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.login-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-top img {
+  width: 210px;
+  height: 38px;
+}
+
+.go-signup {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.go-signup a {
+  color: var(--linkbrary-primary-color);
+}
+
+.go-signup a:visited {
+  color: var(--linkbrary-primary-color);
+}
+
+.login-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.login-box label {
+  color: var(--linkbrary-black);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.login-input input {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-white);
+  color: var(--linkbrary-black, #000);
+  font-size: 16px;
+}
+
+.login-input input:focus {
+  outline: none;
+  border: 1px solid var(--linkbrary-primary-color);
+}
+
+.eye-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  background-image: url(/asset/eye-off.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.login-btn {
+  margin-top: 30px;
+  display: flex;
+  width: 400px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--gra-purpleblue-to-skyblue);
+  border: 0;
+  color: #f5f5f5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.snslogin {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--linkbrary-gray-20);
+  background: var(--linkbrary-gray-10);
+}
+
+.snslogin span {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.snslogo {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.logo-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+}
+
+.google-logo-bg {
+  background-image: url(/asset/google.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.google-logo {
+  background-image: url(https://s3-alpha-sig.figma.com/img/a92e/9426/c3a9be9cb365010056fa7aa9cc9f05a2?Expires=1702252800&Signature=AHX7JA0FAvSf1Zsfs7ArmVmEA4PijPyaJKNaGrkhGGTHex0FyWOtTA3mvfcxC1M4NdAd6l8aqBw6FTjBEgI9SIpmptm8DxqJgrwaZrwmwxJJq4OWoqjFRU2twe3Kgoc5QujbwOVORXJnCAbkvX2lu1tjLjYXZ5SWpctzp9MFjoZiqd3xJJQrYD2KHv-DzwkHuFnUySPnGhfMY6b8vVpdBLRK3IjH0il5fB0YW-~YrRdaGEED43DdAG5Tl7HVzn8yov4aRCGZTIvPndPPzHa0-S0M5mxyJEtNU4bP7GReNtFEXM2rKgqT~cCvzMZ5nI917xpuuUULdBJVcyDB6~qMlQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logo {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 22px;
+  height: 22px;
+}
+
+.kakao-logo-bg {
+  background-image: url(/asset/kakao.svg);
+}
+
+.kakao-logo {
+  background-image: url(/asset/kakaologo.svg);
+  width: 26px;
+  height: 24px;
+}

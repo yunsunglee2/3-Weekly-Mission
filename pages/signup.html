@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="./sign.css"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <title>Linkbrary</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="login-box">
+        <div class="login-top">
+          <a href="/">
+            <img
+              src="/asset/logo.svg"
+              alt="logo"
+            />
+          </a>
+          <div class="go-signup">
+            <span>이미 회원이신가요?</span>
+            <a href="/pages/signin.html">로그인 하기</a>
+          </div>
+        </div>
+        <form action="submit">
+          <div class="login-form-box">
+            <div class="login-input">
+              <label for="email">이메일</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="codeit@codeit.com"
+              />
+            </div>
+            <div class="login-input">
+              <label for="password">비밀번호</label>
+              <div class="eye-box">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="비밀번호"
+                />
+                <div class="eye"></div>
+              </div>
+            </div>
+            <div class="login-input">
+              <label for="password">비밀번호 확인</label>
+              <div class="eye-box">
+                <input
+                  type="password"
+                  id="password-repeat"
+                  name="password-repeat"
+                  placeholder="비밀번호 확인"
+                />
+                <div class="eye"></div>
+              </div>
+            </div>
+          </div>
+          <button class="login-btn">회원가입</button>
+        </form>
+      </div>
+      <div class="snslogin">
+        <span>다른 방식으로 가입하기</span>
+        <div class="snslogo">
+          <a href="https://google.com">
+            <div class="logo-bg google-logo-bg">
+              <div class="logo google-logo"></div>
+            </div>
+          </a>
+          <a href="https://kakao.com">
+            <div class="logo-bg kakao-logo-bg">
+              <div class="logo kakao-logo"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
