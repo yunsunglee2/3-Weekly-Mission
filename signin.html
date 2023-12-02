@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signin-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
+      rel="stylesheet"
+    />
+    <title>Linkbrary</title>
+    <base href="/" />
+    <script>
+      (function (d) {
+        var config = {
+            kitId: "bsb1fhv",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="login-box">
+        <div class="logo-box">
+          <a href="/"><img src="images/logo.svg" class="logo" /></a>
+
+          <div class="link-box">
+            <span class="text">회원이 아니신가요?</span>
+            <a class="linktext" href="signup.html">회원 가입하기</a>
+          </div>
+        </div>
+
+        <form>
+          <!-- 라벨(인풋의 설명을 적음)과 인풋 연결 -->
+          <div class="form-box">
+            <div class="input-frame">
+              <label class="form-name" for="signin-email">이메일</label>
+              <input
+                class="form-input"
+                id="signin-email"
+                name="email"
+                type="email"
+                required
+              />
+            </div>
+            <div class="input-frame">
+              <label class="form-name" for="signin-email">비밀번호</label>
+              <input
+                class="form-input"
+                id="signin-password"
+                name="password"
+                type="password"
+                required
+              />
+              <img src="images/eye-off.svg" class="eye-icon" />
+            </div>
+          </div>
+          <div class="form-btn">
+            <button type="submit" class="form-btn-gradient">로그인</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="social-login-box">
+        <span class="social-login-text">소셜 로그인</span>
+        <div class="social-icons">
+          <a href="https://www.google.com/">
+            <img src="images/google-icon.svg" class="social-icon" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/"
+            ><img src="images/kakao-icon.svg" class="social-icon"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
