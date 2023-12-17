@@ -43,7 +43,6 @@ function isValidEmail(e) {
 }
 
 // 비밀번호 형식이 안맞으면(대문자가 포함되지 않을때) 에러 메세지 출력
-// 비밀번호 값이 비었으면 에러 메세지 출력
 function isValidPassword(e){
   const $message_pw = document.createElement("div");
   $message_pw.classList.add('errorComment');
