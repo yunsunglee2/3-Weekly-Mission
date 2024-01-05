@@ -5,11 +5,12 @@ import Account from "./Account";
 import Logo from "./Logo";
 import User from "./User";
 import './Header.css';
-const url = 'https://bootcamp-api.codeit.kr/api/sample/folder';
+
+const API_BASE_URL_FOLDER = 'https://bootcamp-api.codeit.kr/api/sample/folder';
 
 function Header() {
   function getInfo() {
-    fetch(url)
+    fetch(API_BASE_URL_FOLDER)
     .then((response)=> response.json())
     .then((result)=> {
       setProfile(result.folder.owner.profileImageSource)
