@@ -6,7 +6,7 @@ import {getAllFolders} from './api/allApi'
 import { getAlreadyFolders } from './api/folderApi';
 import {Title, Buttons} from './buttons';
 import Fnc from './fnc';
-import addImage from '../../assets/img/add.svg'
+import addImage from '../../public/assets/img/add.svg'
 import { EmptyFile } from './emptyFile';
 import './main.css';
 

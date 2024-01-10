@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import defaultProfile from '../../assets/Avatar.svg'
-import logoImage from '../../assets/Linkbrary.svg'
+import defaultProfile from '../../public/assets/Avatar.svg'
+import logoImage from '../../public/assets/Linkbrary.svg'
 import Account from "./Account";
 import Logo from "./Logo";
 import User from "./User";
