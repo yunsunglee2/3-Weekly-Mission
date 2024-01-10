@@ -1,4 +1,4 @@
-import LINKIMAGE from '../img/link.svg';
+import LINKIMAGE from '../../assets/link.svg';
 
 export default function AddInput() {
   return (

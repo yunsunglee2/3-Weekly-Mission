@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TimeAgo from './MainFileTimeAgo';
-import STAR_IMAGE from '../img/star.svg';
-import KEBAB_IMAGE from '../img/kebab.svg';
+import STAR_IMAGE from '../../assets/star.svg';
+import KEBAB_IMAGE from '../../assets/kebab.svg';
 const TEMP_IMAGE = 'https://s3-alpha-sig.figma.com/img/7f74/ead6/eb1ccd75abb3bcb7fbda1536cf0718ab?Expires=1704672000&Signature=LiCmhbMFxPcHwHM~eunm~GUqamXyo6dqYjN6VHI5l4e2DAZIn99n0w4cLbS~aTKGgrbgBee2CX8y9Bh0sAaDRe0JX5erbHDrLwAKp6CElf1NIZjvsxtk9VCgEoBFnNA-stzLMmV79kdwV8TUupeXMzf~4XZImr3-VjA5bgfjhm51tGF2YTKmKh1YsvIZ3jrj7DwHi6Zfg6mMYVFMDhG6cBW8AjzgIVf3njiImPKo5k1y5m0k4NMF-o9E7jzkk1raemYMaTeNjcanw31oEjR0K7aFwtC9YzEd0aH0mNH72xjpKFyrep1tKNo2JLoNCiUaSSwIG-EfNVAy7NJH0h87Qg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4';
 
 function File({file}) {
