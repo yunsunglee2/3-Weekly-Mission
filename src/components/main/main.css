@@ -26,10 +26,6 @@
   justify-content: center;
   align-items: center;
 }
-.Main .box .item02 .buttons{
-  display: flex;
-  justify-content: space-between;
-}
 .Main .box .item02 .title{
   display: flex;
   justify-content: space-between;
@@ -71,21 +67,18 @@
 }
 
 /* MainFiles */
-
-.Main .box .item02 .buttons {
+.Main .box .item02 .fileList {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-.Main .box .item02 .buttons > div{
-  display: flex;
-}
-.Main .box .item02 .buttons .onlyBtn {
+.Main .box .item02 .fileList .buttonBundle {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 12px;
 }
-.Main .box .item02 .buttons .oneBtn{
+.Main .box .item02 .fileList .list-all-button {
   padding: 8px 12px;
   align-items: center;
   border-radius: 5px;
@@ -93,26 +86,25 @@
   background-color: #fff;
 }
 
-.Main .box .item02 .buttons .Buttons {
+.Main .box .item02 .fileList .Buttons {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   gap: 12px; 
 }
-.Main .box .item02 .buttons .Buttons .button,
-.Main .box .item02 .buttons .oneBtn {
+.Main .box .item02 .fileList .Buttons .button,
+.Main .box .item02 .fileList .list-all-button {
+  display: flex;
   padding: 8px 12px;
   align-items: center;
   border-radius: 5px;
   border: 1px solid var(--Linkbrary-primary-color, #6D6AFE);
   background-color: #fff;
-  /* background: var(--Linkbrary-primary-color, #6D6AFE); */
 }
-.Main .box .item02 .buttons .Buttons .button .text,
-.Main .box .item02 .buttons .oneBtn .text {
+.Main .box .item02 .fileList .Buttons .button .text,
+.Main .box .item02 .fileList .list-all-button .text {
   color: #000;
   font-family: 'Pretendard-Regular';
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -133,10 +125,11 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   position: relative;
 }
-.Main .box .item02 .MainFiles .File .item01 img {
+.Main .box .item02 .MainFiles .File .item01 .fileImage {
   width: 340px;
   height: 200px;
   flex-shrink: 0;
+  object-fit: cover;
 }
 .Main .box .item02 .MainFiles .File .star {
   position: absolute;

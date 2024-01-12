@@ -35,7 +35,7 @@ function Main() {
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
   }
-  
+
   return (
     <div className="Main">
       <div className="box">
@@ -43,9 +43,9 @@ function Main() {
           <MainSearch />
         </div>
         <div className="item02">
-          <div className="buttons">
-            <div className="onlyBtn">
-              <button className="oneBtn" onClick={() => handleClickFolder({ id: null, name: '전체' })}>
+          <div className="fileList">
+            <div className="buttonBundle">
+              <button className="list-all-button" onClick={() => handleClickFolder({ id: null, name: '전체' })}>
                 <div className="text">{"전체"}</div>
               </button>
               <Buttons onClick={handleClickFolder} folders={names} />
