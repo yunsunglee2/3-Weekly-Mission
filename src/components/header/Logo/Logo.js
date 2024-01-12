@@ -1,7 +1,7 @@
 function Logo({value}) {
   const src = value
   const handleClick = () => {
-    window.location.href = '/folder'
+    window.location.href = '/'
   }
   return (
     <div className="Logo">

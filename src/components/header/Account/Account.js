@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Button from './Button';
+import Button from '../Button/Button';
 import AccountEmail from './AccountEmail';
 import AccountImage from './AccountImage';
-import imgSrc from '../../public/assets/profile img.svg';
+import imgSrc from '../../../assets/profile img.svg';
 
 const API_BASE_URL_USER = 'https://bootcamp-api.codeit.kr/api/sample/user';
  

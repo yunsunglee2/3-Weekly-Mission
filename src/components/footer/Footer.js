@@ -1,7 +1,7 @@
-import facebookImage from '../../public/assets/akar-icons_facebook-fill.svg';
-import twitterImage from '../../public/assets/akar-icons_twitter-fill.svg';
-import youtubeImage from '../../public/assets/akar-icons_youtube-fill.svg'
-import instagramImage from '../../public/assets/ant-design_instagram-filled.svg';
+import facebookImage from '../../assets/akar-icons_facebook-fill.svg';
+import twitterImage from '../../assets/akar-icons_twitter-fill.svg';
+import youtubeImage from '../../assets/akar-icons_youtube-fill.svg'
+import instagramImage from '../../assets/ant-design_instagram-filled.svg';
 import FooterSns from './FooterSns.js';
 import './Footer.css';
 
