@@ -1,5 +1,6 @@
 import './addFolderModal.css';
 import { useState } from 'react';
+import CHECKIMG from "../../assets/check.svg";
 
 function Titles({title, subtitle}) {
   return (
@@ -16,7 +17,8 @@ function Titles({title, subtitle}) {
        setIsChecked(!isChecked);
     }
     return (
-      <div className={isChecked ? "checked folder " : "folder" } onClick={handleClick} >
+      <div className={"folder"} onClick={handleClick} >
+      {isChecked && <img className='check' src={CHECKIMG} alt="" />}
         <div className="textBundle">
           <div className="title">{title}</div>
           <div className="linksCount">{linksCount}</div>

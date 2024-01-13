@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import More from "./more";
 import TimeAgo from "./MainFileTimeAgo";
 import STAR_IMAGE from "../../assets/star.svg";
-import KEBAB_IMAGE from "../../assets/kebab.svg";
+import KEBAB_IMAGE from "../../assets/kebab.svg"
 import TEMP_IMAGE from "../../assets/logo.svg";
 
 function File({ file }) {
@@ -16,7 +16,7 @@ function File({ file }) {
   let editedTime;
 
   useEffect(() => {
-    setKebabLoad(false);            // 왜 케밥 창이 떠 잇지 ??
+    setKebabLoad(false);         
   },[]);
 
   const handleClick = () => {

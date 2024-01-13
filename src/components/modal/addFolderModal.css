@@ -45,15 +45,15 @@
   align-items: flex-start;
   gap: 8px;
   border-radius: 8px;
+  position: relative;
 }
 .AddFolderModal .folderList .folder:hover {
-  border-radius: 8px;
+  border-radius: 8px;  
   background: var(--Linkbrary-bg, #F0F6FF);
 }
-.AddFolderModal .folderList .checked  {
-  background-image: url("../../assets/check.svg");
-  background-repeat: no-repeat;
-  background-position: 99%;
+.AddFolderModal .folderList .folder .check {
+  position: absolute;
+  right: 1rem;
 }
 .AddFolderModal .folderList .folder .textBundle {
   display: flex;
