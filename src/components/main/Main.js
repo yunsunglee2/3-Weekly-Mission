@@ -52,13 +52,14 @@ function Main() {
             </div>
             <img src={addImage} alt="" />
           </div>
-          <div className="title">
-          <h2>{currentFolder.name}</h2>
+          <div className="functionBundle">
+          <div>{currentFolder.name}</div>
+            {currentFolder.name !== "전체" && 
             <div className="fnc-btn">
               <Fnc value="공유" />
               <Fnc value="이름변경" />
               <Fnc value="삭제" />
-            </div>
+            </div>}
           </div>
           {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} /> }
         </div>

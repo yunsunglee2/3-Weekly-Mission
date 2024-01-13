@@ -26,15 +26,15 @@
   justify-content: center;
   align-items: center;
 }
-.Main .box .item02 .title{
+.Main .box .item02 .functionBundle{
   display: flex;
   justify-content: space-between;
 }
-.Main .box .item02 .title .fnc-btn{
+.Main .box .item02 .functionBundle .fnc-btn{
   display: flex;
   gap: 0.5rem;
 }
-.Main .box .item02 .title .fnc-btn .Fnc{
+.Main .box .item02 .functionBundle .fnc-btn .Fnc{
   display: flex;
 }
 .Main .box .item02 .files{
@@ -131,10 +131,16 @@
   flex-shrink: 0;
   object-fit: cover;
 }
-.Main .box .item02 .MainFiles .File .star {
+.Main .box .item02 .MainFiles .File .starOn {
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+.Main .box .item02 .MainFiles .File .starOff {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: gold;
 }
 
 .Main .box .item02 .MainFiles .item02 {
@@ -190,4 +196,31 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal; 
+}
+.Main .box .item02 .MainFiles .item02 .More {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100px;
+  position: absolute;
+  right: 4rem;
+  top: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0 0.2rem 0;
+  background-color: #F5F5F5;
+}
+.Main .box .item02 .MainFiles .item02 .More .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: Pretendard-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Main .box .item02 .MainFiles .item02 .More .text:hover{
+  background: var(--Linkbrary-gray10, #E7EFFB);
+  color: var(--Linkbrary-primary-color, #6D6AFE);
 }
