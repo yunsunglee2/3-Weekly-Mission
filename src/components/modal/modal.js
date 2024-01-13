@@ -5,8 +5,8 @@ const customImgStyle = {
   width: "24px",
   height: "24px",
   position: "absolute",
-  left: "350px",
-  top: "8px",
+  top: "4%",
+  right: "4%",
 }
 
 const customModalStyles = {
@@ -20,14 +20,13 @@ const customModalStyles = {
     left: "0",
   },
   content: {
-    width: "45vh",
-    height: "45vh",
+    width: "300px",
+    height: "300px",
     overflow: "visible",
     zIndex: "150",
     position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    top: "20%",
+    left: "35%",
     borderRadius: "10px",
     boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
     backgroundColor: "white",
