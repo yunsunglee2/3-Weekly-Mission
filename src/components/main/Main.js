@@ -53,7 +53,8 @@ function Main() {
             <img src={addImage} alt="" />
           </div>
           <div className="functionBundle">
-          <div>{currentFolder.name}</div>
+          <div>{currentFolder.name}</div> 
+          {/* 폴더 id 값에 상태변경으로 폴더명 변경  */}
             {currentFolder.name !== "전체" && 
             <div className="fnc-btn">
               <Fnc value="공유" />
