@@ -61,7 +61,8 @@ function Main() {
               <Fnc value="삭제" />
             </div>}
           </div>
-          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} /> }
+          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} /> } 
+          {/* 삼항 연산자로 수정  */}
         </div>
       </div>
     </div>
