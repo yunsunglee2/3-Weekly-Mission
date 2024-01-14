@@ -10,6 +10,7 @@ function Titles({title, subtitle}) {
       </div>
   )
 }
+
   function Folder({title, linksCount}) {
     const [isChecked, setIsChecked] = useState(false);
     const handleClick = () => {

@@ -5,6 +5,7 @@
   align-items: center;
   gap: 24px;
   border-radius: 15px;
+  /* border: 1px solid var(--Stroke-light, #DEE2E6); */
   background: var(---Gray-White, #FFF);
 }
 .AddFolderModal .titles {

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import MainSearch from "./MainSearch";
 import MainFiles from "./MainFiles";
-import { getLinks } from "./api/linksApi";
-import { getMyFolders } from "./api/folderApi";
+import { getLinks, getMyFolders } from "./api/Api";
 import { Buttons } from "./buttons";
 import Fnc from "./fnc";
 import addImage from "../../assets/add.svg";

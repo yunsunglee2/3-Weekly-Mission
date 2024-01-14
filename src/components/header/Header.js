@@ -5,7 +5,7 @@ import Account from "./Account/Account";
 import Logo from "./Logo/Logo";
 import User from "./User/User";
 import AddInput from './AddInput/AddInput';
-import {getOwner} from '../main/api/folderOwnerApi';
+import {getOwner} from '../main/api/Api';
 import './Header.css';
 
 function Header({serachIsLoading}) {
