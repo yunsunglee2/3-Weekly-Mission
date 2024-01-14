@@ -19,7 +19,7 @@ export default function AddInput() {
         <div className="AddInput-fnc">
           <img src={LINKIMAGE} alt="" />
           <input type="text" placeholder="링크를 추가해 보세요"/> 
-          <button onClick={handlePopupMessage}><div className="text">추가하기</div></button>
+          <button onClick={handlePopupMessage}><span className="text">추가하기</span></button>
           <PopupMessage modalOpen={modalOpen} onClick={isClose} component={<AddFolderModal/>}/>
         </div>
       </div>
