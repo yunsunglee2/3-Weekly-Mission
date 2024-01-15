@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import FolderPage from "./pages/FolderPage";
-import SharedPage from "./pages/SharedPage";
-import HomePage from "./pages/HomePage";
+import App from "App.js";
+import FolderPage from "pages/FolderPage.js";
+import SharedPage from "pages/SharedPage.js";
+import HomePage from "pages/HomePage.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

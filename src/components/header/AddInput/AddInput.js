@@ -1,8 +1,8 @@
-import LINKIMAGE from '../../../assets/link.svg';
+import LINKIMAGE from 'assets/link.svg';
 import { useState } from 'react';
 import React from 'react';
-import PopupMessage from '../../modal/modal';
-import AddFolderModal from '../../modal/addFolderModal'
+import PopupMessage from 'components/modal/modal';
+import AddFolderModal from 'components/modal/addFolderModal'
 
 export default function AddInput() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -11,8 +11,8 @@ export default function AddInput() {
   }
   const isClose = (value) => {
     setModalOpen(value);
-  }
-
+  } 
+  
   return (
     <div className="AddInput">
       <div className="AddInput-input">

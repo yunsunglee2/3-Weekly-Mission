@@ -1,7 +1,7 @@
-import './addFolderModal.css';
+import 'components/modal/addFolderModal.css';
 import { useState, useEffect } from 'react';
-import CHECKIMG from "../../assets/check.svg";
-import { getMyFolders } from '../main/api/Api';
+import CHECKIMG from "assets/check.svg";
+import { getMyFolders } from 'components/main/api/Api.js';
 
 function Titles({title, subtitle}) {
   return (

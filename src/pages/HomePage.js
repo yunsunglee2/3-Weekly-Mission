@@ -1,4 +1,4 @@
-import Header from "../components/header/Header" ;
+import Header from "components/header/Header.js" ;
 import { Link } from "react-router-dom";
 
 const HomePageStyle = {

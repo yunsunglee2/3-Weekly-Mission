@@ -1,9 +1,9 @@
-import facebookImage from '../../assets/akar-icons_facebook-fill.svg';
-import twitterImage from '../../assets/akar-icons_twitter-fill.svg';
-import youtubeImage from '../../assets/akar-icons_youtube-fill.svg'
-import instagramImage from '../../assets/ant-design_instagram-filled.svg';
-import FooterSns from './FooterSns.js';
-import './Footer.css';
+import facebookImage from 'assets/akar-icons_facebook-fill.svg';
+import twitterImage from 'assets/akar-icons_twitter-fill.svg';
+import youtubeImage from 'assets/akar-icons_youtube-fill.svg'
+import instagramImage from 'assets/ant-design_instagram-filled.svg';
+import FooterSns from 'components/footer/FooterSns.js';
+import 'components/footer/Footer.css';
 
 function Footer() {
   return (

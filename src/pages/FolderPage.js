@@ -1,5 +1,5 @@
-import Header from "../components/header/Header" ;
-import Main from "../components/main/Main";
+import Header from "components/header/Header.js" ;
+import Main from "components/main/Main.js";
 
 const FolderPageStyle = {
   display: "flex",
