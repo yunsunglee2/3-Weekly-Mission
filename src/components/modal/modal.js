@@ -5,7 +5,7 @@ const customImgStyle = {
   width: "24px",
   height: "24px",
   position: "absolute",
-  left: "350px",
+  right: "10px",
   top: "8px",
 }
 

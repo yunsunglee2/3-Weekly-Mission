@@ -18,6 +18,11 @@ align-items: center;
 border-radius: 8px;
 border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
 background: var(--Linkbrary-white, #fff);
+box-sizing: border-box;
+
+  &::placeholder {
+    width: 80%;
+  }
 `;
 
 const Button = styled.button`
@@ -28,7 +33,7 @@ justify-content: center;
 align-items: center;
 gap: 10px;
 border-radius: 8px;
-background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+background: var(--Linkbrary-red, #FF5B56);
 border: none;
 
 ${Title} {
@@ -50,25 +55,12 @@ border: 1px solid var(--Linkbrary-gray20, #CCD5E3);
 background: var(--Linkbrary-white, #FFF);
 `;
 
-const SubText = styled(Title)`
-  color: var(--Linkbrary-gray60, #9FA6B2);
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-`;
-
-export default function AddFolderModal({folder, isSubtext}) {
+export default function DeleteModal() {
   return (
     <Container>
-      <Title>폴더 추가</Title>
-      {
-      isSubtext
-      ?  
-      <SubText>{folder}</SubText>
-      :
-      <Input placeholder="내용 입력" />
-      }
-      <Button><Title>추가하기</Title></Button>
+      <Title>폴더 삭제</Title>
+      <Input placeholder="폴더명" />
+      <Button><Title>삭제하기</Title></Button>
     </Container>
   );
 }

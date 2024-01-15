@@ -4,7 +4,7 @@ import MainFiles from "components/main/MainFiles.js";
 import { getLinks, getMyFolders } from "components/main/api/Api.js";
 import { Buttons } from "components/main/buttons.js";
 import Fnc from "components/main/fnc.js";
-import addImage from "assets/add.svg";
+import AddFolder from "components/main/addFolder";
 import { EmptyFile } from "components/main/emptyFile.js";
 import "components/main/main.css";
 
@@ -49,7 +49,7 @@ function Main() {
               </button>
               <Buttons onClick={handleClickFolder} folders={names} />
             </div>
-            <img src={addImage} alt="" />
+            <AddFolder/>
           </div>
           <div className="functionBundle">
           <div>{currentFolder.name}</div>

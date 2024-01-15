@@ -61,7 +61,7 @@ function File({ file }) {
         <TimeAgo className="timeAgo" time={created_at} />
         <div className="description">{description}</div>
         <div className="editTime">{editedTime}</div>
-        {kebabLoad && <More />}
+        {kebabLoad && <More folder={file.title}/>}
       </div>
     </div>
   );
@@ -72,7 +72,7 @@ export default function MainFiles({ folders }) {
     <div className="MainFiles">
       <div className="files">
         {folders.map((folder) => (
-          <File file={folder} />
+          <File key={folder.id} file={folder} />
         ))}
       </div>
     </div>
