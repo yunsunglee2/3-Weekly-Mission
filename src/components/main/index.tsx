@@ -21,7 +21,6 @@ function Main() {
     try {
       const { data } = await getLinks(id);
       setLinks(data);
-      console.log(data)
     } catch (error) {
       console.error("Error fetching links:", error);
     }
@@ -31,7 +30,6 @@ function Main() {
     try {
       const { data } = await getMyFolders();
       setFolders(data);
-      console.log(data);
     } catch (error) {
       console.error("Error fetching folders:", error);
     }

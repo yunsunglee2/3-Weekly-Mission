@@ -2,7 +2,7 @@ import LINKIMAGE from "assets/link.svg";
 import { useState, useRef } from "react";
 import React from "react";
 import PopupMessage from "components/modal";
-import AddFolderModal from "components/modal/addLinkModal";
+import AddFolderModal from "components/modal/addFolderModal";
 
 export default function AddInput() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function AddInput() {
   // 오류가 나서 범위를 좁혀줬다. 
   const handlePopupMessage = () => {
     if(inputNode !== null) {
-      inputNode.value && setModalOpen(!modalOpen);
+      inputNode.value && setModalOpen(true);
     }
   };
   const isClose = (value: boolean) => {
@@ -35,7 +35,7 @@ export default function AddInput() {
           <PopupMessage
             modalOpen={modalOpen}
             onClick={isClose}
-            component={<AddFolderModal />}
+            component={<AddFolderModal isSubtext={false} />}
           />
         </div>
       </div>

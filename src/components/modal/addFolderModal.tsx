@@ -61,8 +61,8 @@ const SubText = styled(Title)`
 `;
 
 interface PropsAddFolderModal {
-  folder: string;
-  isSubtext: boolean;
+  folder?: string;
+  isSubtext?: boolean;
 }
 
 export default function AddFolderModal({ folder, isSubtext }: PropsAddFolderModal) {
