@@ -11,7 +11,7 @@ function MainSearch({ setSearch }: any) {
   }, [inputValue])
   
   const handleClick = () => {
-    setInputValue('');
+    setInputValue("");
   }
 
   return (
