@@ -21,7 +21,6 @@ function Main() {
   const getLink = async (id: CurrentFolder["id"]) => {
     try {
       const { data } = await getLinks(id);
-      console.log(data);
       setLinks(data);
     } catch (error) {
       console.error("Error fetching links:", error);

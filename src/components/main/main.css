@@ -55,6 +55,11 @@
   outline: none;
   border-style: none;
   text-indent: 1.5rem;
+  position: relative;
+}
+.Main .box .item01 .MainSearch .deleteButton {
+  position: absolute;
+  right: 1rem;
 }
 .Main .box .item01 .MainSearch .readingGlasses{
   position: absolute;
