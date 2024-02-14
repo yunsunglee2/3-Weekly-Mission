@@ -33,6 +33,7 @@ const File = ({file}: FileProps) => {
     try {
       const { data } = await getMyFolders();
       setFolders(data);
+      console.log(data);
     } catch (error) {
       console.error("Error fetching folders:", error);
     }

@@ -7,20 +7,41 @@ import Fnc from "components/main/fnc";
 import AddFolder from "components/main/addFolder";
 import { EmptyFile } from "components/main/emptyFile";
 import "components/main/main.css";
-import { Folder, Link, CurrentFolder } from "types"
+import { Folder, Link, CurrentFolder } from "types";
 
 function Main() {
   const [links, setLinks] = useState<Link[]>([]); // Link[] 타입으로 변경
+  const [search, setSearch] = useState<string>("");
   const [currentFolder, setCurrentFolder] = useState<CurrentFolder>({
     id: null,
     name: "전체",
   });
   const [folders, setFolders] = useState<Folder[]>([]);
 
-  const getFolders = async (id: CurrentFolder['id']) => {
+  const getLink = async (id: CurrentFolder["id"]) => {
     try {
       const { data } = await getLinks(id);
+      console.log(data);
       setLinks(data);
+    } catch (error) {
+      console.error("Error fetching links:", error);
+    }
+  };
+  
+  const getFilteredLink = async (id: CurrentFolder["id"]) => {
+    try {
+      const { data } = await getLinks(id);
+      const filteredData = data.filter((info)=> {
+        return info.url?.toLowerCase().includes(search.toLowerCase()) ||
+        info.title?.toLowerCase().includes(search.toLowerCase()) ||
+        info.description?.toLowerCase().includes(search.toLowerCase())
+      })
+        if(!search) {
+          setLinks(data)
+        } else if (search) {
+          setLinks(filteredData)
+        }
+        
     } catch (error) {
       console.error("Error fetching links:", error);
     }
@@ -40,11 +61,15 @@ function Main() {
   }, []);
 
   useEffect(() => {
-    getFolders(currentFolder.id);
+    getLink(currentFolder.id);
   }, [currentFolder]);
 
+  useEffect(() => {
+    getFilteredLink(currentFolder.id);
+  }, [search]);
+
   const handleClickFolder = (folder?: CurrentFolder): void => {
-    if (folder){
+    if (folder) {
       setCurrentFolder(folder);
     }
   };
@@ -53,7 +78,7 @@ function Main() {
     <div className="Main">
       <div className="box">
         <div className="item01">
-          <MainSearch />
+          <MainSearch setSearch={setSearch} />
         </div>
         <div className="item02">
           <div className="fileList">
@@ -78,7 +103,8 @@ function Main() {
               </div>
             )}
           </div>
-          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} />} {/* MainFiles 컴포넌트에 links props 전달 */}
+          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} />}{" "}
+          {/* MainFiles 컴포넌트에 links props 전달 */}
         </div>
       </div>
     </div>

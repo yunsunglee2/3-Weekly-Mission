@@ -2,9 +2,10 @@ import { useState } from "react";
 import DeleteModal from "components/modal/deleteModal";
 import AddFolderModal from "components/modal/addFolderModal";
 import PopupMessage from "components/modal";
+import { MyFolders } from "types";
 
 interface PropsMore {
-  folder: any;
+    folder: any;
 }
 
 export const More = ({ folder }: PropsMore) => {
@@ -36,7 +37,7 @@ export const More = ({ folder }: PropsMore) => {
           onClick={handlePopupMessage}
           component={
             modal === "추가하기" ? (
-              <AddFolderModal folder={folder} isSubtext={true} />
+              <AddFolderModal folder={folder.name} isSubtext={true} />
             ) : (
               <DeleteModal />
             )
