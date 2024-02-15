@@ -7,7 +7,7 @@ import "components/footer/Footer.css";
 
 function Footer() {
   return (
-    <div className="Footer">
+    <div className="footer">
       <div className="content">
         <div className="box">
           <span className="item01">@codeit - 2023</span>
