@@ -2,22 +2,18 @@ import Button from "components/header/Button";
 import { useState } from "react";
 import AccountEmail from "components/header/Account/AccountEmail";
 import AccountImage from "components/header/Account/AccountImage";
-import imgSrc from "assets/profile img.svg";
-
-const API_BASE_URL_USER: string = "https://bootcamp-api.codeit.kr/api/sample/user";
+import ProfileIMG from "assets/profile img.svg";
+import { getUserData } from "components/main/api/Api";
 
 function Account() {
-  const [info, setInfo] = useState("");
-  const [imgsrc, setImgsrc] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
+  const [info, setInfo] = useState<string>("");
+  const [imgsrc, setImgsrc] = useState<string>("");
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
-  const handleLogin = ():void => {
-    fetch(API_BASE_URL_USER)
-      .then((response) => response.json())
-      .then((result) => {
-        setInfo(result["email"]);
-      });
-    setImgsrc(imgSrc);
+  const handleLogin = async () => {
+    const { data } = await getUserData();
+    setInfo(data.email);
+    setImgsrc(ProfileIMG);
     setIsLogin(true);
   };
   const handleLogout = () => {
@@ -29,10 +25,12 @@ function Account() {
     <div className="Account">
       <AccountImage value={imgsrc} />
       {/* children 처리 확인 필요 */}
-      <AccountEmail><div>{info}</div></AccountEmail>
+      <AccountEmail>
+        <div>{info}</div>
+      </AccountEmail>
       <Button onClick={isLogin ? handleLogout : handleLogin}>
         <div>{isLogin ? "로그아웃" : "로그인"}</div>
-        </Button>
+      </Button>
     </div>
   );
 }
