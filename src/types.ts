@@ -61,3 +61,32 @@ export interface MyFolders {
     link: count;
 }
 
+export interface userData {
+    id: string;
+    name: string;
+    email: string;
+    profileImageSource: string;
+}
+
+interface Owner {
+  id: string;
+  name: string;
+  profileImageSource: string;
+}
+
+interface OwnerLinks {
+  id: string;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource: string;
+}
+
+export interface OwnerData {
+  id: string;
+  name: string;
+  owner: Owner;
+  links: OwnerLinks[];
+  count: string;
+}

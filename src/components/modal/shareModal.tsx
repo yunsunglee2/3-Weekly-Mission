@@ -1,6 +1,6 @@
 import "components/modal/shareModal.css";
 import KAKAO from "assets/kakao.svg";
-import FACEBOOK from "assets/Facebook copy.svg";
+import FACEBOOK from "assets/Facebook-copy.svg";
 import COPYLINK from "assets/copylink.svg";
 
 interface PropsShare {
