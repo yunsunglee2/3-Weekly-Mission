@@ -1,7 +1,7 @@
 export interface Props_PopupMessage {
   modalOpen: boolean;
   component: any;
-  onClick(p: boolean): void;
+  onClick: (p: boolean) => void;
 }
 
 export interface Props_Fnc {

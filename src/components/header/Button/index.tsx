@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 
 interface PropsButton {
   children: ReactElement;
-  onClick(): void;
+  onClick: () => void;
 }
 
 function Button({ children, onClick }: PropsButton) {
