@@ -2,10 +2,12 @@ import type { Link, MyFolders } from "types";
 
 const API_BASE_URL: string = "https://bootcamp-api.codeit.kr";
 
+
 export async function getUserData(): Promise<any> {
   const API_BASE_URL_USER= `${API_BASE_URL}/api/sample/user`;
   const response = await fetch(API_BASE_URL_USER);
   const result = response.json();
+  console.log(result);
   return result;
 }
 
@@ -13,6 +15,7 @@ export async function getMyFolders(): Promise<{ data: MyFolders[] }> {
   const API_BASE_URL_FOLDER = `${API_BASE_URL}/api/users/1/folders`;
   const response = await fetch(API_BASE_URL_FOLDER)
   const folders = await response.json();
+  console.log(folders);
   return folders;
 }
 

@@ -11,8 +11,8 @@ function Account() {
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const handleLogin = async () => {
-    const { data } = await getUserData();
-    setInfo(data.email);
+    const { email } = await getUserData();
+    setInfo(email);
     setImgsrc(ProfileIMG);
     setIsLogin(true);
   };

@@ -60,3 +60,4 @@ export interface MyFolders {
     favorite: boolean;
     link: count;
 }
+
