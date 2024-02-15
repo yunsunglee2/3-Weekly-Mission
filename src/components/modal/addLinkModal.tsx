@@ -58,11 +58,11 @@ function Folders({ folders }: PropsFolders) {
 // --------------------------------------------------------------------------------
 
 export default function AddLinkModal() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<MyFolders[]>([]);
 
   const getFolders = async () => {
-    const { folders } = await getMyFolders();
-    setData(folders);
+    const { data } = await getMyFolders();
+    setData(data);
   };
 
   useEffect(() => {

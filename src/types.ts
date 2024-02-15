@@ -48,7 +48,7 @@ export interface CurrentFolder {
   name: string;
 }
 
-interface link {
+interface count {
   count: number;
 }
 
@@ -58,5 +58,5 @@ export interface MyFolders {
     name: string;
     user_id: number;
     favorite: boolean;
-    link: link;
+    link: count;
 }

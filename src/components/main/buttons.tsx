@@ -1,7 +1,7 @@
-import { Folder, CurrentFolder } from "types"
+import { MyFolders, CurrentFolder } from "types"
 
 interface ButtonProps {
-  folder: Folder;
+  folder: MyFolders;
   onClick: (p?: CurrentFolder) => void;
 }
 
@@ -16,7 +16,7 @@ function Button({folder, onClick}: ButtonProps) {
 }
 
 interface ButtonsProps {
-  folders: Folder[];
+  folders: MyFolders[];
   onClick: (p?: CurrentFolder) => void
 }
 

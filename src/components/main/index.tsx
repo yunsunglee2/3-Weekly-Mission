@@ -7,7 +7,7 @@ import Fnc from "components/main/fnc";
 import AddFolder from "components/main/addFolder";
 import { EmptyFile } from "components/main/emptyFile";
 import "components/main/main.css";
-import { Folder, Link, CurrentFolder } from "types";
+import { MyFolders, Link, CurrentFolder } from "types";
 
 function Main() {
   const [links, setLinks] = useState<Link[]>([]); // Link[] 타입으로 변경
@@ -16,7 +16,7 @@ function Main() {
     id: null,
     name: "전체",
   });
-  const [folders, setFolders] = useState<Folder[]>([]);
+  const [folders, setFolders] = useState<MyFolders[]>([]);
 
   const getLink = async (id: CurrentFolder["id"]) => {
     try {
@@ -49,6 +49,7 @@ function Main() {
   const getFolderList = async () => {
     try {
       const { data } = await getMyFolders();
+      console.log(data);
       setFolders(data);
     } catch (error) {
       console.error("Error fetching folders:", error);

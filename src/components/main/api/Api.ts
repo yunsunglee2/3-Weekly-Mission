@@ -9,7 +9,7 @@ export async function getUserData(): Promise<any> {
   return result;
 }
 
-export async function getMyFolders(): Promise<any> {
+export async function getMyFolders(): Promise<{ data: MyFolders[] }> {
   const API_BASE_URL_FOLDER = `${API_BASE_URL}/api/users/1/folders`;
   const response = await fetch(API_BASE_URL_FOLDER)
   const folders = await response.json();
@@ -29,3 +29,6 @@ export async function getLinks(id: number | null): Promise<{ data: Link[] }> {
   const folders = await response.json();
   return folders;
 }
+
+
+// api의 response 값도 타입을 지정해줘야 한다.  
