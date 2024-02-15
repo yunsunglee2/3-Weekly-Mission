@@ -2,12 +2,10 @@ import type { Link, MyFolders } from "types";
 
 const API_BASE_URL: string = "https://bootcamp-api.codeit.kr";
 
-
 export async function getUserData(): Promise<any> {
   const API_BASE_URL_USER= `${API_BASE_URL}/api/sample/user`;
   const response = await fetch(API_BASE_URL_USER);
   const result = response.json();
-  console.log(result);
   return result;
 }
 

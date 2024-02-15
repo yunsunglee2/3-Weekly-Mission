@@ -5,7 +5,7 @@ import AccountImage from "components/header/Account/AccountImage";
 import ProfileIMG from "assets/profile img.svg";
 import { getUserData } from "components/main/api/Api";
 
-function Account() {
+export default function Account() {
   const [info, setInfo] = useState<string>("");
   const [imgsrc, setImgsrc] = useState<string>("");
   const [isLogin, setIsLogin] = useState<boolean>(false);
@@ -35,4 +35,3 @@ function Account() {
   );
 }
 
-export default Account;
