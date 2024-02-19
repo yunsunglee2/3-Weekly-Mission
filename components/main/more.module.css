@@ -1,0 +1,27 @@
+.more {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100px;
+  position: absolute;
+  right: 4rem;
+  top: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0 0.2rem 0;
+  background-color: #F5F5F5;
+}
+.more .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: 'Pretendard-Regular';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.more .text:hover{
+  background: var(--Linkbrary-gray10, #E7EFFB);
+  color: var(--Linkbrary-primary-color, #6D6AFE);
+}

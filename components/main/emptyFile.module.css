@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+.emptyFile {
+  display: inline;
+  font-size: 1rem;
+  font-weight: 500;
+}

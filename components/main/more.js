@@ -2,6 +2,7 @@ import { useState } from "react";
 import DeleteModal from "@/components/modal/deleteModal";
 import AddFolderModal from "@/components/modal/addFolderModal";
 import PopupMessage from "@/components/modal/modal";
+import styles from './more.module.css';
 
 export default function More({ folder }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,11 +16,11 @@ export default function More({ folder }) {
     setIsOpen(value);
   };
   return (
-    <div className="More">
-      <span className="text" onClick={handleClick}>
+    <div className={styles.more}>
+      <span className={styles.text} onClick={handleClick}>
         추가하기
       </span>
-      <span className="text" onClick={handleClick}>
+      <span className={styles.text} onClick={handleClick}>
         삭제하기
       </span>
       {

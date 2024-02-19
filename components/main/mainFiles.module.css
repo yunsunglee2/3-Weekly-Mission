@@ -1,6 +1,6 @@
 .MainFiles {
   display: inline-flex;
-  justify-content: space-around;
+  gap: 1rem;
 }
 .File {
   display: flex;
