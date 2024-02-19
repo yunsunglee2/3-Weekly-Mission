@@ -1,7 +1,7 @@
-import 'components/modal/addLinkModal.css';
 import { useState, useEffect } from 'react';
-import CHECKIMG from "assets/check.svg";
-import { getMyFolders } from 'components/main/api/Api.js';
+import CHECKIMG from "@/public/check.svg";
+import { getMyFolders } from '@/components/main/api/Api.js';
+import '@/components/modal/addLinkModal.css';
 
 function Titles({title, subtitle}) {
   return (

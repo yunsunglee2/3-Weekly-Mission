@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import defaultProfile from 'assets/Avatar.svg'
-import logoImage from 'assets/Linkbrary.svg'
-import Account from "components/header/Account/Account";
-import Logo from "components/header/Logo/Logo";
-import User from "components/header/User/User";
-import AddInput from 'components/header/AddInput/AddInput.js';
-import {getOwner} from 'components/main/api/Api.js';
-import 'components/header/Header.css';
+import defaultProfile from '@/public/Avatar.svg'
+import logoImage from '@/public/Linkbrary.svg'
+import Account from "@/components/header/Account/Account";
+import Logo from "@/components/header/Logo/Logo";
+import User from "@/components/header/User/User";
+import AddInput from '@/components/header/AddInput/AddInput.js';
+import {getOwner} from '@/components/main/api/Api.js';
+import '@/components/header/Header.css';
 
 function Header({serachIsLoading}) {
   const getInfo = async () => {

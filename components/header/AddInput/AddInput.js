@@ -1,8 +1,8 @@
-import LINKIMAGE from "assets/link.svg";
 import { useState, useRef } from "react";
 import React from "react";
-import PopupMessage from "components/modal/modal";
-import AddFolderModal from "components/modal/addLinkModal";
+import LINKIMAGE from "@/public/link.svg";
+import PopupMessage from "@/components/modal/modal";
+import AddFolderModal from "@/components/modal/addLinkModal";
 
 export default function AddInput() {
   const [modalOpen, setModalOpen] = useState(false);
