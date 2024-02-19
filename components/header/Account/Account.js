@@ -3,10 +3,11 @@ import { useState } from "react";
 import AccountEmail from "@/components/header/Account/AccountEmail";
 import AccountImage from "@/components/header/Account/AccountImage";
 import imgSrc from "@/public/profile img.svg";
+import styles from './account.module.css'
 
 const API_BASE_URL_USER = "https://bootcamp-api.codeit.kr/api/sample/user";
 
-function Account({ loginState }) {
+function Account() {
   const [info, setInfo] = useState();
   const [imgsrc, setImgsrc] = useState();
   const [isLogin, setIsLogin] = useState(false);
@@ -26,7 +27,7 @@ function Account({ loginState }) {
     setIsLogin(false);
   };
   return (
-    <div className="Account">
+    <div className={styles.account}>
       <AccountImage value={imgsrc} />
       <AccountEmail content={info} />
       <Button

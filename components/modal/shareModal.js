@@ -1,18 +1,18 @@
+import Image from "next/image";
 import "@/components/modal/shareModal.module.css";
 import KAKAO from "@/public/kakao.svg";
-import FACEBOOK from "@/public/Facebook copy.svg";
+import FACEBOOK from "@/public/Facebook.svg";
 import COPYLINK from "@/public/copylink.svg";
+import styles from './shareModal.module.css';
 
-function Share({ sns, src, text }) {
+function Share({ src, text }) {
   return (
-    <div className="share">
-      <div className="link">
-        <div className={sns}>
-          <div className="dumy">
-            <img src={src} alt="" />
+    <div className={styles.share}>
+      <div className={styles.link}>
+          <div className={styles.dumy}>
+            <Image src={src} alt="icon" />
           </div>
-        </div>
-        <div className="text">{text}</div>
+        <div className={styles.text}>{text}</div>
       </div>
     </div>
   );
@@ -20,15 +20,15 @@ function Share({ sns, src, text }) {
 
 export default function ShareModal() {
   return (
-    <div className="ShareModal">
-      <div className="titles">
-        <div className="title">폴더공유</div>
-        <div className="subTitle">폴더명</div>
+    <div className={styles.ShareModal}>
+      <div className={styles.titles}>
+        <div className={styles.title}>폴더공유</div>
+        <div className={styles.subTitle}>폴더명</div>
       </div>
-      <div className="share">
-        <Share sns="kakao" src={KAKAO} text="kakao" />
-        <Share sns="facebook" src={FACEBOOK} text="facebook" />
-        <Share sns="copy" src={COPYLINK} text="copylink" />
+      <div className={styles.shares}>
+        <Share className={styles.kakao} src={KAKAO} text="kakao" />
+        <Share className={styles.facebook} src={FACEBOOK} text="facebook" />
+        <Share className={styles.copy} src={COPYLINK} text="copylink" />
       </div>
     </div>
   );

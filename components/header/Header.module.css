@@ -26,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   align-self: stretch; 
+  position: relative;
 }
 .Header .box02 {
   display: flex;

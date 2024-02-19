@@ -31,19 +31,19 @@
   font-weight: 400;
   line-height: 22px; /* 157.143% */
 }
-.ShareModal .share {
+.ShareModal .shares {
   display: flex;
   align-items: flex-start;
   gap: 32px;
 }
-.ShareModal .share .link {
+.ShareModal .shares .link {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   gap: 10px;
 }
-.ShareModal .share .kakao .dumy {
+.ShareModal .shares .kakao .dumy {
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -54,11 +54,15 @@
   border-radius: 37.333px;
   background: #FEE500;
 }
-.ShareModal .share .kakao .dumy > img {
+.ShareModal .shares .kakao .dumy > img {
   width: 1.2rem;
   height: 1.2rem; 
 }
-.ShareModal .share .facebook .dumy {
+.ShareModal .shares .facebook {
+  width: 3rem;
+  height: 3rem;
+}
+.ShareModal .shares .facebook .dumy {
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -67,13 +71,12 @@
   align-items: center;
   gap: 10px;
   border-radius: 37.333px;
-  background: #1877F2;
 }
-.ShareModal .share .facebook .dumy > img {
+.ShareModal .shares .facebook .dumy > img {
   width: 1.2rem;
   height: 1.2rem; 
 }
-.ShareModal .share .copy .dumy {
+.ShareModal .shares .copy .dumy {
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -84,7 +87,7 @@
   border-radius: 37.333px;
   background: rgba(157, 157, 157, 0.04);
 }
-.ShareModal .share .copy .dumy > img {
+.ShareModal .shares .copy .dumy > img {
   width: 1.2rem;
   height: 1.2rem; 
 }

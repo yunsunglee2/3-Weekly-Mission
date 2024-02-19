@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import Image from "next/image";
 import CLOSE_IMG from '@/public/close.svg';
 
 const customImgStyle = {
@@ -52,7 +53,7 @@ const PopupMessage = ({modalOpen, onClick, component}) => {
       style={customModalStyles}
   > 
   {component}
-  <img  className="closeImg" src={CLOSE_IMG} alt="" style={customImgStyle} onClick={handleClick}/>
+  <Image className="closeImg" src={CLOSE_IMG} alt="x" style={customImgStyle} onClick={handleClick}/>
   </Modal>
   )
 }

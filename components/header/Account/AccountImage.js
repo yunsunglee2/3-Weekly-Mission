@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 function AccountImage({ value }) {
   return (
     <div className="accountImage">
-      <img src={value} alt={value} />
+      <Image src={value} alt={value} />
     </div>
   );
 }

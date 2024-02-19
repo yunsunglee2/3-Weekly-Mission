@@ -6,7 +6,7 @@ import Logo from "@/components/header/Logo/Logo";
 import User from "@/components/header/User/User";
 import AddInput from '@/components/header/AddInput/AddInput.js';
 import {getOwner} from '@/components/main/api/Api.js';
-import './Header.module.css';
+import styles from './Header.module.css';
 
 function Header({serachIsLoading}) {
   const getInfo = async () => {
@@ -25,9 +25,9 @@ function Header({serachIsLoading}) {
     },[])
 
   return (
-    <div className="Header">
-        <div className="box01">
-          <div className='item01'>
+    <div className={styles.Header}>
+        <div className={styles.box01}>
+          <div className={styles.item01}>
           <Logo value={logoImage}/>
             <Account/>
           </div>
@@ -35,7 +35,7 @@ function Header({serachIsLoading}) {
         {serachIsLoading ?  
         <AddInput/>
         :
-        <div className="box02"><User  profileImage={profile} folderOwner={owner} folderName={name} /></div>
+        <div className={styles.box02}><User profileImage={profile} folderOwner={owner} folderName={name} /></div>
         }
         
     </div>
