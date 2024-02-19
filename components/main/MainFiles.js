@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import More from "@/components/main/more.js";
 import TimeAgo from "@/components/main/MainFileTimeAgo.js";
 import STAR_IMAGE from "@/public/star.svg";
 import KEBAB_IMAGE from "@/public/kebab.svg";
 import TEMP_IMAGE from "@/public/logo.svg";
+import styles from "./mainFiles.module.css";
 
 function File({ file }) {
   const { created_at, url, title, description, image_source } = file;
@@ -37,40 +39,48 @@ function File({ file }) {
   editedTime = year + "-" + (month + 1) + "-" + date;
 
   return (
-    <div className="File">
-      {isLightOn ? (
-        <img
-          className="starOff"
-          src={STAR_IMAGE}
-          alt="즐겨찾기 추가하기"
-          onClick={handleLight}
-        />
-      ) : (
-        <img
-          className="starOn"
-          src={STAR_IMAGE}
-          alt="즐겨찾기 해제하기"
-          onClick={handleLight}
-        />
-      )}
-      <div className="item01" onClick={handleClick}>
-        <img
-          className="fileImage"
-          src={image_source === null ? TEMP_IMAGE : image_source}
-          alt={title}
-        />
-      </div>
-      <div className="item02">
-        <img
-          className="kebab"
-          src={KEBAB_IMAGE}
-          alt="더보기"
-          onClick={handleKebab}
-        />
-        <TimeAgo className="timeAgo" time={created_at} />
-        <div className="description">{description}</div>
-        <div className="editTime">{editedTime}</div>
-        {kebabLoad && <More folder={file.title} />}
+    <div className={styles.MainFiles}>
+      <div className={styles.File}>
+        {isLightOn ? (
+          <Image
+            width={16}
+            height={16}
+            src={STAR_IMAGE}
+            alt="즐겨찾기 추가하기"
+            onClick={handleLight}
+          />
+        ) : (
+          <Image
+            width={16}
+            height={16}
+            src={STAR_IMAGE}
+            alt="즐겨찾기 해제하기"
+            onClick={handleLight}
+          />
+        )}
+        <div className={styles.item01} onClick={handleClick}>
+          <Image
+            width={340}
+            height={200}
+            style={{
+              objectFit: "cover",
+            }}
+            src={image_source === null ? TEMP_IMAGE : image_source}
+            alt={title}
+          />
+        </div>
+        <div className={styles.item02}>
+          <Image
+            className={styles.kebab}
+            src={KEBAB_IMAGE}
+            alt="더보기"
+            onClick={handleKebab}
+          />
+          <TimeAgo className={styles.timeAgo} time={created_at} />
+          <div className={styles.description}>{description}</div>
+          <div className={styles.editTime}>{editedTime}</div>
+          {kebabLoad && <More folder={file.title} />}
+        </div>
       </div>
     </div>
   );
@@ -78,12 +88,10 @@ function File({ file }) {
 
 export default function MainFiles({ folders }) {
   return (
-    <div className="MainFiles">
-      <div className="files">
-        {folders.map((folder) => (
-          <File key={folder.id} file={folder} />
-        ))}
-      </div>
+    <div className={styles.files}>
+      {folders.map((folder) => (
+        <File key={folder.id} file={folder} />
+      ))}
     </div>
   );
 }

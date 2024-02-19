@@ -6,7 +6,7 @@ import { Buttons } from "@/components/main/buttons.js";
 import Fnc from "@/components/main/fnc.js";
 import AddFolder from "@/components/main/addFolder";
 import { EmptyFile } from "@/components/main/emptyFile.js";
-import "@/components/main/main.css";
+import styles from "./main.module.css";
 
 function Main() {
   const [links, setLinks] = useState([]);
@@ -37,25 +37,26 @@ function Main() {
   }
 
   return (
-    <div className="Main">
-      <div className="box">
-        <div className="item01">
+    <div className={styles.Main}>
+      <div className={styles.box}>
+        <div className={styles.item01}>
           <MainSearch />
         </div>
-        <div className="item02">
-          <div className="fileList">
-            <div className="buttonBundle">
-              <button className="list-all-button" onClick={() => handleClickFolder({ id: null, name: '전체' })}>
-                <div className="text">{"전체"}</div>
+        <div className={styles.item02}>
+          <div className={styles.fileList}>
+
+            <div className={styles.buttonBundle}>
+              <button className={styles.listAllButton} onClick={() => handleClickFolder({ id: null, name: '전체' })}>
+                <div className={styles.text}>{"전체"}</div>
               </button>
               <Buttons onClick={handleClickFolder} folders={names} />
             </div>
             <AddFolder/>
           </div>
-          <div className="functionBundle">
+          <div className={styles.functionBundle}>
           <div>{currentFolder.name}</div>
             {currentFolder.name !== "전체" && 
-            <div className="fnc-btn">
+            <div className={styles.fncBtn}>
               <Fnc value="공유" />
               <Fnc value="이름변경" />
               <Fnc value="삭제" />

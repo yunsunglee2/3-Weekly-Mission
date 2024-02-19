@@ -1,13 +1,11 @@
 import Image from 'next/image'
+import Link from "next/link";
 
 function Logo({value}) {
   const src = value
-  const handleClick = () => {
-    window.location.href = '/'
-  }
   return (
     <div className="Logo">
-      <Image src={src} alt={value} onClick={handleClick}/>
+      <Link href='/'><Image src={src} alt={value} /></Link>
     </div>
   )
 }

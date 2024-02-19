@@ -10,7 +10,7 @@ export default function Fnc({ value }) {
     setIsModalOpen(value);
   };
   return (
-    <div className="Fnc">
+    <div className="fnc">
       <div className="text" onClick={handleClick}>
         {value}
       </div>

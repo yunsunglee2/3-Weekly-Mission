@@ -1,0 +1,108 @@
+.MainFiles {
+  display: inline-flex;
+  justify-content: space-around;
+}
+.File {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px 15px;
+  width: 340px;
+  height: 334px;
+  overflow: hidden;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+.File .starOn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.File .starOff {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: gold;
+}
+
+.item02 {
+  display: flex;
+  width: 340px;
+  padding: 15px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+}
+.item02 .kebab {
+  color: #333236;
+  position: absolute;
+  right: 4rem;
+}
+.item02 .timeAgo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.item02 .timeAgo .timeDiff {
+  color: #666;
+  font-family: 'Pretendard-Regular';
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.item02 .description {
+  height: 49px;
+  align-self: stretch;
+  overflow:hidden;
+  color: #000;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  font-family: 'Pretendard-Regular';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+.item02 .editTime {
+  height: 19px;
+  align-self: stretch;
+  overflow: hidden;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'Pretendard-Regular';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+}
+.item02 .More {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100px;
+  position: absolute;
+  right: 4rem;
+  top: 2.5rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0 0.2rem 0;
+  background-color: #F5F5F5;
+}
+.item02 .More .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: 'Pretendard-Regular';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.item02 .More .text:hover{
+  background: var(--Linkbrary-gray10, #E7EFFB);
+  color: var(--Linkbrary-primary-color, #6D6AFE);
+}
