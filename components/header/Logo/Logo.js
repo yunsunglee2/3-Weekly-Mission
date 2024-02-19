@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 function Logo({value}) {
   const src = value
   const handleClick = () => {
@@ -5,7 +7,7 @@ function Logo({value}) {
   }
   return (
     <div className="Logo">
-      <img src={src} alt={value} onClick={handleClick}/>
+      <Image src={src} alt={value} onClick={handleClick}/>
     </div>
   )
 }

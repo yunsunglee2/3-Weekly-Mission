@@ -1,7 +1,7 @@
-import addImage from "assets/add.svg";
-import PopupMessage from "components/modal/modal.js";
-import AddFolderModal from "components/modal/addFolderModal.js";
 import { useState } from "react";
+import addImage from "@/public/add.svg";
+import PopupMessage from "@/components/modal/modal.js";
+import AddFolderModal from "@/components/modal/addFolderModal.js";
 
 export default function AddFolder() {
   const [isOpen, setIsopen] = useState(false);

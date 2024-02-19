@@ -1,8 +1,8 @@
 import { useState } from "react";
-import PopupMessage from "components/modal/modal";
-import ShareModal from "components/modal/shareModal";
-import ChangeNameModal from "components/modal/changeNameModal";
-import DeleteModal from "components/modal/deleteModal";
+import PopupMessage from "@/components/modal/modal";
+import ShareModal from "@/components/modal/shareModal";
+import ChangeNameModal from "@/components/modal/changeNameModal";
+import DeleteModal from "@/components/modal/deleteModal";
 
 export default function Fnc({ value }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

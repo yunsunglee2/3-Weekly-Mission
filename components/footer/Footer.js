@@ -3,7 +3,6 @@ import twitterImage from "@/public/akar-icons_twitter-fill.svg";
 import youtubeImage from "@/public/akar-icons_youtube-fill.svg";
 import instagramImage from "@/public/ant-design_instagram-filled.svg";
 import FooterSns from "@/components/footer/FooterSns.js";
-import "@/components/footer/Footer.css";
 
 function Footer() {
   return (

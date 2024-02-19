@@ -1,7 +1,7 @@
 import { useState } from "react";
-import DeleteModal from "components/modal/deleteModal";
-import AddFolderModal from "components/modal/addFolderModal";
-import PopupMessage from "components/modal/modal";
+import DeleteModal from "@/components/modal/deleteModal";
+import AddFolderModal from "@/components/modal/addFolderModal";
+import PopupMessage from "@/components/modal/modal";
 
 export default function More({ folder }) {
   const [isOpen, setIsOpen] = useState(false);

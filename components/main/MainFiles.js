@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import More from "components/main/more.js";
-import TimeAgo from "components/main/MainFileTimeAgo.js";
-import STAR_IMAGE from "assets/star.svg";
-import KEBAB_IMAGE from "assets/kebab.svg";
-import TEMP_IMAGE from "assets/logo.svg";
+import More from "@/components/main/more.js";
+import TimeAgo from "@/components/main/MainFileTimeAgo.js";
+import STAR_IMAGE from "@/public/star.svg";
+import KEBAB_IMAGE from "@/public/kebab.svg";
+import TEMP_IMAGE from "@/public/logo.svg";
 
 function File({ file }) {
   const { created_at, url, title, description, image_source } = file;

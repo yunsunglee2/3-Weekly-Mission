@@ -1,7 +1,9 @@
+import Image from 'next/image'
+
 function FooterSns({value}) {
   return (
     <div className="FooterSns">
-      <img src={value} alt={value} />
+      <Image src={value} alt={value} />
     </div>
   )
 }

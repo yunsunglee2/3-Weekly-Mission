@@ -1,7 +1,7 @@
-import "components/modal/shareModal.css";
-import KAKAO from "assets/kakao.svg";
-import FACEBOOK from "assets/Facebook copy.svg";
-import COPYLINK from "assets/copylink.svg";
+import "@/components/modal/shareModal.module.css";
+import KAKAO from "@/public/kakao.svg";
+import FACEBOOK from "@/public/Facebook copy.svg";
+import COPYLINK from "@/public/copylink.svg";
 
 function Share({ sns, src, text }) {
   return (
