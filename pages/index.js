@@ -1,9 +1,19 @@
-import styles from '@/styles/Home.module.css'
+import Header from "@/components/header/Header.js" ;
+import Link from 'next/link';
 
-export default function Home() {
-  return <>
-    <span className={styles.title}>
-    안녕 넥스트 제이에스
-    </span>
-  </>;
+const HomePageStyle = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  gap: "40px",
+}
+
+export default function HomePage() {
+  return(
+    <div className="HomePage" style={HomePageStyle}>
+      {/* <Header serachIsLoading={true}/> */}
+      <Link href="shared">MV SHARED</Link><br/>
+      <Link href="folder">MV FOLDER</Link>
+    </div>
+  )
 }
