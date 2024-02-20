@@ -13,7 +13,7 @@ export default function AddInput() {
   const inputNode = inputRef.current;
 
   const handlePopupMessage = () => {
-    inputNode.value && setModalOpen(!modalOpen);
+    inputNode.value ? setModalOpen(!modalOpen) : alert('링크를 추가해주세요');
   };
   const isClose = (value) => {
     setModalOpen(value);
