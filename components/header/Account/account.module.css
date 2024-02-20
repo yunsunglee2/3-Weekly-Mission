@@ -1,5 +1,5 @@
 .account {
+  display: flex;
   position: absolute;
-  background-color: red;
   right: 1rem;
 }
