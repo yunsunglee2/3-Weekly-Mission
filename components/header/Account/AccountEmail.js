@@ -1,5 +1,7 @@
+import styles from './AccountEmail.module.css'
+
 function AccountEmail({ content }) {
-  return <div className="accountEmail">{content}</div>;
+  return <div className={styles.accountEmail}>{content}</div>;
 }
 
 export default AccountEmail;

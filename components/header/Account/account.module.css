@@ -1,5 +1,7 @@
 .account {
   display: flex;
+  justify-content: center;
   position: absolute;
   right: 1rem;
+  gap: 5px;
 }
