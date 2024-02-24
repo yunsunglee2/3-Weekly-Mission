@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import CHECKIMG from "@/public/check.svg";
-import { getMyFolders } from "@/components/main/api/Api.js";
+import { getMyFolders } from "@/components/api/Api.js";
 import styles from './addLinkModal.module.css';
 
 function Titles({ title, subtitle }) {

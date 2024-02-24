@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import defaultProfile from '@/public/Avatar.svg'
 import logoImage from '@/public/Linkbrary.svg'
-import Account from "@/components/header/Account/Account";
+import Account from "@/components/header/Account/index";
 import Logo from "@/components/header/Logo/Logo";
 import User from "@/components/header/User/User";
 import AddInput from '@/components/header/AddInput/AddInput.js';
-import {getOwner} from '@/components/main/api/Api.js';
+import { getOwner } from '@/components/api/Api.js';
 import styles from './Header.module.css';
 
 function Header({serachIsLoading}) {

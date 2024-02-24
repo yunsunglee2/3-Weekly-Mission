@@ -1,5 +1,5 @@
-import Header from "@/components/header/Header.js" ;
-import Main from "@/components/main/Main.js";
+import Header from "@/components/header/index.js" ;
+import Main from "@/components/main/index.js";
 
 const SharedPageStyle = {
   display: "flex",
@@ -13,7 +13,6 @@ export default function SharedPage() {
     <div className="Shared page" style={SharedPageStyle}>
       <Header serachIsLoading={false}/>
       <Main/>
-      
     </div>
   )
 }
