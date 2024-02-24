@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import More from "@/components/main/more.js";
 import TimeAgo from "@/components/main/MainFileTimeAgo.js";
@@ -10,7 +10,7 @@ import styles from "./mainFiles.module.css";
 function File({ file }) {
   const { created_at, url, title, description, image_source } = file;
   const [kebabLoad, setKebabLoad] = useState(false);
-  const [isLightOn, setIsLightOn] = useState(false);
+  const starRef = useRef();
 
   let year;
   let month;
@@ -30,7 +30,7 @@ function File({ file }) {
   };
 
   const handleLight = () => {
-    setIsLightOn(!isLightOn);
+    starRef.current.classList.toggle('starOn');
   };
 
   year = new Date(created_at).getFullYear();
@@ -41,29 +41,21 @@ function File({ file }) {
   return (
     <div className={styles.MainFiles}>
       <div className={styles.File}>
-        {isLightOn ? (
-          <Image
-            width={16}
-            height={16}
-            src={STAR_IMAGE}
-            alt="즐겨찾기 추가하기"
-            onClick={handleLight}
-          />
-        ) : (
-          <Image
-            width={16}
-            height={16}
-            src={STAR_IMAGE}
-            alt="즐겨찾기 해제하기"
-            onClick={handleLight}
-          />
-        )}
+            <Image
+              ref={starRef}
+              className={styles.starOff}
+              width={20}
+              height={20}
+              src={STAR_IMAGE}
+              alt="즐겨찾기 추가하기"
+              onClick={handleLight}
+            />
         <div className={styles.item01} onClick={handleClick}>
           <Image
-            width={340}
-            height={200}
+            className={styles.thumbnail}
+            fill
             style={{
-              objectFit: "cover",
+              objectFit: "contain",
             }}
             src={image_source === null ? TEMP_IMAGE : image_source}
             alt={title}

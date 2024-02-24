@@ -10,7 +10,6 @@ export async function getUserData() {
 export async function getMyFolders() {
   const API_BASE_URL_FOLDER = `${API_BASE_URL}/api/users/1/folders`;
   const response = await fetch(API_BASE_URL_FOLDER)
-  console.log(response);
   const alreadyFolders = await response.json();
   return alreadyFolders;
 }

@@ -5,9 +5,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'jasonwatmore.com',
+        hostname: '*',
         port: '',
-        pathname: '/_content/images/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',
