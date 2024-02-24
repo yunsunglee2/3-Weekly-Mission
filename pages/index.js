@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "@/components/header/index.js" ;
+import Header from "@/components/header/index" ;
 
 const HomePageStyle = {
   display: "flex",

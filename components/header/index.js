@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import defaultProfile from '@/public/Avatar.svg'
-import logoImage from '@/public/Linkbrary.svg'
-import Account from "@/components/header/Account/index";
-import Logo from "@/components/header/Logo/Logo";
 import User from "@/components/header/User/User";
 import AddInput from '@/components/header/AddInput/AddInput.js';
 import { getOwner } from '@/components/api/Api.js';
@@ -26,12 +23,6 @@ function Header({serachIsLoading}) {
 
   return (
     <div className={styles.Header}>
-        <div className={styles.box01}>
-          <div className={styles.item01}>
-          <Logo value={logoImage}/>
-            <Account/>
-          </div>
-        </div> 
         {serachIsLoading ?  
         <AddInput/>
         :
