@@ -10,33 +10,37 @@ function LoginPage() {
     "email": "",
     "password": "",
   });
-  const [postState, setPostState] = useState();
+  const [postState, setPostState] = useState(null);
+  const [token, setToken] = useState(null);
   const router = useRouter();
-  const [token, setToken] = useState('');
 
+  // 로그인 버튼은 클릭 -> 유저 정보 post -> response에서 status code 확인
+  // result에서 토큰 가져옴 -> 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(info.email && info.password) {
-      console.log(info);
+    if (info.email && info.password) {
     const { res, result } = await postUserInfo(info);
     const { status } = res;
     const { data } = result;
-    setToken(data.accessToken);
+    setToken(data?.accessToken);
     setPostState(status);
-    if(status === 200) {
-      console.log('성공')
-      router.push('/FolderPage');
-    } else if (status === 400) {
-      alert('이메일 또는 비밀번호를 확인해 주세요')
-    }
     } else {
       alert('이메일 또는 비밀번호를 확인해 주세요')
     }
+    console.log(info)
   }
 
   useEffect(()=> {
+    // 전역객체가 생성되기 전에 window에 접근하면 undefined 이다 마운트된 후에 실행되는 
+    // 유즈이펙트로 localStorage를 사용하면 그 문제를 해결할 수 있다. 
     postState === 200 && localStorage.setItem('login', token)
-  }, [postState])
+    if(postState === 200) {
+      console.log('성공')
+      router.push('/FolderPage');
+    } else if (postState === 400) {
+      alert('이메일 또는 비밀번호를 확인해 주세요')
+    }
+  }, [postState, token])
   
   const handleClick = () => {
     // 회원 가입하기를 클릭하면 로컬스토리지에서 토큰을 가져와 변수 TOKEN에 담긴 값과 같은지 비교 후 

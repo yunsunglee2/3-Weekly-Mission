@@ -2,7 +2,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/_app": "pages/_app.js",
-  "/LoginPage": "pages/LoginPage.js",
   "/FolderPage": "pages/FolderPage.js",
-  "/": "pages/index.js"
+  "/SignupPage": "pages/SignupPage.js",
+  "/LoginPage": "pages/LoginPage.js"
 }

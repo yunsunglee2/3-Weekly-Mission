@@ -20,7 +20,6 @@ function Main() {
   const getFolders = async (id) => {
     // 폴더 안에 파일들 받아오기
     const { data } = await getLinks(id);
-    console.log(data);
     setLinks(data);
   };
 

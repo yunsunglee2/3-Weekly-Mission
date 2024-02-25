@@ -1,7 +1,7 @@
 import styles from './AccountEmail.module.css'
 
-function AccountEmail({ content }) {
-  return <div className={styles.accountEmail}>{content}</div>;
+function AccountEmail({ children }) {
+  return <div className={styles.accountEmail}>{children}</div>;
 }
 
 export default AccountEmail;

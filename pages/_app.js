@@ -12,11 +12,9 @@ export default function App({ Component, pageProps }) {
   useEffect(()=> {
     const TOKEN = localStorage.getItem('login');
     setToken(TOKEN)
-    console.log(token)
   },[token])
 
   const handleToken = () => {
-    console.log('토큰삭제')
     localStorage.removeItem('login')
     setToken('')
   }
