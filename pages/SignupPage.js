@@ -21,12 +21,25 @@ function SignupPage() {
     e.preventDefault();
   };
 
-  const checkEmail = async (e) => {
+  const checkEmail = async () => {
+    try {
+      const { error, data } = await checkUserInfo({
+        email: `${info.email}`,
+      });
+      if(error){
+        alert(error?.message);
+      }
+      if(data?.isUsableNickname){
+        alert('사용가능한 아이디 입니다.')
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  };
+  
+  const handleDuplicate = (e) => {
     e.preventDefault();
-      const { error } = await checkUserInfo({
-        "email": `${info.email}`,
-      })
-      console.log(error)
+    checkEmail();
   };
   
 
@@ -34,10 +47,10 @@ function SignupPage() {
     <div className={styles.LoginPage}>
       <div className={styles.wrapper}>
         <div>
-          <span>이미 회원이신가요?</span>
+          <span>이미 회원이신가요? </span>
           <span onClick={handleClick}>로그인 하기</span>
         </div>
-        <form className={styles.form} onSubmit={checkEmail}>
+        <form className={styles.form} onSubmit={handleDuplicate}>
           <label htmlFor="email">이메일</label>
           <InfoInput
             name="email"
@@ -56,7 +69,7 @@ function SignupPage() {
             name="password"
             value={info}
             setValue={setInfo}
-            placeholder="비밀번호를 입력해주세요"
+            placeholder="영문, 숫자를 조합해 8자 이상 입력해주세요"
             width={300}
             height={40}
             errMsg_1="비밀번호를 다시 입력해주세요."
@@ -66,7 +79,7 @@ function SignupPage() {
             name="passwordCheck"
             value={info}
             setValue={setInfo}
-            placeholder="비밀번호를 입력해주세요"
+            placeholder="비밀번호와 일치하는 값을 입력해주세요"
             width={300}
             height={40}
             errMsg_1="비밀번호를 다시 입력해주세요."
