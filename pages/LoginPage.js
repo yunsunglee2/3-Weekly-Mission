@@ -1,4 +1,4 @@
-import InfoButton from "@/components/info/Infobutton";
+import InfoButton from "@/components/info/InfoButton";
 import InfoInput from "@/components/info/InfoInput";
 import styles from "@/styles/LoginPage.module.css";
 import { useRouter } from "next/router";
@@ -16,7 +16,8 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(info);
+    if(info.email && info.password) {
+      console.log(info);
     const { res, result } = await postUserInfo(info);
     const { status } = res;
     const { data } = result;
@@ -26,7 +27,10 @@ function LoginPage() {
       console.log('성공')
       router.push('/FolderPage');
     } else if (status === 400) {
-      alert('please check your information')
+      alert('이메일 또는 비밀번호를 확인해 주세요')
+    }
+    } else {
+      alert('이메일 또는 비밀번호를 확인해 주세요')
     }
   }
 

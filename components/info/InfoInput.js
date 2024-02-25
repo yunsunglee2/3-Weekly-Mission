@@ -18,6 +18,7 @@ const InfoInput = ({
 
   const handleOnchange = (e) => {
     setInputValue(e.target.value);
+    // 상위 컴포넌트에서 전달받은 세터 함수로 객체관리
     setValue({
       ...value,
       [name]: e.target.value,
@@ -25,9 +26,11 @@ const InfoInput = ({
   };
 
   const handleBlur = (e) => {
+    // 이메일이 다섯글자 미만이면 에러 메세지 출력 
     if (e.target.value.length < 5) {
       setErrMsg(errMsg_1);
       setIsErr(true);
+      // 이메일이 형식을 갖추기 않으면 에러 메세지 출력 
     } else if (!e.target.value.includes("@")) {
       setIsErr(true);
       setErrMsg(errMsg_2);
