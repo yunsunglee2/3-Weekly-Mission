@@ -26,6 +26,7 @@ function SignupPage() {
       const { error } = await checkUserInfo({
         "email": `${info.email}`,
       })
+      console.log(error)
   };
   
 
