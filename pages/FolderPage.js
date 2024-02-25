@@ -11,7 +11,7 @@ const FolderPageStyle = {
 export default function FolderPage() {
   return (
     <div className="FolderPage" style={FolderPageStyle}>
-      <Header serachIsLoading={true} />
+      <Header serachIsLoading={false} />
       <Main />
     </div>
   );

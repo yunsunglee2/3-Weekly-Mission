@@ -11,7 +11,7 @@ const SharedPageStyle = {
 export default function SharedPage() {
   return(
     <div className="Shared page" style={SharedPageStyle}>
-      <Header serachIsLoading={false}/>
+      <Header serachIsLoading={true}/>
       <Main/>
     </div>
   )

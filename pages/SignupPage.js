@@ -1,4 +1,4 @@
-const Signin = () => {
+function SigninPage() {
   return (
     <>
       회원가입 페이지
@@ -6,4 +6,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default SigninPage

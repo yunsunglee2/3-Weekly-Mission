@@ -1,5 +1,18 @@
 const API_BASE_URL = "https://bootcamp-api.codeit.kr";
 
+export async function postUserInfo(info) {
+  const res = await fetch(`${API_BASE_URL}/api/sign-in`,{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(info)
+  });
+  const result = await res.json()
+  console.log(result.data)
+  return {res, result}
+}
+
 export async function getUserData() {
   const API_BASE_URL_USER= `${API_BASE_URL}/api/sample/user`;
   const response = await fetch(API_BASE_URL_USER);
