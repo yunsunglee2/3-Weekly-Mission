@@ -1,7 +1,7 @@
 import InfoButton from "@/components/info/InfoButton";
 import InfoInput from "@/components/info/InfoInput";
 import styles from "@/styles/LoginPage.module.css";
-import { checkUserInfo } from "@/components/api/Api";
+import { checkUserInfo, isSignupValid } from "@/components/api/Api";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -19,6 +19,21 @@ function SignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try{
+      const { error, data } = await isSignupValid(info)
+    if(error) {
+      alert(error?.message)
+    }
+    if(data) {
+      alert('회원가입 성공')
+      localStorage.setItem('login', data.accessToken)
+      if(localStorage.getItem('login')){
+        router.push('/FolderPage')
+      }
+    }
+    }catch(err){
+      console.log(err);
+    }
   };
 
   const checkEmail = async () => {

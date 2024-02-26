@@ -12,10 +12,15 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/LoginPage": [
+    "/": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/LoginPage.js"
+      "static/chunks/pages/index.js"
+    ],
+    "/FolderPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/FolderPage.js"
     ],
     "/SignupPage": [
       "static/chunks/webpack.js",

@@ -1,5 +1,18 @@
 const API_BASE_URL = "https://bootcamp-api.codeit.kr";
 
+export async function isSignupValid(info) {
+  const res = await fetch(`${API_BASE_URL}/api/sign-up`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(info)
+  })
+  const result = await res.json();
+  console.log(result)
+  return result;
+}
+
 export async function checkUserInfo(info) {
   const res = await fetch(`${API_BASE_URL}/api/check-email`, {
     method: "POST",

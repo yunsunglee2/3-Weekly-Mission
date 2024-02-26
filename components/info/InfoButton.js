@@ -1,9 +1,10 @@
 import styles from "./button.module.css";
 
-const InfoButton = ({ width, height, children }) => {
+const InfoButton = ({ width, height, children, onClick }) => {
   return (
     <>
       <button
+        onClick={onClick}
         style={{
           width: `${width}px`,
           height: `${height}px`,

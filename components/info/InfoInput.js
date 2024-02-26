@@ -67,11 +67,6 @@ const InfoInput = ({
       setIsErr(false);
     }
   };
-  // 중복확인 메세지 출력
-  if (err) {
-    setErrMsg("비밀번호가 일치하지 않습니다");
-    setIsErr(true);
-  }
 
   return (
     <div className={styles.wrapper}>
