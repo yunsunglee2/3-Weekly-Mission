@@ -1,11 +1,11 @@
 import Modal from 'react-modal';
-import CLOSE_IMG from 'assets/close.svg';
+import CLOSE_IMG from '../../assets/close.svg';
 
 const customImgStyle = {
   width: "24px",
   height: "24px",
   position: "absolute",
-  right: "10px",
+  left: "350px",
   top: "8px",
 }
 

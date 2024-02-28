@@ -1,5 +1,7 @@
-function AccountEmail({ content }) {
-  return <div className="accountEmail">{content}</div>;
+function AccountEmail({content}) {
+  return (
+    <div className="accountEmail">{content}</div>
+  )
 }
 
 export default AccountEmail;

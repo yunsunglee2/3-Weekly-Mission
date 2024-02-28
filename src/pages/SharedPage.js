@@ -1,16 +1,9 @@
-import Header from "components/header/Header.js" ;
-import Main from "components/main/Main.js";
-
-const SharedPageStyle = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  gap: "40px",
-}
+import Header from "../components/header/Header" ;
+import Main from "../components/main/Main";
 
 export default function SharedPage() {
   return(
-    <div className="Shared page" style={SharedPageStyle}>
+    <div className="Shared page">
       <Header serachIsLoading={false}/>
       <Main/>
       

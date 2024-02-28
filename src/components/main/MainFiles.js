@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import More from "components/main/more.js";
-import TimeAgo from "components/main/MainFileTimeAgo.js";
-import STAR_IMAGE from "assets/star.svg";
-import KEBAB_IMAGE from "assets/kebab.svg";
-import TEMP_IMAGE from "assets/logo.svg";
+import More from "./more";
+import TimeAgo from "./MainFileTimeAgo";
+import STAR_IMAGE from "../../assets/star.svg";
+import KEBAB_IMAGE from "../../assets/kebab.svg"
+import TEMP_IMAGE from "../../assets/logo.svg";
 
 function File({ file }) {
   const { created_at, url, title, description, image_source } = file;
@@ -16,8 +16,8 @@ function File({ file }) {
   let editedTime;
 
   useEffect(() => {
-    setKebabLoad(false);
-  }, []);
+    setKebabLoad(false);         
+  },[]);
 
   const handleClick = () => {
     window.open(url, "_blank");
@@ -29,7 +29,7 @@ function File({ file }) {
 
   const handleLight = () => {
     setIsLightOn(!isLightOn);
-  };
+  }
 
   year = new Date(created_at).getFullYear();
   month = new Date(created_at).getMonth();
@@ -38,21 +38,12 @@ function File({ file }) {
 
   return (
     <div className="File">
-      {isLightOn ? (
-        <img
-          className="starOff"
-          src={STAR_IMAGE}
-          alt="즐겨찾기 추가하기"
-          onClick={handleLight}
-        />
-      ) : (
-        <img
-          className="starOn"
-          src={STAR_IMAGE}
-          alt="즐겨찾기 해제하기"
-          onClick={handleLight}
-        />
-      )}
+      {isLightOn 
+      ? 
+      <img className="starOff" src={STAR_IMAGE} alt="즐겨찾기 추가하기" onClick={handleLight} />
+      :
+      <img className="starOn" src={STAR_IMAGE} alt="즐겨찾기 해제하기" onClick={handleLight} />
+      }
       <div className="item01" onClick={handleClick}>
         <img
           className="fileImage"
@@ -70,7 +61,7 @@ function File({ file }) {
         <TimeAgo className="timeAgo" time={created_at} />
         <div className="description">{description}</div>
         <div className="editTime">{editedTime}</div>
-        {kebabLoad && <More folder={file.title} />}
+        {kebabLoad && <More />}
       </div>
     </div>
   );
@@ -81,7 +72,7 @@ export default function MainFiles({ folders }) {
     <div className="MainFiles">
       <div className="files">
         {folders.map((folder) => (
-          <File key={folder.id} file={folder} />
+          <File file={folder} />
         ))}
       </div>
     </div>

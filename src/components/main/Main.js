@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import MainSearch from "components/main/MainSearch.js";
-import MainFiles from "components/main/MainFiles.js";
-import { getLinks, getMyFolders } from "components/main/api/Api.js";
-import { Buttons } from "components/main/buttons.js";
-import Fnc from "components/main/fnc.js";
-import AddFolder from "components/main/addFolder";
-import { EmptyFile } from "components/main/emptyFile.js";
-import "components/main/main.css";
+import MainSearch from "./MainSearch";
+import MainFiles from "./MainFiles";
+import { getLinks, getMyFolders } from "./api/Api";
+import { Buttons } from "./buttons";
+import Fnc from "./fnc";
+import addImage from "../../assets/add.svg";
+import { EmptyFile } from "./emptyFile";
+import "./main.css";
 
 function Main() {
   const [links, setLinks] = useState([]);
@@ -15,7 +15,6 @@ function Main() {
 
   const getFolders = async (id) => {                      // 폴더 안에 파일들 받아오기
     const { data } = await getLinks(id);
-    console.log(data)
     setLinks(data);
   };
 
@@ -50,10 +49,11 @@ function Main() {
               </button>
               <Buttons onClick={handleClickFolder} folders={names} />
             </div>
-            <AddFolder/>
+            <img src={addImage} alt="" />
           </div>
           <div className="functionBundle">
-          <div>{currentFolder.name}</div>
+          <div>{currentFolder.name}</div> 
+          {/* 폴더 id 값에 상태변경으로 폴더명 변경  */}
             {currentFolder.name !== "전체" && 
             <div className="fnc-btn">
               <Fnc value="공유" />
@@ -61,7 +61,8 @@ function Main() {
               <Fnc value="삭제" />
             </div>}
           </div>
-          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} /> }
+          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} /> } 
+          {/* 삼항 연산자로 수정  */}
         </div>
       </div>
     </div>

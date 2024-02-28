@@ -1,4 +1,4 @@
-import readingGlasses from 'assets/Search.svg';
+import readingGlasses from '../../assets/Search.svg';
 
 function MainSearch() {
   return (

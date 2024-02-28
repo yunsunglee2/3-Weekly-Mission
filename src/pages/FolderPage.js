@@ -1,18 +1,11 @@
-import Header from "components/header/Header.js";
-import Main from "components/main/Main.js";
-
-const FolderPageStyle = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  gap: "40px",
-};
+import Header from "../components/header/Header" ;
+import Main from "../components/main/Main";
 
 export default function FolderPage() {
-  return (
-    <div className="FolderPage" style={FolderPageStyle}>
-      <Header serachIsLoading={true} />
-      <Main />
+  return(
+    <div className="FolderPage">
+      <Header serachIsLoading={true}/>
+      <Main/>
     </div>
-  );
+  )
 }
