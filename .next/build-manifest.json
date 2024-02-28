@@ -22,6 +22,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/FolderPage.js"
     ],
+    "/LoginPage": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/LoginPage.js"
+    ],
     "/SignupPage": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
