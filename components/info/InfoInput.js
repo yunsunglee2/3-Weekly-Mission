@@ -9,16 +9,12 @@ const InfoInput = ({
   name,
   placeholder = "",
   err = "",
-  handleErr
+  handleErr,
+  handleChange
 }) => {
-  const [inputValue, setInputValue] = useState("");
 
   const handleOnchange = (e) => {
-    setInputValue(e.target.value);
-    setValue({
-      ...value,
-      [name]: e.target.value,
-    });
+    handleChange(e.target.name, e.target.value)
   };
 
   const handleBlur = (e) => {
@@ -30,7 +26,7 @@ const InfoInput = ({
       <input
         name={name}
         ref={ref}
-        value={inputValue}
+        value={value}
         onChange={handleOnchange}
         onBlur={handleBlur}
         style={{
