@@ -1,0 +1,12 @@
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+.button {
+  padding: 8px 12px;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6D6AFE);
+  background-color: #fff;
+}
+

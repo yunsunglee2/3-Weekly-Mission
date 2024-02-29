@@ -1,0 +1,21 @@
+.wrapper {
+  display: felx;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.infoInput {
+  border-radius: 0.5rem;
+  text-indent: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.infoInput::placeholder {
+  text-indent: 0.5rem;
+}
+
+.errMsg {
+  text-indent: 0.5rem;
+  font-size: 0.7rem;
+  color: red;
+}
