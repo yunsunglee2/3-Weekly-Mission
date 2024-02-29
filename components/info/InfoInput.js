@@ -4,7 +4,6 @@ import styles from "./input.module.css";
 const InfoInput = ({
   ref,
   size,
-  setValue,
   value,
   name,
   placeholder = "",
@@ -25,6 +24,7 @@ const InfoInput = ({
     <div className={styles.wrapper}>
       <input
         name={name}
+        type={name}
         ref={ref}
         value={value}
         onChange={handleOnchange}

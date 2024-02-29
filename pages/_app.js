@@ -4,7 +4,7 @@ import Footer from "@/components/footer/Footer.js";
 import Nav from "@/components/nav";
 import React, { useEffect, useState } from "react";
 
-const tokenContext = React.createContext(null);
+export const tokenContext = React.createContext(null);
 
 export default function App({ Component, pageProps }) {
   const [token, setToken] = useState('');

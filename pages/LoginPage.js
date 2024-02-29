@@ -2,8 +2,9 @@ import InfoButton from "@/components/info/InfoButton";
 import InfoInput from "@/components/info/InfoInput";
 import styles from "@/styles/LoginPage.module.css";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { postUserInfo } from "@/components/api/Api";
+import { tokenContext } from "./_app";
 
 function LoginPage() {
   const [info, setInfo] = useState({
@@ -11,38 +12,30 @@ function LoginPage() {
     password: "",
   });
   const [err, setErr] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
   const [postState, setPostState] = useState(null);
-  const [token, setToken] = useState(null);
   const [moveCheck, setMoveCheck] = useState(false);
   const router = useRouter();
+  const { token, setToken } = useContext(tokenContext);
 
   // 로그인 버튼은 클릭 -> 유저 정보 post -> response에서 status code 확인
   // result에서 토큰 가져옴 ->
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (info.email && info.password) {
-      const { res, result } = await postUserInfo(info);
-      const { status } = res;
-      const { data } = result;
-      setToken(data?.accessToken);
-      setPostState(status);
-    } else {
-      alert("이메일 또는 비밀번호를 확인해 주세요");
-      setInfo({
-        ...info,
-        email: "",
-        password: "",
-      });
+      try {
+        const { res, result } = await postUserInfo(info);
+        const { status } = res;
+        const { data } = result;
+        setToken(data?.accessToken);
+        setPostState(status);
+      } catch (e) {
+        console.log(e);
+      }
     }
-    console.log(info);
   };
-
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
 
   useEffect(() => {
     // 전역객체가 생성되기 전에 window에 접근하면 undefined 이다 마운트된 후에 실행되는
@@ -52,7 +45,11 @@ function LoginPage() {
       console.log("성공");
       router.push("/FolderPage");
     } else if (postState === 400) {
-      alert("이메일 또는 비밀번호를 확인해 주세요");
+      console.log('1')
+      setErr({
+        ...err,
+        password: "로그인 정보를 확인하세요.",
+      });
     }
   }, [postState, token]);
 
@@ -73,44 +70,44 @@ function LoginPage() {
   const ErrMsgList = {
     email: {
       msg1: "이메일을 다시 입력해주세요.",
-      msg2: "이메일을 형식에 맞게 작성해주세요."
+      msg2: "이메일을 형식에 맞게 작성해주세요.",
     },
     password: {
       msg1: "비밀번호를 입력해주세요.",
     },
     passwordCheck: {
       msg1: "비밀번호를 다시 입력해주세요.",
-      msg2: "비밀번호가 일치하지 않습니다"
-    }
-  }
+      msg2: "비밀번호가 일치하지 않습니다",
+    },
+  };
 
   const handleErrMsg = (target) => {
-    if(target === 'email'){
+    if (target === "email") {
       if (info[target].length < 5) {
-        // 이메일이 다섯 글자 미만으로 작성됐을때 
-        setErr({...err, [target]: ErrMsgList[target].msg1});
+        // 이메일이 다섯 글자 미만으로 작성됐을때
+        setErr({ ...err, [target]: ErrMsgList[target].msg1 });
         return;
       } else if (!info[target].includes("@")) {
         // 이메일이 형식을 갖추기 않으면 에러 메세지 출력
-        setErr({...err, [target]: ErrMsgList[target].msg2});
+        setErr({ ...err, [target]: ErrMsgList[target].msg2 });
         return;
       }
-    } else if (target === 'password'){
+    } else if (target === "password") {
       if (!info[target].length) {
-        // 비밀번호가 비어있을때 
-        setErr({...err, [target]: ErrMsgList[target].msg1});
+        // 비밀번호가 비어있을때
+        setErr({ ...err, [target]: ErrMsgList[target].msg1 });
         return;
       }
-    } 
-    setErr({...err, [target]:''})
-  }
+    }
+    setErr({ ...err, [target]: "" });
+  };
 
   const handleChange = (target, value) => {
     setInfo({
       ...info,
       [target]: value,
     });
-  }
+  };
 
   return (
     <div className={styles.LoginPage}>

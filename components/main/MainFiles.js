@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import More from "@/components/main/more.js";
 import TimeAgo from "@/components/main/MainFileTimeAgo.js";
-import STAR_IMAGE from "@/public/star.svg";
+import STAR_OFF from "@/public/star.svg";
+import STAR_ON from "@/public/starOn.svg";
 import KEBAB_IMAGE from "@/public/kebab.svg";
 import TEMP_IMAGE from "@/public/logo.svg";
 import styles from "./mainFiles.module.css";
@@ -10,6 +11,7 @@ import styles from "./mainFiles.module.css";
 function File({ file }) {
   const { created_at, url, title, description, image_source } = file;
   const [kebabLoad, setKebabLoad] = useState(false);
+  const [light, setLight] = useState(false);
   const starRef = useRef();
 
   let year;
@@ -30,7 +32,7 @@ function File({ file }) {
   };
 
   const handleLight = () => {
-    starRef.current.classList.toggle('starOn');
+    setLight(!light);
   };
 
   year = new Date(created_at).getFullYear();
@@ -42,11 +44,11 @@ function File({ file }) {
     <div className={styles.MainFiles}>
       <div className={styles.File}>
             <Image
+              className={styles.star}
               ref={starRef}
-              className={styles.starOff}
-              width={20}
-              height={20}
-              src={STAR_IMAGE}
+              width={30}
+              height={30}
+              src={light ? STAR_ON : STAR_OFF}
               alt="즐겨찾기 추가하기"
               onClick={handleLight}
             />
