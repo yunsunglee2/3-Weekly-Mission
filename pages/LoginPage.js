@@ -10,6 +10,10 @@ function LoginPage() {
     email: "",
     password: "",
   });
+  const [err, setErr] = useState({
+    email: '',
+    password: ''
+  });
   const [postState, setPostState] = useState(null);
   const [token, setToken] = useState(null);
   const [moveCheck, setMoveCheck] = useState(false);
@@ -66,6 +70,41 @@ function LoginPage() {
     }
   }, [moveCheck]);
 
+  const ErrMsgList = {
+    email: {
+      msg1: "이메일을 다시 입력해주세요.",
+      msg2: "이메일을 형식에 맞게 작성해주세요."
+    },
+    password: {
+      msg1: "비밀번호를 입력해주세요.",
+    },
+    passwordCheck: {
+      msg1: "비밀번호를 다시 입력해주세요.",
+      msg2: "비밀번호가 일치하지 않습니다"
+    }
+  }
+
+  const handleErrMsg = (target) => {
+    if(target === 'email'){
+      if (info[target].length < 5) {
+        // 이메일이 다섯 글자 미만으로 작성됐을때 
+        setErr({...err, [target]: ErrMsgList[target].msg1});
+        return;
+      } else if (!info[target].includes("@")) {
+        // 이메일이 형식을 갖추기 않으면 에러 메세지 출력
+        setErr({...err, [target]: ErrMsgList[target].msg2});
+        return;
+      }
+    } else if (target === 'password'){
+      if (!info[target].length) {
+        // 비밀번호가 비어있을때 
+        setErr({...err, [target]: ErrMsgList[target].msg1});
+        return;
+      }
+    } 
+    setErr({...err, [target]:''})
+  }
+
   return (
     <div className={styles.LoginPage}>
       <div className={styles.wrapper}>
@@ -81,10 +120,8 @@ function LoginPage() {
             setValue={setInfo}
             placeholder="이메일을 입력해주세요."
             size={{ width: 300, height: 40 }}
-            err={{
-              msg1: "이메일을 다시 입력해주세요.",
-              msg2: "이메일을 형식에 맞게 작성해주세요.",
-            }}
+            err={err.email}
+            handleErr={handleErrMsg}
           />
           <label htmlFor="password">비밀번호</label>
           <InfoInput
@@ -93,9 +130,8 @@ function LoginPage() {
             setValue={setInfo}
             placeholder="비밀번호를 입력해주세요."
             size={{ width: 300, height: 40 }}
-            err={{
-              msg1: "비밀번호를 입력해주세요.",
-            }}
+            err={err.password}
+            handleErr={handleErrMsg}
           />
           <InfoButton>로그인</InfoButton>
         </form>

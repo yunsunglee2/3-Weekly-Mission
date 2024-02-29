@@ -87,7 +87,7 @@ function SignupPage() {
         return;
       }
     } else if (target === 'password'){
-      if (!info[target].length) {
+      if (info[target].length < 8) {
         // 비밀번호가 비어있을때 
         setErr({...err, [target]: ErrMsgList[target].msg1});
         return;
@@ -99,6 +99,7 @@ function SignupPage() {
         return;
       }
     }
+    setErr({...err, [target]:''})
   }
 
   return (

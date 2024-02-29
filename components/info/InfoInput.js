@@ -15,7 +15,6 @@ const InfoInput = ({
 
   const handleOnchange = (e) => {
     setInputValue(e.target.value);
-    // 상위 컴포넌트에서 전달받은 세터 함수로 객체관리
     setValue({
       ...value,
       [name]: e.target.value,
@@ -23,7 +22,6 @@ const InfoInput = ({
   };
 
   const handleBlur = (e) => {
-    console.log(value);
     handleErr(e.target.name);
   };
 
