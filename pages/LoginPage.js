@@ -61,7 +61,7 @@ function LoginPage() {
     const loginCheck = localStorage.getItem("login");
     if (loginCheck && token) {
       router.push("/FolderPage");
-    } else if (moveCheck){
+    } else if (moveCheck) {
       router.push("/SignupPage");
     }
   }, [moveCheck]);
@@ -79,19 +79,23 @@ function LoginPage() {
             name="email"
             value={info}
             setValue={setInfo}
-            placeholder="이메일을 입력해주세요"
-            size={{width: 300, height:40}}
-            errMsg_1="이메일을 다시 입력해주세요."
-            errMsg_2="이메일을 형식에 맞게 작성해주세요."
+            placeholder="이메일을 입력해주세요."
+            size={{ width: 300, height: 40 }}
+            err={{
+              msg1: "이메일을 다시 입력해주세요.",
+              msg2: "이메일을 형식에 맞게 작성해주세요.",
+            }}
           />
           <label htmlFor="password">비밀번호</label>
           <InfoInput
             name="password"
             value={info}
             setValue={setInfo}
-            placeholder="비밀번호를 입력해주세요"
-            size={{width: 300, height:40}}
-            errMsg_1="비밀번호를 다시 입력해주세요."
+            placeholder="비밀번호를 입력해주세요."
+            size={{ width: 300, height: 40 }}
+            err={{
+              msg1: "비밀번호를 입력해주세요.",
+            }}
           />
           <InfoButton>로그인</InfoButton>
         </form>
