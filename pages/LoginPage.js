@@ -80,8 +80,7 @@ function LoginPage() {
             value={info}
             setValue={setInfo}
             placeholder="이메일을 입력해주세요"
-            width={300}
-            height={40}
+            size={{width: 300, height:40}}
             errMsg_1="이메일을 다시 입력해주세요."
             errMsg_2="이메일을 형식에 맞게 작성해주세요."
           />
@@ -91,8 +90,7 @@ function LoginPage() {
             value={info}
             setValue={setInfo}
             placeholder="비밀번호를 입력해주세요"
-            width={300}
-            height={40}
+            size={{width: 300, height:40}}
             errMsg_1="비밀번호를 다시 입력해주세요."
           />
           <InfoButton>로그인</InfoButton>

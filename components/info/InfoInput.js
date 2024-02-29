@@ -3,8 +3,7 @@ import styles from "./input.module.css";
 
 const InfoInput = ({
   ref,
-  width,
-  height,
+  size,
   setValue,
   value,
   name,
@@ -77,8 +76,8 @@ const InfoInput = ({
         onChange={handleOnchange}
         onBlur={handleBlur}
         style={{
-          width: `${width}px`,
-          height: `${height}px`,
+          width: `${size.width}px`,
+          height: `${size.height}px`,
         }}
         className={styles.infoInput}
         placeholder={placeholder}
