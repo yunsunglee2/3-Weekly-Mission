@@ -3,6 +3,6 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/LoginPage": "pages/LoginPage.js",
-  "/SignupPage": "pages/SignupPage.js",
-  "/SharedPage": "pages/SharedPage.js"
+  "/": "pages/index.js",
+  "/SignupPage": "pages/SignupPage.js"
 }

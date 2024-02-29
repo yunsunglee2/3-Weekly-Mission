@@ -105,6 +105,13 @@ function LoginPage() {
     setErr({...err, [target]:''})
   }
 
+  const handleChange = (target, value) => {
+    setInfo({
+      ...info,
+      [target]: value,
+    });
+  }
+
   return (
     <div className={styles.LoginPage}>
       <div className={styles.wrapper}>
@@ -116,22 +123,24 @@ function LoginPage() {
           <label htmlFor="email">이메일</label>
           <InfoInput
             name="email"
-            value={info}
+            value={info.email}
             setValue={setInfo}
             placeholder="이메일을 입력해주세요."
             size={{ width: 300, height: 40 }}
             err={err.email}
             handleErr={handleErrMsg}
+            handleChange={handleChange}
           />
           <label htmlFor="password">비밀번호</label>
           <InfoInput
             name="password"
-            value={info}
+            value={info.password}
             setValue={setInfo}
             placeholder="비밀번호를 입력해주세요."
             size={{ width: 300, height: 40 }}
             err={err.password}
             handleErr={handleErrMsg}
+            handleChange={handleChange}
           />
           <InfoButton>로그인</InfoButton>
         </form>
