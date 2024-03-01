@@ -7,6 +7,9 @@ import Fnc from "@/components/main/fnc.js";
 import AddFolder from "@/components/main/addFolder";
 import { EmptyFile } from "@/components/main/emptyFile.js";
 import styles from "./main.module.css";
+import SHARE_IMG from "@/public/shareImg.svg";
+import DELETE_IMG from "@/public/deleteImg.svg";
+import CHANGE_IMG from "@/public/changeName.svg";
 
 function Main() {
   const [links, setLinks] = useState([]);
@@ -15,7 +18,7 @@ function Main() {
     name: "전체",
   });
   const [names, setNames] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
 
   const getFolders = async (id) => {
     // 폴더 안에 파일들 받아오기
@@ -85,15 +88,18 @@ function Main() {
               <Buttons onClick={handleClickFolder} folders={names} />
             </div>
             {/* 폴더 목록 우측 플러스 버튼 입니다  */}
-            <AddFolder />
+            <div className={styles.addFolderWrapper}>
+              <span className={styles.text}>폴더 추가</span>
+              <AddFolder />
+            </div>
           </div>
           <div className={styles.functionBundle}>
-            <div>{currentFolder.name}</div>
+            <div className={styles.currentFolder}>{currentFolder.name}</div>
             {currentFolder.name !== "전체" && (
               <div className={styles.fncBtn}>
-                <Fnc value="공유" />
-                <Fnc value="이름변경" />
-                <Fnc value="삭제" />
+                <Fnc src={SHARE_IMG} value="공유" />
+                <Fnc src={CHANGE_IMG} value="이름변경" />
+                <Fnc src={DELETE_IMG} value="삭제" />
               </div>
             )}
           </div>
