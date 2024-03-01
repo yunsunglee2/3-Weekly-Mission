@@ -57,13 +57,14 @@ function File({ file }) {
             className={styles.thumbnail}
             fill
             style={{
-              objectFit: "contain",
+              objectFit: "cover",
             }}
             src={image_source === null ? TEMP_IMAGE : image_source}
             alt={title}
           />
         </div>
         <div className={styles.item02}>
+        <div className={styles.wrapper}>
           <Image
             className={styles.kebab}
             src={KEBAB_IMAGE}
@@ -74,6 +75,7 @@ function File({ file }) {
           <div className={styles.description}>{description}</div>
           <div className={styles.editTime}>{editedTime}</div>
           {kebabLoad && <More folder={file.title} />}
+          </div>
         </div>
       </div>
     </div>

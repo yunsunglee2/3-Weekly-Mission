@@ -11,8 +11,7 @@ import SHARE_IMG from "@/public/shareImg.svg";
 import DELETE_IMG from "@/public/deleteImg.svg";
 import CHANGE_IMG from "@/public/changeName.svg";
 
-function Main() {
-  const [links, setLinks] = useState([]);
+function Main({ links, folders }) {
   const [currentFolder, setCurrentFolder] = useState({
     id: null,
     name: "전체",
@@ -20,49 +19,29 @@ function Main() {
   const [names, setNames] = useState([]);
   const [search, setSearch] = useState("");
 
-  const getFolders = async (id) => {
-    // 폴더 안에 파일들 받아오기
-    const { data } = await getLinks(id);
-    setLinks(data);
-  };
+  // const getFilteredLink = async (id) => {
+  //   try {
+  //     const { data } = await getLinks(id);
+  //     const filteredData = data.filter((info) => {
+  //       return (
+  //         info.url?.toLowerCase().includes(search.toLowerCase()) ||
+  //         info.title?.toLowerCase().includes(search.toLowerCase()) ||
+  //         info.description?.toLowerCase().includes(search.toLowerCase())
+  //       );
+  //     });
+  //     if (!search) {
+  //       setLinks(data);
+  //     } else if (search) {
+  //       setLinks(filteredData);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching links:", error);
+  //   }
+  // };
 
-  const getFolderList = async () => {
-    // url에서 폴더 목록 받아오기
-    const { data } = await getMyFolders();
-    setNames(data);
-  };
-
-  const getFilteredLink = async (id) => {
-    try {
-      const { data } = await getLinks(id);
-      const filteredData = data.filter((info) => {
-        return (
-          info.url?.toLowerCase().includes(search.toLowerCase()) ||
-          info.title?.toLowerCase().includes(search.toLowerCase()) ||
-          info.description?.toLowerCase().includes(search.toLowerCase())
-        );
-      });
-      if (!search) {
-        setLinks(data);
-      } else if (search) {
-        setLinks(filteredData);
-      }
-    } catch (error) {
-      console.error("Error fetching links:", error);
-    }
-  };
-
-  useEffect(() => {
-    getFolderList();
-  }, []);
-
-  useEffect(() => {
-    getFolders(currentFolder.id);
-  }, [currentFolder]);
-
-  useEffect(() => {
-    getFilteredLink(currentFolder.id);
-  }, [search]);
+  // useEffect(() => {
+  //   getFilteredLink(currentFolder.id);
+  // }, [search]);
 
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
@@ -85,7 +64,7 @@ function Main() {
                 <div className={styles.text}>{"전체"}</div>
               </button>
               {/* 버튼 목록 입니다 */}
-              <Buttons onClick={handleClickFolder} folders={names} />
+              <Buttons onClick={handleClickFolder} folders={folders} />
             </div>
             {/* 폴더 목록 우측 플러스 버튼 입니다  */}
             <div className={styles.addFolderWrapper}>
@@ -104,7 +83,7 @@ function Main() {
             )}
           </div>
           {/* 링크가 존재하면 링크 목록을 보여주고 없으면 비었음을 출력해주는 조건부 렌더링  */}
-          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} />}
+          {links ? <MainFiles folders={links} /> : <EmptyFile />}
         </div>
       </div>
     </div>
