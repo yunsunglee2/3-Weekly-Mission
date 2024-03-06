@@ -47,6 +47,7 @@ export async function getUserData(accessToken, userId) {
     },
   });
   const result = await response.json();
+  
   return result;
 }
 

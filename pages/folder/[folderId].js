@@ -12,11 +12,11 @@ const FolderPageStyle = {
 };
 
 export async function getServerSideProps(context) {
+  // 로그인해서 쿠키에 저장된 accessToken을 getServerSideProps의 context로 조회하기 
   const { req } = context;
   const cookies = req.cookies;
   const accessToken = cookies.accessToken;
-  console.log(accessToken, '-----------------');
-
+  // userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회
   try {
     const userResponse = await fetch(`${API_BASE_URL}/users`, {
       headers: {
@@ -25,17 +25,17 @@ export async function getServerSideProps(context) {
     });
     const res = await userResponse.json();
     const userId = res[0].id;
-    console.log(userId, '-----------------');
+  // 가져온 userId로 유저의 데이터 조회
+    const getUserData = await fetch(`${API_BASE_URL}/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    const userData = await getUserData.json();
+// userData의 프사, 닉네임 가져오기 
+    const profile = userData[0].image_source;
+    const owner = userData[0].name;
 
-    const { result } = await getUserData(accessToken, userId);
-    console.log(result, '--------123---------');
-    
-    const profile = result[0].image_source;
-
-    console.log(profile, '--------123---------');
-
-    const owner = result[0].name;
-    console.log(owner, '---------123--------');
     return {
       props: {
         profile,
@@ -52,7 +52,7 @@ export async function getServerSideProps(context) {
     };
   }
 }
-
+// 서버 사이드 렌더링으로 받아온 profile과 owner를 props로 폴더 페이지에 내려줌 
 export default function FolderPage({ profile, owner }) {
   return (
     <div className="FolderPage" style={FolderPageStyle}>
