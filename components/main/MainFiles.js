@@ -67,7 +67,9 @@ function File({ file }) {
         <div className={styles.wrapper}>
           <Image
             className={styles.kebab}
-            src={KEBAB_IMAGE}
+            width={16}
+            height={16}
+            src="/kebab.svg"
             alt="더보기"
             onClick={handleKebab}
           />

@@ -107,7 +107,7 @@
 }
 .Main .box .item02 .fileList .addFolderWrapper .text {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .Main .box .item02 .MainFiles{

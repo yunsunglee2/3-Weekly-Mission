@@ -17,55 +17,62 @@ function LoginPage() {
   });
   const [postState, setPostState] = useState(null);
   const [moveCheck, setMoveCheck] = useState(false);
-  const router = useRouter();
   const { token, setToken } = useContext(tokenContext);
+  const router = useRouter();
 
-  // 로그인 버튼은 클릭 -> 유저 정보 post -> response에서 status code 확인
-  // result에서 토큰 가져옴 ->
+  // 토큰이 있다면 
+  console.log(token)
+  // if(token) router.push('/');
+
+  // ****** 로그인 버튼은 클릭 -> 유저 정보 post -> response에서 status code 확인
+  // ****** result에서 토큰 가져옴 ->쿠키에 저장
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (info.email && info.password) {
       try {
         const { res, result } = await postUserInfo(info);
         const { status } = res;
-        const { data } = result;
-        setToken(data?.accessToken);
+        setToken(result.accessToken);
         setPostState(status);
+        document.cookie = `accessToken=${result.accessToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`
+        document.cookie = `refreshToken=${result.refreshToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`
       } catch (e) {
         console.log(e);
       }
     }
   };
 
+  // 전역객체가 생성되기 전에 window에 접근하면 undefined 이다 마운트된 후에 실행되는
+  // 유즈이펙트로 localStorage를 사용하면 그 문제를 해결할 수 있다.
+  // postState === 200 && localStorage.setItem("accessToken", token);
   useEffect(() => {
-    // 전역객체가 생성되기 전에 window에 접근하면 undefined 이다 마운트된 후에 실행되는
-    // 유즈이펙트로 localStorage를 사용하면 그 문제를 해결할 수 있다.
-    postState === 200 && localStorage.setItem("login", token);
     if (postState === 200) {
       console.log("성공");
-      router.push("/FolderPage");
+      router.push("/folder/1");
     } else if (postState === 400) {
-      console.log('1')
+      console.log('실패')
       setErr({
         ...err,
         password: "로그인 정보를 확인하세요.",
       });
     }
-  }, [postState, token]);
+  }, [postState]);
 
   const handleClick = () => {
     // 회원 가입하기를 클릭하면 로컬스토리지에서 토큰을 가져와 변수 TOKEN에 담긴 값과 같은지 비교 후
     // 페이지를 이동합니다
     setMoveCheck(true);
   };
-  useEffect(() => {
-    const loginCheck = localStorage.getItem("login");
-    if (loginCheck && token) {
-      router.push("/FolderPage");
-    } else if (moveCheck) {
-      router.push("/SignupPage");
-    }
-  }, [moveCheck]);
+
+  // useEffect(() => {
+  //   const loginCheck = localStorage.getItem("accessToken");
+  //   if (loginCheck) {
+  //     router.push("/FolderPage");
+  //   } else if (moveCheck) {
+  //     router.push("/SignupPage");
+  //   }
+  // }, [moveCheck]);
 
   const ErrMsgList = {
     email: {

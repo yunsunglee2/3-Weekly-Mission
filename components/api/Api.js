@@ -2,14 +2,14 @@ const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 
 export async function isSignupValid(info) {
   const res = await fetch(`${API_BASE_URL}/api/sign-up`, {
-    method: 'POST',
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(info)
-  })
+    body: JSON.stringify(info),
+  });
   const result = await res.json();
-  console.log(result)
+  console.log(result);
   return result;
 }
 
@@ -27,7 +27,7 @@ export async function checkUserInfo(info) {
 }
 
 export async function postUserInfo(info) {
-  const res = await fetch(`${API_BASE_URL}/sign-in`, {
+  const res = await fetch(`${API_BASE_URL}/auth/sign-in`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,12 +35,17 @@ export async function postUserInfo(info) {
     body: JSON.stringify(info),
   });
   const result = await res.json();
+  // console.log(result, res);
   return { res, result };
 }
 
-export async function getUserData() {
-  const API_BASE_URL_USER = `${API_BASE_URL}/sample/user`;
-  const response = await fetch(API_BASE_URL_USER);
+// 현재 유저 조회
+export async function getUserData(accessToken, userId) {
+  const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
   const result = await response.json();
   return result;
 }
@@ -52,12 +57,11 @@ export async function getMyFolders() {
   return alreadyFolders;
 }
 
-export async function getOwner() {
-  const API_BASE_URL_OWNER = `${API_BASE_URL}/sample/folder`;
-  const response = await fetch(API_BASE_URL_OWNER);
-  const folders = await response.json();
-  return folders;
-}
+// export async function getOwner(userId) {
+//   const response = await fetch(`${API_BASE_URL}/users/${userId}`);
+//   const data = await response.json();
+//   return data;
+// }
 
 export async function getLinks(folderId) {
   const API_BASE_URL_LINKS = `${API_BASE_URL}/users/1/links${

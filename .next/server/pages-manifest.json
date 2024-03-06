@@ -1,7 +1,8 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/Shared/[folderId]": "pages/Shared/[folderId].js",
-  "/404": "pages/404.js"
+  "/_error": "pages/_error.js",
+  "/folder/[folderId]": "pages/folder/[folderId].js",
+  "/": "pages/index.js",
+  "/Shared/[folderId]": "pages/Shared/[folderId].js"
 }

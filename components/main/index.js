@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import MainSearch from "@/components/main/MainSearch.js";
 import MainFiles from "@/components/main/MainFiles.js";
 import { getLinks, getMyFolders } from "@/components/api/Api.js";
@@ -12,11 +13,11 @@ import DELETE_IMG from "@/public/deleteImg.svg";
 import CHANGE_IMG from "@/public/changeName.svg";
 
 function Main({ links, folders }) {
+  const router = useRouter();
   const [currentFolder, setCurrentFolder] = useState({
-    id: null,
+    id: 1,
     name: "전체",
   });
-  const [names, setNames] = useState([]);
   const [search, setSearch] = useState("");
 
   // const getFilteredLink = async (id) => {
@@ -45,6 +46,7 @@ function Main({ links, folders }) {
 
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
+    router.push(`/Shared/${folder.id}`)
   };
 
   return (
@@ -59,7 +61,7 @@ function Main({ links, folders }) {
             <div className={styles.buttonBundle}>
               <button
                 className={styles.listAllButton}
-                onClick={() => handleClickFolder({ id: null, name: "전체" })}
+                onClick={() => handleClickFolder({ id: 'all', name: "전체" })}
               >
                 <div className={styles.text}>{"전체"}</div>
               </button>

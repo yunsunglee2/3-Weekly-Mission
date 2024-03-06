@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "@/components/header/index" ;
+import Header from "@/components/header/index";
 import { useRouter } from "next/router";
 
 const HomePageStyle = {
@@ -21,7 +21,7 @@ export default function HomePage() {
       <div className="HomePage" style={HomePageStyle}>
         <Link href={`/Shared/${folderId}`}>MV SHARED</Link>
         <br />
-        <Link href={`/api/folders/${folderId}`} >MV FOLDER</Link>
+        <Link href={`/folder/${folderId}`}>MV FOLDER</Link>
       </div>
     </>
   );
