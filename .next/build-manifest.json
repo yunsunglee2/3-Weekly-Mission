@@ -12,10 +12,10 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/LoginPage": [
+    "/Shared/[folderId]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/LoginPage.js"
+      "static/chunks/pages/Shared/[folderId].js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
@@ -26,11 +26,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/folder/[folderId]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/folder/[folderId].js"
     ]
   },
   "ampFirstPages": []

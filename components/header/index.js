@@ -1,20 +1,19 @@
-import User from "@/components/header/User/User";
-import AddInput from "@/components/header/AddInput/AddInput.js";
-import styles from "./Header.module.css";
+import logoImage from '@/public/Linkbrary.svg'
+import Account from "@/components/nav/Account/index.js";
+import Logo from "@/components/nav/Logo/Logo";
+import styles from '@/components/header/header.module.css';
 
-function Header({ serachIsLoading, profile, owner}) {
-
+function Header({ profileImage, name, email }) {
   return (
-    <div className={styles.Header}>
-      {serachIsLoading ? (
-        <AddInput />
-      ) : (
-        <div className={styles.box02}>
-          <User profileImage={profile} folderOwner={owner} />
-        </div>
-      )}
+    <div className={styles.header}>
+        <div className={styles.box01}>
+          <div className={styles.item01}>
+          <Logo value={logoImage}/>
+            <Account profileImage={profileImage} name={name} email={email} />
+          </div>
+        </div>        
     </div>
-  );
+  )
 }
 
 export default Header;

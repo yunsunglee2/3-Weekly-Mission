@@ -12,7 +12,7 @@ import SHARE_IMG from "@/public/shareImg.svg";
 import DELETE_IMG from "@/public/deleteImg.svg";
 import CHANGE_IMG from "@/public/changeName.svg";
 
-function Main({ links, folders }) {
+function Main({ links, folders, page }) {
   const router = useRouter();
   const [currentFolder, setCurrentFolder] = useState({
     id: 1,
@@ -46,7 +46,7 @@ function Main({ links, folders }) {
 
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
-    router.push(`/Shared/${folder.id}`)
+    router.push(`/${page}/${folder.id}`)
   };
 
   return (

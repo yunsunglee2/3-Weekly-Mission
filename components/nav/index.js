@@ -1,19 +1,20 @@
-import logoImage from '@/public/Linkbrary.svg'
-import Account from "@/components/header/Account/index.js";
-import Logo from "@/components/header/Logo/Logo";
-import styles from '@/components/header/Header.module.css';
+import User from "@/components/nav/User/User";
+import AddInput from "@/components/nav/AddInput/AddInput.js";
+import styles from "./nav.module.css";
 
-function Nav() {
+function Nav({ serachIsLoading, profile, owner}) {
+
   return (
-    <div className={styles.Header}>
-        <div className={styles.box01}>
-          <div className={styles.item01}>
-          <Logo value={logoImage}/>
-            <Account />
-          </div>
-        </div>        
+    <div className={styles.nav}>
+      {serachIsLoading ? (
+        <AddInput />
+      ) : (
+        <div className={styles.box02}>
+          <User profileImage={profile} folderOwner={owner} />
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 export default Nav;
