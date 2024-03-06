@@ -1,10 +1,10 @@
 import InfoButton from "@/components/info/InfoButton";
 import InfoInput from "@/components/info/InfoInput";
-import styles from "@/styles/LoginPage.module.css";
+import styles from "@/styles/infoPage.module.css";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { postUserInfo } from "@/components/api/Api";
-import { tokenContext } from "./_app";
+import Header from "@/components/header";
 
 function LoginPage() {
   const [info, setInfo] = useState({
@@ -17,11 +17,9 @@ function LoginPage() {
   });
   const [postState, setPostState] = useState(null);
   const [moveCheck, setMoveCheck] = useState(false);
-  const { token, setToken } = useContext(tokenContext);
   const router = useRouter();
 
-  // 토큰이 있다면 
-  console.log(token)
+  // 토큰이 있다면
   // if(token) router.push('/');
 
   // ****** 로그인 버튼은 클릭 -> 유저 정보 post -> response에서 status code 확인
@@ -33,10 +31,9 @@ function LoginPage() {
       try {
         const { res, result } = await postUserInfo(info);
         const { status } = res;
-        setToken(result.accessToken);
         setPostState(status);
-        document.cookie = `accessToken=${result.accessToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`
-        document.cookie = `refreshToken=${result.refreshToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`
+        document.cookie = `accessToken=${result.accessToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+        document.cookie = `refreshToken=${result.refreshToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
       } catch (e) {
         console.log(e);
       }
@@ -51,7 +48,7 @@ function LoginPage() {
       console.log("성공");
       router.push("/folder/1");
     } else if (postState === 400) {
-      console.log('실패')
+      console.log("실패");
       setErr({
         ...err,
         password: "로그인 정보를 확인하세요.",
@@ -65,14 +62,13 @@ function LoginPage() {
     setMoveCheck(true);
   };
 
-  // useEffect(() => {
-  //   const loginCheck = localStorage.getItem("accessToken");
-  //   if (loginCheck) {
-  //     router.push("/FolderPage");
-  //   } else if (moveCheck) {
-  //     router.push("/SignupPage");
-  //   }
-  // }, [moveCheck]);
+  useEffect(() => {
+    if (moveCheck) {
+      router.push("/SignupPage");
+    } else {
+      router.push("/LoginPage");
+    }
+  }, [moveCheck]);
 
   const ErrMsgList = {
     email: {
@@ -117,40 +113,45 @@ function LoginPage() {
   };
 
   return (
-    <div className={styles.LoginPage}>
-      <div className={styles.wrapper}>
-        <div>
-          <span>회원이 아니신가요? </span>
-          <span onClick={handleClick}>회원 가입하기</span>
+    <>
+      <Header />
+      <div className={styles.LoginPage}>
+        <div className={styles.wrapper}>
+          <div>
+            <span>회원이 아니신가요? </span>
+            <span onClick={handleClick} className={styles.goSignup}>
+              회원 가입하기
+            </span>
+          </div>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <label htmlFor="email">이메일</label>
+            <InfoInput
+              name="email"
+              value={info.email}
+              setValue={setInfo}
+              placeholder="이메일을 입력해주세요."
+              size={{ width: 300, height: 40 }}
+              err={err.email}
+              handleErr={handleErrMsg}
+              handleChange={handleChange}
+            />
+            <label htmlFor="password">비밀번호</label>
+            <InfoInput
+              name="password"
+              value={info.password}
+              setValue={setInfo}
+              placeholder="비밀번호를 입력해주세요."
+              size={{ width: 300, height: 40 }}
+              err={err.password}
+              handleErr={handleErrMsg}
+              handleChange={handleChange}
+            />
+            <InfoButton>로그인</InfoButton>
+          </form>
+          <div>소셜로그인</div>
         </div>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <label htmlFor="email">이메일</label>
-          <InfoInput
-            name="email"
-            value={info.email}
-            setValue={setInfo}
-            placeholder="이메일을 입력해주세요."
-            size={{ width: 300, height: 40 }}
-            err={err.email}
-            handleErr={handleErrMsg}
-            handleChange={handleChange}
-          />
-          <label htmlFor="password">비밀번호</label>
-          <InfoInput
-            name="password"
-            value={info.password}
-            setValue={setInfo}
-            placeholder="비밀번호를 입력해주세요."
-            size={{ width: 300, height: 40 }}
-            err={err.password}
-            handleErr={handleErrMsg}
-            handleChange={handleChange}
-          />
-          <InfoButton>로그인</InfoButton>
-        </form>
-        <div>소셜로그인</div>
       </div>
-    </div>
+    </>
   );
 }
 
