@@ -6,6 +6,12 @@ import styles from "./account.module.css";
 import Link from "next/link";
 
 function Account({ profileImage, name, email }) {
+
+  const handleClick = () => {
+    document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  }
+
   return (
     <div className={styles.account}>
       {email && (
@@ -16,7 +22,7 @@ function Account({ profileImage, name, email }) {
       )}
       {email ? (
         <Link href={"/"}>
-          <Button>로그아웃</Button>
+          <Button onClick={handleClick}>로그아웃</Button>
         </Link>
       ) : (
         <div className={styles.buttonsWrapper}>
