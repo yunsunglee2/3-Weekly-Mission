@@ -21,7 +21,7 @@ export async function getServerSideProps(context) {
 
   // 필요한 쿠키만 추출합니다.
   const accessToken = cookies.accessToken;
-
+  console.log(accessToken, '----accesssToken----');
   // 2. 액세스 토큰 확인 후 유저데이터 요청 보내기
   try {
     const userResponse = await fetch(`${API_BASE_URL}/users`, {
@@ -44,7 +44,7 @@ export async function getServerSideProps(context) {
     ).json();
 
     const linkResponse = await fetch(
-      `${API_BASE_URL}/users/${userId}/links${folderId ? `?folderId=${folderId}` : ''}``${API_BASE_URL}/users/${userId}/links${folderId ? `?folderId=${folderId}` : ''}`,
+      `${API_BASE_URL}/users/${userId}/links/${folderId ? `?folderId=${folderId}` : ''}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -65,20 +65,21 @@ export async function getServerSideProps(context) {
     };
   } catch (e) {
     console.log(e);
-
-    return {
+    return{
       props: {
-        email: null,
-        image_source: null,
         folders: [],
-        errorMessage: "서버에서 데이터를 가져오는 중에 문제가 발생했습니다.",
-      },
-    };
+        links: [],
+        accessToken: null,
+        profile: null,
+        owner: null,
+        email: null,  
+      }
+    }
   }
 }
 
 export default function SharedPage({ profile, owner, email, links, folders, accessToken }) {
-  console.log('셰어드페이지 렌더링...', '----렌더링---')
+  
   return (
     <>
       <Header profileImage={profile} name={owner} email={email} />

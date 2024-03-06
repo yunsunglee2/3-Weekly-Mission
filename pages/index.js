@@ -70,9 +70,9 @@ export default function HomePage({ accessToken, userId, profile, owner, email })
       <Nav profileImage={profile} name={owner} email={email} />
       <Header serachIsLoading={true} />
       <div className="HomePage" style={HomePageStyle}>
-        <Link href={`/Shared/${userId}`}>MV SHARED</Link>
+        <Link href={`/Shared/${userId}`}>MOVE SHARED</Link>
         <br />
-        <Link href={accessToken ? `/folder/${userId}` : '/SignupPage' }>MV FOLDER</Link>
+        <Link href={accessToken ? `/folder/${userId}` : '/SignupPage' }>MOVE FOLDER</Link>
       </div>
     </>
   );
