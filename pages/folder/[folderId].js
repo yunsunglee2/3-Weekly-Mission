@@ -1,8 +1,8 @@
 const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 import defaultProfile from "@/public/Avatar.svg";
-import Header from "@/components/nav/index.js";
+import Nav from "@/components/nav/index.js";
 import Main from "@/components/main/index.js";
-import Nav from "@/components/header";
+import Header from "@/components/header";
 
 const FolderPageStyle = {
   display: "flex",
@@ -16,6 +16,8 @@ export async function getServerSideProps(context) {
   const { req } = context;
   const cookies = req.cookies;
   const accessToken = cookies.accessToken;
+  const { folderId } = context.query;
+
   // userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회
   try {
     const userResponse = await fetch(`${API_BASE_URL}/users`, {
@@ -43,7 +45,8 @@ export async function getServerSideProps(context) {
     );
     const userFolders = await getUserFolders.json();
 
-    const getUserLinks = await fetch(`${API_BASE_URL}/users/${userId}/links`);
+    const getUserLinks = await fetch(`${API_BASE_URL}/users/${userId}/links/${folderId ? `?folderId=${folderId}` : ''}`);
+    console.log(getUserLinks,'---------getUserLinks---------');
     const userLinks = await getUserLinks.json();
 
     return {
@@ -69,9 +72,9 @@ export async function getServerSideProps(context) {
 export default function FolderPage({ email, profile, owner, folders, links }) {
   return (
     <>
-      <Nav profileImage={profile} name={owner} email={email} />
+      <Header profileImage={profile} name={owner} email={email} />
       <div className="FolderPage" style={FolderPageStyle}>
-        <Header profile={profile} owner={owner} serachIsLoading={false} />
+        <Nav profile={profile} owner={owner} serachIsLoading={false} />
         <Main links={links} folders={folders} page="folder" />
       </div>
     </>

@@ -1,7 +1,7 @@
 const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
-import Header from "@/components/nav/index.js";
+import Nav from "@/components/nav/index.js";
 import Main from "@/components/main/index.js";
-import Nav from "@/components/header";
+import Header from "@/components/header";
 
 const SharedPageStyle = {
   display: "flex",
@@ -13,13 +13,11 @@ const SharedPageStyle = {
 export async function getServerSideProps(context) {
   // context에서 req를 추출합니다.
   const { req } = context;
+  const { folderId } = context.query;
 
   // req 객체에서 쿠키를 가져옵니다.
   const cookies = req.cookies;
 
-  const { folderId } = context.query;
-
-  console.log(folderId, '--------folderId--------');
 
   // 필요한 쿠키만 추출합니다.
   const accessToken = cookies.accessToken;
@@ -46,7 +44,7 @@ export async function getServerSideProps(context) {
     ).json();
 
     const linkResponse = await fetch(
-      `${API_BASE_URL}/users/${userId}/links`,
+      `${API_BASE_URL}/users/${userId}/links${folderId ? `?folderId=${folderId}` : ''}``${API_BASE_URL}/users/${userId}/links${folderId ? `?folderId=${folderId}` : ''}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -80,12 +78,12 @@ export async function getServerSideProps(context) {
 }
 
 export default function SharedPage({ profile, owner, email, links, folders, accessToken }) {
-  console.log(accessToken);
+  console.log('셰어드페이지 렌더링...', '----렌더링---')
   return (
     <>
-      <Nav profileImage={profile} name={owner} email={email} />
+      <Header profileImage={profile} name={owner} email={email} />
       <div className="Shared page" style={SharedPageStyle}>
-        <Header serachIsLoading={true} />
+        <Nav serachIsLoading={true} />
         <Main links={links} folders={folders} page="Shared" />
       </div>
     </>

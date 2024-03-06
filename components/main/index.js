@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import MainSearch from "@/components/main/MainSearch.js";
-import MainFiles from "@/components/main/MainFiles.js";
-import { getLinks, getMyFolders } from "@/components/api/Api.js";
+import Links from "@/components/main/MainFiles.js";
 import { Buttons } from "@/components/main/buttons.js";
 import Fnc from "@/components/main/fnc.js";
 import AddFolder from "@/components/main/addFolder";
@@ -19,33 +18,36 @@ function Main({ links, folders, page }) {
     name: "전체",
   });
   const [search, setSearch] = useState("");
+  let filteredLinks = links;
 
   // const getFilteredLink = async (id) => {
-  //   try {
-  //     const { data } = await getLinks(id);
-  //     const filteredData = data.filter((info) => {
+      
+  //   const filteredLinks = links.filter((info) => {
   //       return (
   //         info.url?.toLowerCase().includes(search.toLowerCase()) ||
   //         info.title?.toLowerCase().includes(search.toLowerCase()) ||
   //         info.description?.toLowerCase().includes(search.toLowerCase())
   //       );
   //     });
-  //     if (!search) {
-  //       setLinks(data);
-  //     } else if (search) {
-  //       setLinks(filteredData);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching links:", error);
-  //   }
   // };
 
-  // useEffect(() => {
-  //   getFilteredLink(currentFolder.id);
-  // }, [search]);
+  
+  const getFilteredLink = () => {    
+    if(currentFolder.id === 1) {
+      filteredLinks = links
+    } else {
+      filteredLinks = links.filter((link)=> link.id === currentFolder.id)
+    }
+    return filteredLinks
+  } 
+  
+  useEffect(() => {
+    getFilteredLink(currentFolder.id);
+  }, [search]);
 
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
+    getFilteredLink(folder.id);
     router.push(`/${page}/${folder.id}`)
   };
 
@@ -85,7 +87,7 @@ function Main({ links, folders, page }) {
             )}
           </div>
           {/* 링크가 존재하면 링크 목록을 보여주고 없으면 비었음을 출력해주는 조건부 렌더링  */}
-          {links ? <MainFiles folders={links} /> : <EmptyFile />}
+          {links ? <Links links={filteredLinks} /> : <EmptyFile />}
         </div>
       </div>
     </div>

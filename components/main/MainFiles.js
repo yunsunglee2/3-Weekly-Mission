@@ -8,8 +8,8 @@ import KEBAB_IMAGE from "@/public/kebab.svg";
 import TEMP_IMAGE from "@/public/logo.svg";
 import styles from "./mainFiles.module.css";
 
-function File({ file }) {
-  const { created_at, url, title, description, image_source } = file;
+function Link({ link }) {
+  const { created_at, url, title, description, image_source } = link;
   const [kebabLoad, setKebabLoad] = useState(false);
   const [light, setLight] = useState(false);
   const starRef = useRef();
@@ -84,11 +84,11 @@ function File({ file }) {
   );
 }
 
-export default function MainFiles({ folders }) {
+export default function Links({ links }) {
   return (
     <div className={styles.files}>
-      {folders.map((folder) => (
-        <File key={folder.id} file={folder} />
+      {links.map((link) => (
+        <Link key={link.id} link={link} />
       ))}
     </div>
   );

@@ -39,7 +39,6 @@ export async function getServerSideProps(context) {
     const owner = userData[0].name;
     const profile = userData[0].image_source;
     const email = userData[0].email;
-    console.log(email, '------email-----')
 
     return {
       props: {
