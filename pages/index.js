@@ -42,6 +42,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
+        accessToken,
         userId,
         owner,
         profile,
@@ -62,7 +63,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function HomePage({ userId, profile, owner, email }) {
+export default function HomePage({ accessToken, userId, profile, owner, email }) {
 
   return (
     <>
@@ -71,7 +72,7 @@ export default function HomePage({ userId, profile, owner, email }) {
       <div className="HomePage" style={HomePageStyle}>
         <Link href={`/Shared/${userId}`}>MV SHARED</Link>
         <br />
-        <Link href={`/folder/${userId}`}>MV FOLDER</Link>
+        <Link href={accessToken ? `/folder/${userId}` : '/SignupPage' }>MV FOLDER</Link>
       </div>
     </>
   );
