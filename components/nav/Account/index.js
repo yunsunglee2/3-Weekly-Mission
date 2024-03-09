@@ -7,6 +7,7 @@ import Link from "next/link";
 
 function Account({ profileImage, name, email }) {
 
+  // 임의로 로그아웃 기능 구현
   const handleClick = () => {
     document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
