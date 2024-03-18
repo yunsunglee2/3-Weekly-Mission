@@ -1,68 +1,54 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import MainSearch from "@/components/main/MainSearch.js";
-import MainFiles from "@/components/main/MainFiles.js";
-import { getLinks, getMyFolders } from "@/components/api/Api.js";
+import Links from "@/components/main/MainFiles.js";
 import { Buttons } from "@/components/main/buttons.js";
 import Fnc from "@/components/main/fnc.js";
 import AddFolder from "@/components/main/addFolder";
 import { EmptyFile } from "@/components/main/emptyFile.js";
 import styles from "./main.module.css";
+import SHARE_IMG from "@/public/shareImg.svg";
+import DELETE_IMG from "@/public/deleteImg.svg";
+import CHANGE_IMG from "@/public/changeName.svg";
 
-function Main() {
-  const [links, setLinks] = useState([]);
+function Main({ links, folders, page }) {
+  const router = useRouter();
   const [currentFolder, setCurrentFolder] = useState({
-    id: null,
+    id: 1,
     name: "전체",
   });
-  const [names, setNames] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
+  let filteredLinks = links;
 
-  const getFolders = async (id) => {
-    // 폴더 안에 파일들 받아오기
-    const { data } = await getLinks(id);
-    setLinks(data);
-  };
+  // const getFilteredLink = async (id) => {
+      
+  //   const filteredLinks = links.filter((info) => {
+  //       return (
+  //         info.url?.toLowerCase().includes(search.toLowerCase()) ||
+  //         info.title?.toLowerCase().includes(search.toLowerCase()) ||
+  //         info.description?.toLowerCase().includes(search.toLowerCase())
+  //       );
+  //     });
+  // };
 
-  const getFolderList = async () => {
-    // url에서 폴더 목록 받아오기
-    const { data } = await getMyFolders();
-    setNames(data);
-  };
-
-  const getFilteredLink = async (id) => {
-    try {
-      const { data } = await getLinks(id);
-      const filteredData = data.filter((info) => {
-        return (
-          info.url?.toLowerCase().includes(search.toLowerCase()) ||
-          info.title?.toLowerCase().includes(search.toLowerCase()) ||
-          info.description?.toLowerCase().includes(search.toLowerCase())
-        );
-      });
-      if (!search) {
-        setLinks(data);
-      } else if (search) {
-        setLinks(filteredData);
-      }
-    } catch (error) {
-      console.error("Error fetching links:", error);
+  
+  const getFilteredLink = () => {    
+    if(currentFolder.id === 1) {
+      filteredLinks = links
+    } else {
+      filteredLinks = links.filter((link)=> link.id === currentFolder.id)
     }
-  };
-
-  useEffect(() => {
-    getFolderList();
-  }, []);
-
-  useEffect(() => {
-    getFolders(currentFolder.id);
-  }, [currentFolder]);
-
+    return filteredLinks
+  } 
+  
   useEffect(() => {
     getFilteredLink(currentFolder.id);
   }, [search]);
 
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
+    getFilteredLink(folder.id);
+    router.push(`/${page}/${folder.id}`)
   };
 
   return (
@@ -77,28 +63,31 @@ function Main() {
             <div className={styles.buttonBundle}>
               <button
                 className={styles.listAllButton}
-                onClick={() => handleClickFolder({ id: null, name: "전체" })}
+                onClick={() => handleClickFolder({ id: 'all', name: "전체" })}
               >
                 <div className={styles.text}>{"전체"}</div>
               </button>
               {/* 버튼 목록 입니다 */}
-              <Buttons onClick={handleClickFolder} folders={names} />
+              <Buttons onClick={handleClickFolder} folders={folders} />
             </div>
             {/* 폴더 목록 우측 플러스 버튼 입니다  */}
-            <AddFolder />
+            <div className={styles.addFolderWrapper}>
+              <span className={styles.text}>폴더 추가</span>
+              <AddFolder />
+            </div>
           </div>
           <div className={styles.functionBundle}>
-            <div>{currentFolder.name}</div>
+            <div className={styles.currentFolder}>{currentFolder.name}</div>
             {currentFolder.name !== "전체" && (
               <div className={styles.fncBtn}>
-                <Fnc value="공유" />
-                <Fnc value="이름변경" />
-                <Fnc value="삭제" />
+                <Fnc src={SHARE_IMG} value="공유" />
+                <Fnc src={CHANGE_IMG} value="이름변경" />
+                <Fnc src={DELETE_IMG} value="삭제" />
               </div>
             )}
           </div>
           {/* 링크가 존재하면 링크 목록을 보여주고 없으면 비었음을 출력해주는 조건부 렌더링  */}
-          {links.length === 0 ? <EmptyFile /> : <MainFiles folders={links} />}
+          {links ? <Links links={filteredLinks} /> : <EmptyFile />}
         </div>
       </div>
     </div>

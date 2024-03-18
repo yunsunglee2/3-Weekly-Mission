@@ -27,6 +27,10 @@
   display: flex;
   justify-content: space-between;
 }
+.Main .box .item02 .functionBundle .currentFolder {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
 .Main .box .item02 .functionBundle .fncBtn{
   display: flex;
   gap: 0.5rem;
@@ -72,13 +76,6 @@
   align-items: flex-start;
   gap: 12px;
 }
-.Main .box .item02 .fileList .listAllButton {
-  padding: 8px 12px;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid var(--Linkbrary-primary-color, #6D6AFE);
-  background-color: #fff;
-}
 
 .Main .box .item02 .fileList .Buttons {
   display: flex;
@@ -91,18 +88,28 @@
   padding: 8px 12px;
   align-items: center;
   border-radius: 5px;
-  border: 1px solid var(--Linkbrary-primary-color, #6D6AFE);
+  border: 0.5px solid var(--Linkbrary-primary-color, #6D6AFE);
   background-color: #fff;
 }
 .Main .box .item02 .fileList .Buttons .button .text,
 .Main .box .item02 .fileList .listAllButton .text {
   color: #000;
   font-family: 'Pretendard-Regular';
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+.Main .box .item02 .fileList .addFolderWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.Main .box .item02 .fileList .addFolderWrapper .text {
+  display: flex;
+  align-items: flex-end;
+}
+
 .Main .box .item02 .MainFiles{
   display: flex;
   flex-direction: column;

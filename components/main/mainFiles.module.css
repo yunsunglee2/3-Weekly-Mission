@@ -1,6 +1,7 @@
 .files {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
 }
 
 .MainFiles {
@@ -18,43 +19,37 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   position: relative;
 }
-.File .starOn {
-  background-color: red;
-}
-.File .starOff {
+.File .star {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
   z-index: 1;
 }
 
 .File .item01  {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
   position: relative;
-  width: 300px;
+  width: 100%;
   height: 200px;
 }
 
-.File .item01 .thumbnail {
-
-}
-
 .item02 {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: relative;
+}
+.item02 .wrapper {
   display: flex;
-  width: 340px;
-  padding: 15px 20px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  position: relative;
+  padding: 0px 20px;
 }
 .item02 .kebab {
   color: #333236;
   position: absolute;
-  right: 4rem;
+  right: 1.2rem;
 }
 .item02 .timeAgo {
   display: flex;
@@ -71,17 +66,18 @@
   line-height: normal;
 }
 .item02 .description {
+  width: 100%;
   height: 49px;
   align-self: stretch;
   overflow:hidden;
   color: #000;
   text-overflow: ellipsis;
-  /* white-space: nowrap; */
+  white-space: nowrap;
   font-family: 'Pretendard-Regular';
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 150%;
 }
 .item02 .editTime {
   height: 19px;

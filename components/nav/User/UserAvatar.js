@@ -4,7 +4,7 @@ import styles from './UserAvatar.module.css'
 function UserAvatar({value}) {
   return(
     <div className={styles.UserAvatar}>
-      <Image width={64} height={64} src={value} alt={value} />
+      <Image priority={true} width={64} height={64} src={value} alt={value} />
     </div>
   )
 }

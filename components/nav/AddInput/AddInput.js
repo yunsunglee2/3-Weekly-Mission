@@ -23,7 +23,7 @@ export default function AddInput() {
     <div className={styles.AddInput}>
       <div className={styles.wrapper}>
         <div className={styles.AddInputFnc}>
-          <Image src={LINKIMAGE} alt="LINKIMAGE" />
+          <Image width={20} height={20} src={LINKIMAGE} alt="LINKIMAGE" />
           <input
             className={styles.input}
             type="text"

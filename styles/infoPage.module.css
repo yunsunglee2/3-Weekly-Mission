@@ -24,3 +24,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.wrapper .goSignup,
+.wrapper .goLogin {
+  cursor: pointer;
+}

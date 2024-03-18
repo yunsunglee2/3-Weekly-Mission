@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./buttons.module.css";
 
 export function Button({ folder, onClick }) {
@@ -12,8 +13,8 @@ export function Button({ folder, onClick }) {
 export function Buttons({ folders, onClick }) {
   return (
     <div className={styles.buttons}>
-      {folders.map((folder) => (
-        <Button key={folder.id} folder={folder} onClick={onClick} />
+      {folders?.map((folder) => (
+          <Button key={folder.id} folder={folder} onClick={onClick} />
       ))}
     </div>
   );

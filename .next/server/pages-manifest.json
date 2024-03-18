@@ -3,7 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/SharedPage": "pages/SharedPage.js",
-  "/SignupPage": "pages/SignupPage.js",
-  "/FolderPage": "pages/FolderPage.js"
+  "/folder/[folderId]": "pages/folder/[folderId].js",
+  "/LoginPage": "pages/LoginPage.js"
 }
