@@ -63,3 +63,60 @@ export async function getLinks(folderId) {
   const folders = await response.json();
   return folders;
 }
+
+/**
+ * modalApi
+*/
+
+export async function changeFolderName(folderId, content) {
+  const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(content)
+  })
+  console.log(response);
+}
+
+export async function addFolder(content) {
+  const response = await fetch(`${API_BASE_URL}/folders`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(content)
+  })
+  console.log(response);
+}
+
+export async function deleteFolder(folderId) {
+  const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  console.log(response);
+}
+
+export async function deleteLink(linkId) {
+  const response = await fetch(`${API_BASE_URL}/links/${linkId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  console.log(response);
+}
+
+export async function addLink(content) {
+  const response = await fetch(`${API_BASE_URL}/links`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(content)
+  })
+  console.log(response);
+}

@@ -37,7 +37,6 @@ export async function getServerSideProps(context) {
     const profile = result[0].image_source;
     const owner = result[0].name;
     const email = result[0].email;
-    console.log(email, "-----------email---------");
 
     const getUserFolders = await fetch(
       `${API_BASE_URL}/users/${userId}/folders`
