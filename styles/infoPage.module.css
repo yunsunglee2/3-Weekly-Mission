@@ -1,0 +1,31 @@
+.LoginPage {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 20%;
+}
+
+.logo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper .goSignup,
+.wrapper .goLogin {
+  cursor: pointer;
+}
