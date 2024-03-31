@@ -59,12 +59,6 @@ export async function getServerSideProps(context) {
     };
   } catch (e) {
     console.log(e);
-    return {
-      props: {
-        profile: defaultProfile,
-        owner: "사용자 없음",
-      },
-    };
   }
 }
 // 서버 사이드 렌더링으로 받아온 profile과 owner를 props로 폴더 페이지에 내려줌

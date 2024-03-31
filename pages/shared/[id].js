@@ -14,12 +14,7 @@ export async function getServerSideProps(context) {
   // context에서 req를 추출합니다.
   const { req } = context;
   const { folderId } = context.query;
-
-  // req 객체에서 쿠키를 가져옵니다.
   const cookies = req.cookies;
-
-
-  // 필요한 쿠키만 추출합니다.
   const accessToken = cookies.accessToken;
 
   // 2. 액세스 토큰 확인 후 유저데이터 요청 보내기
@@ -33,47 +28,37 @@ export async function getServerSideProps(context) {
     const userData = await userResponse.json();
     const userId = userData[0].id;
 
-    const getUserData = await fetch(`${API_BASE_URL}/users/${userId}`)
+    const getUserData = await fetch(`${API_BASE_URL}/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     const result = await getUserData.json();
     const profile = result[0].image_source;
     const owner = result[0].name;
     const email = result[0].email;
+    console.log(email, "-----------email---------");
 
-    const folderResponse = await (
-      await fetch(`${API_BASE_URL}/users/${userId}/folders`)
-    ).json();
-
-    const linkResponse = await fetch(
-      `${API_BASE_URL}/users/${userId}/links${folderId ? `?folderId=${folderId}` : ''}``${API_BASE_URL}/users/${userId}/links${folderId ? `?folderId=${folderId}` : ''}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+    const getUserFolders = await fetch(
+      `${API_BASE_URL}/users/${userId}/folders`
     );
-    const linkData = await linkResponse.json();
+    const userFolders = await getUserFolders.json();
+
+    const getUserLinks = await fetch(`${API_BASE_URL}/users/${userId}/links/${folderId ? `?folderId=${folderId}` : ''}`);
+    const userLinks = await getUserLinks.json();
 
     return {
       props: {
-        folders: folderResponse,
-        links: linkData,
+        folders: userFolders,
+        links: userLinks,
         accessToken: accessToken,
-        profile,
-        owner,
-        email
+        profile: profile,
+        owner: owner,
+        email: email,
       },
     };
   } catch (e) {
     console.log(e);
-
-    return {
-      props: {
-        email: null,
-        image_source: null,
-        folders: [],
-        errorMessage: "서버에서 데이터를 가져오는 중에 문제가 발생했습니다.",
-      },
-    };
   }
 }
 
