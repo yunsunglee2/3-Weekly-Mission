@@ -3,7 +3,7 @@ import Image from "next/image";
 import addImage from "@/public/add.svg";
 import PopupMessage from "@/components/modal/modal.js";
 import AddFolderModal from "@/components/modal/addFolder/addFolderModal.js";
-import styles from "@/components/main/addFolder.module.css"
+import styles from "./addFolder.module.css"
 
 export default function AddFolder() {
   const [isOpen, setIsopen] = useState(false);

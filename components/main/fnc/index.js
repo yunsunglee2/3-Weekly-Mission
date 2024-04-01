@@ -3,7 +3,7 @@ import PopupMessage from "@/components/modal/modal";
 import ShareModal from "@/components/modal/shareModal";
 import ChangeNameModal from "@/components/modal/changeNameModal";
 import DeleteModal from "@/components/modal/deleteModal";
-import styles from "@/components/main/fnc.module.css";
+import styles from "./fnc.module.css"
 import Image from "next/image";
 
 export default function Fnc({ folderId, value, src }) {

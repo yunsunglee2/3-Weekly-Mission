@@ -1,20 +1,20 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import readingGlasses from "@/public/Search.svg";
-import styles from './mainSearch.module.css';
+import styles from "./search.module.css";
 
-function MainSearch({ setSearch }) {
+function Search({ setSearch }) {
   const [inputValue, setInputValue] = useState("");
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-  useEffect(()=>{
+  useEffect(() => {
     setSearch(inputValue);
-  }, [inputValue])
+  }, [inputValue]);
 
   const handleClick = () => {
     setInputValue("");
-  }
+  };
 
   return (
     <div className={styles.MainSearch}>
@@ -25,7 +25,11 @@ function MainSearch({ setSearch }) {
         type="text"
         placeholder="링크를 검색해 보세요."
       />
-      {inputValue && <button className="deleteButton" onClick={handleClick}>x</button>}
+      {inputValue && (
+        <button className="deleteButton" onClick={handleClick}>
+          x
+        </button>
+      )}
       <Image
         className={styles.readingGlasses}
         src={readingGlasses}
@@ -35,4 +39,4 @@ function MainSearch({ setSearch }) {
   );
 }
 
-export default MainSearch;
+export default Search;

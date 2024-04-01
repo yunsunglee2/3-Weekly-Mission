@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import More from "@/components/main/more.js";
-import TimeAgo from "@/components/main/MainFileTimeAgo.js";
+import More from "../more";
+import TimeAgo from "../timeAgo";
 import STAR_OFF from "@/public/star.svg";
 import STAR_ON from "@/public/starOn.svg";
-import KEBAB_IMAGE from "@/public/kebab.svg";
 import TEMP_IMAGE from "@/public/logo.svg";
 import styles from "./mainFiles.module.css";
 
@@ -43,15 +42,15 @@ function Link({ link }) {
   return (
     <div className={styles.MainFiles}>
       <div className={styles.File}>
-            <Image
-              className={styles.star}
-              ref={starRef}
-              width={30}
-              height={30}
-              src={light ? STAR_ON : STAR_OFF}
-              alt="즐겨찾기 추가하기"
-              onClick={handleLight}
-            />
+        <Image
+          className={styles.star}
+          ref={starRef}
+          width={30}
+          height={30}
+          src={light ? STAR_ON : STAR_OFF}
+          alt="즐겨찾기 추가하기"
+          onClick={handleLight}
+        />
         <div className={styles.item01} onClick={handleClick}>
           <Image
             className={styles.thumbnail}
@@ -64,19 +63,19 @@ function Link({ link }) {
           />
         </div>
         <div className={styles.item02}>
-        <div className={styles.wrapper}>
-          <Image
-            className={styles.kebab}
-            width={16}
-            height={16}
-            src="/kebab.svg"
-            alt="더보기"
-            onClick={handleKebab}
-          />
-          <TimeAgo className={styles.timeAgo} time={created_at} />
-          <div className={styles.description}>{description}</div>
-          <div className={styles.editTime}>{editedTime}</div>
-          {kebabLoad && <More folder={file.title} />}
+          <div className={styles.wrapper}>
+            <Image
+              className={styles.kebab}
+              width={16}
+              height={16}
+              src="/kebab.svg"
+              alt="더보기"
+              onClick={handleKebab}
+            />
+            <TimeAgo className={styles.timeAgo} time={created_at} />
+            <div className={styles.description}>{description}</div>
+            <div className={styles.editTime}>{editedTime}</div>
+            {kebabLoad && <More folder={file.title} />}
           </div>
         </div>
       </div>
@@ -84,12 +83,4 @@ function Link({ link }) {
   );
 }
 
-export default function Links({ links }) {
-  return (
-    <div className={styles.files}>
-      {links.map((link) => (
-        <Link key={link.id} link={link} />
-      ))}
-    </div>
-  );
-}
+export default Link;

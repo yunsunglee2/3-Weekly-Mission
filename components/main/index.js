@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import MainSearch from "@/components/main/MainSearch.js";
-import Links from "@/components/main/MainFiles.js";
-import { Buttons } from "@/components/main/buttons.js";
-import Fnc from "@/components/main/fnc.js";
-import AddFolder from "@/components/main/addFolder";
-import { EmptyFile } from "@/components/main/emptyFile.js";
+import Search from "./search";
+import Links from "./links";
+import { Buttons } from "./buttons";
+import Fnc from "./fnc";
+import AddFolder from "./addFolder";
+import { EmptyFile } from "./emptyFile";
 import styles from "./main.module.css";
 import SHARE_IMG from "@/public/shareImg.svg";
 import DELETE_IMG from "@/public/deleteImg.svg";
@@ -50,7 +50,7 @@ function Main({ accessToken, links, folders }) {
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
     getFilteredLink(folder.id);
-    router.push(`${folder.id}`); 
+    router.push(`${folder.id}`);
   };
 
   return (
@@ -58,7 +58,7 @@ function Main({ accessToken, links, folders }) {
       <div className={styles.box}>
         <div className={styles.item01}>
           {/* 검색 바 입니다 */}
-          <MainSearch setSearch={setSearch} />
+          <Search setSearch={setSearch} />
         </div>
         <div className={styles.item02}>
           <div className={styles.fileList}>

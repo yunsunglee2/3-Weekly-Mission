@@ -5,7 +5,7 @@ import { TokenContext } from "../providers/authProvider";
 
 export default function ChangeNameModal({ folderId }) {
   const [inputValue, setInputValue] = useState("");
-  let { token } = useContext(TokenContext)
+  let { token } = useContext(TokenContext);
   const handleClick = () => {
     changeFolderName(folderId, inputValue, token);
   };
