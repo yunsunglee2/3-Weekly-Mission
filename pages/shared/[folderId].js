@@ -61,13 +61,13 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function SharedPage({ profile, owner, email, links, folders }) {
+export default function SharedPage({ accessToken, profile, owner, email, links, folders }) {
   return (
     <>
       <Header profileImage={profile} name={owner} email={email} />
       <div className="Shared page" style={SharedPageStyle}>
         <Nav serachIsLoading={true} />
-        <Main links={links} folders={folders} page="Shared" />
+        <Main accessToken={accessToken} links={links} folders={folders} page="shared" />
       </div>
     </>
   );

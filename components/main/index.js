@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import MainSearch from "@/components/main/MainSearch.js";
 import Links from "@/components/main/MainFiles.js";
@@ -10,18 +10,21 @@ import styles from "./main.module.css";
 import SHARE_IMG from "@/public/shareImg.svg";
 import DELETE_IMG from "@/public/deleteImg.svg";
 import CHANGE_IMG from "@/public/changeName.svg";
+import { TokenContextUpater } from "@/components/providers/authProvider";
 
-function Main({ links, folders, page }) {
+function Main({ accessToken, links, folders }) {
+  let { setToken } = useContext(TokenContextUpater);
   const router = useRouter();
+  const { folderId } = router.query;
   const [currentFolder, setCurrentFolder] = useState({
     id: 1,
     name: "전체",
   });
   const [search, setSearch] = useState("");
   let filteredLinks = links;
+  setToken(accessToken);
 
   // const getFilteredLink = async (id) => {
-      
   //   const filteredLinks = links.filter((info) => {
   //       return (
   //         info.url?.toLowerCase().includes(search.toLowerCase()) ||
@@ -31,16 +34,15 @@ function Main({ links, folders, page }) {
   //     });
   // };
 
-  
-  const getFilteredLink = () => {    
-    if(currentFolder.id === 1) {
-      filteredLinks = links
+  const getFilteredLink = () => {
+    if (currentFolder.id === 1) {
+      filteredLinks = links;
     } else {
-      filteredLinks = links.filter((link)=> link.id === currentFolder.id)
+      filteredLinks = links.filter((link) => link.id === currentFolder.id);
     }
-    return filteredLinks
-  } 
-  
+    return filteredLinks;
+  };
+
   useEffect(() => {
     getFilteredLink(currentFolder.id);
   }, [search]);
@@ -48,7 +50,7 @@ function Main({ links, folders, page }) {
   const handleClickFolder = (folder) => {
     setCurrentFolder(folder);
     getFilteredLink(folder.id);
-    router.push(`/${page}/${folder.id}`)
+    router.push(`${folder.id}`); 
   };
 
   return (
@@ -63,16 +65,15 @@ function Main({ links, folders, page }) {
             <div className={styles.buttonBundle}>
               <button
                 className={styles.listAllButton}
-                onClick={() => handleClickFolder({ id: 'all', name: "전체" })}
+                onClick={() => handleClickFolder({ id: "all", name: "전체" })}
               >
                 <div className={styles.text}>{"전체"}</div>
               </button>
-              {/* 버튼 목록 입니다 */}
+              {/* 폴더 목록 입니다 */}
               <Buttons onClick={handleClickFolder} folders={folders} />
             </div>
             {/* 폴더 목록 우측 플러스 버튼 입니다  */}
             <div className={styles.addFolderWrapper}>
-              <span className={styles.text}>폴더 추가</span>
               <AddFolder />
             </div>
           </div>
@@ -80,9 +81,9 @@ function Main({ links, folders, page }) {
             <div className={styles.currentFolder}>{currentFolder.name}</div>
             {currentFolder.name !== "전체" && (
               <div className={styles.fncBtn}>
-                <Fnc src={SHARE_IMG} value="공유" />
-                <Fnc src={CHANGE_IMG} value="이름변경" />
-                <Fnc src={DELETE_IMG} value="삭제" />
+                <Fnc folderId={folderId} src={SHARE_IMG} value="공유" />
+                <Fnc folderId={folderId} src={CHANGE_IMG} value="이름변경" />
+                <Fnc folderId={folderId} src={DELETE_IMG} value="삭제" />
               </div>
             )}
           </div>

@@ -43,12 +43,12 @@ const customModalStyles = {
 
 const PopupMessage = ({modalOpen, onClick, component}) => {
   const handleClick = () => {
-    onClick(false);
+    onClick(!modalOpen);
   }
   return (
     <Modal
       isOpen={modalOpen} 
-      onRequestClose={()=>handleClick()}
+      onRequestClose={handleClick}
       contentLabel='' 
       style={customModalStyles}
   > 

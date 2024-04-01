@@ -6,11 +6,12 @@ import DeleteModal from "@/components/modal/deleteModal";
 import styles from "@/components/main/fnc.module.css";
 import Image from "next/image";
 
-export default function Fnc({ value, src }) {
+export default function Fnc({ folderId, value, src }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClick = (value) => {
     setIsModalOpen(value);
   };
+
   return (
     <div className={styles.fnc}>
       <div className={styles.image}>
@@ -33,7 +34,7 @@ export default function Fnc({ value, src }) {
         />
       ) : (
         <PopupMessage
-          component={<ChangeNameModal />}
+          component={<ChangeNameModal folderId={folderId} />}
           modalOpen={isModalOpen}
           onClick={handleClick}
         />

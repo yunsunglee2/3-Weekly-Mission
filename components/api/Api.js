@@ -44,12 +44,12 @@ export async function getUserData(accessToken, userId) {
     },
   });
   const result = await response.json();
-  
+
   return result;
 }
 
-export async function getMyFolders() {
-  const API_BASE_URL_FOLDER = `${API_BASE_URL}/users/1/folders`;
+export async function getMyFolders({userId}) {
+  const API_BASE_URL_FOLDER = `${API_BASE_URL}/users/${userId}/folders`;
   const response = await fetch(API_BASE_URL_FOLDER);
   const alreadyFolders = await response.json();
   return alreadyFolders;
@@ -66,57 +66,72 @@ export async function getLinks(folderId) {
 
 /**
  * modalApi
-*/
+ */
 
-export async function changeFolderName(folderId, content) {
-  const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(content)
-  })
-  console.log(response);
+export async function changeFolderName(folderId, content, token) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name: content,
+      }),
+    });
+    if (!response.ok) {
+      console.log("changeFolderName failed!");
+    } else {
+      console.log("changeFolderName success!");
+      console.log(response);
+    }
+  } catch (error) {
+    throw error;
+  }
 }
 
-export async function addFolder(content) {
+export async function addFolder(token, content) {
   const response = await fetch(`${API_BASE_URL}/folders`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(content)
-  })
+    body: JSON.stringify({
+      name: content,
+    }),
+  });
   console.log(response);
 }
 
 export async function deleteFolder(folderId) {
   const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-  })
+  });
   console.log(response);
 }
 
 export async function deleteLink(linkId) {
   const response = await fetch(`${API_BASE_URL}/links/${linkId}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-  })
+  });
   console.log(response);
 }
 
 export async function addLink(content) {
   const response = await fetch(`${API_BASE_URL}/links`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(content)
-  })
+    body: JSON.stringify(content),
+  });
   console.log(response);
 }
