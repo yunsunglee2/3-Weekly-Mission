@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import React from "react";
 import Image from "next/image";
 import LINKIMAGE from "@/public/link.svg";
@@ -12,10 +12,11 @@ export default function AddInput() {
   const [modalOpen, setModalOpen] = useState(false);
   const inputRef = useRef();
 
+  // 링크 형식만 입력 가능하게 조건 생성
   const handlePopupMessage = () => {
-    inputRef.current.value
+    /https?:\/\/.+/.test(inputRef.current.value)
       ? setModalOpen(!modalOpen)
-      : alert("링크를 추가해주세요");
+      : alert("링크형식으로 입력해주세요");
   };
 
   const isClose = (value) => {
@@ -42,7 +43,7 @@ export default function AddInput() {
             <PopupMessage
               modalOpen={modalOpen}
               onClick={isClose}
-              component={<AddLinkModal />}
+              component={<AddLinkModal url={inputValue} />}
             />
           </AddLinkProvier>
         </div>

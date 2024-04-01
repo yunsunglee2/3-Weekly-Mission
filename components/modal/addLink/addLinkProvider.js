@@ -1,16 +1,16 @@
 import { createContext } from "react";
 import { useState } from "react";
 
-export const checkFolderContext = createContext();
-export const checkFolderContextUpdater = createContext();
+export const checkFolderListContext = createContext();
+export const checkFolderListContextUpdater = createContext();
 
 export function AddLinkProvier({ children }) {
-  const [checkedFolder, setCheckedFolder] = useState([]);
+  const [checkedFolderList, setCheckedFolderList] = useState([]);
   return (
-    <checkFolderContext.Provider value={{ checkedFolder }}>
-      <checkFolderContextUpdater.Provider value={{ setCheckedFolder }}>
+    <checkFolderListContext.Provider value={{ checkedFolderList }}>
+      <checkFolderListContextUpdater.Provider value={{ setCheckedFolderList }}>
         {children}
-      </checkFolderContextUpdater.Provider>
-    </checkFolderContext.Provider>
+      </checkFolderListContextUpdater.Provider>
+    </checkFolderListContext.Provider>
   );
 }

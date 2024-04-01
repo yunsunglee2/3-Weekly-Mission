@@ -125,11 +125,12 @@ export async function deleteLink(linkId) {
   console.log(response);
 }
 
-export async function addLink(url, folderId) {
+export async function addLink(url, folderId, token) {
   const response = await fetch(`${API_BASE_URL}/links`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({
       url: url,

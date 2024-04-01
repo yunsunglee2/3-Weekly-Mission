@@ -3,28 +3,29 @@ import { useContext, useEffect, useState } from "react";
 import CHECKIMG from "@/public/check.svg";
 import styles from "@/components/modal/addLink/addLinkModal.module.css";
 import {
-  checkFolderContext,
-  checkFolderContextUpdater,
+  checkFolderListContext,
+  checkFolderListContextUpdater,
 } from "./addLinkProvider";
 
 function Folder({ title, linksCount, folderId }) {
   const [isChecked, setIsChecked] = useState(false);
-  let { setCheckedFolder } = useContext(checkFolderContextUpdater);
-  let { checkedFolder } = useContext(checkFolderContext);
+  let { setCheckedFolderList } = useContext(checkFolderListContextUpdater);
+  let { checkedFolderList } = useContext(checkFolderListContext);
 
   const handleClick = () => {
     setIsChecked(!isChecked);
   };
 
+  // 클릭된 폴더 전역 상태 관리 
   useEffect(()=> {
     if (isChecked) {
-      setCheckedFolder([...checkedFolder, folderId]);
+      setCheckedFolderList([...checkedFolderList, folderId]);
     } else {
       // 배열에서 folderId 제외하기
-      const currentCheckedFolder = [...checkedFolder].filter(
+      const currentCheckedFolderList = [...checkedFolderList].filter(
         (checkedFolderId) => checkedFolderId !== folderId
       );
-      setCheckedFolder(currentCheckedFolder);
+      setCheckedFolderList(currentCheckedFolderList);
     }
   },[isChecked])
 
