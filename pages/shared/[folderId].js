@@ -66,7 +66,7 @@ export default function SharedPage({ accessToken, profile, owner, email, links, 
     <>
       <Header profileImage={profile} name={owner} email={email} />
       <div className="Shared page" style={SharedPageStyle}>
-        <Nav serachIsLoading={true} />
+        <Nav folders={folders} serachIsLoading={true} />
         <Main accessToken={accessToken} links={links} folders={folders} page="shared" />
       </div>
     </>

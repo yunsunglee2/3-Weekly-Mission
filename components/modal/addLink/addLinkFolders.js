@@ -9,7 +9,8 @@ function Folders({ folders }) {
             <Folder
               key={folder.id}
               title={folder.name}
-              linksCount={folder.link.count}
+              linksCount={folder.link_count}
+              folderId={folder.id}
             ></Folder>
           );
         })}

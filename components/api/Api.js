@@ -125,13 +125,16 @@ export async function deleteLink(linkId) {
   console.log(response);
 }
 
-export async function addLink(content) {
+export async function addLink(url, folderId) {
   const response = await fetch(`${API_BASE_URL}/links`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(content),
+    body: JSON.stringify({
+      url: url,
+      folderId: folderId,
+    }),
   });
   console.log(response);
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DeleteModal from "@/components/modal/deleteModal";
-import AddFolderModal from "@/components/modal/addFolderModal";
+import AddFolderModal from "@/components/modal/addFolder/addFolderModal";
 import PopupMessage from "@/components/modal/modal";
 import styles from './more.module.css';
 

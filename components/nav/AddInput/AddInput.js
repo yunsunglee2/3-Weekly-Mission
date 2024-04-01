@@ -5,6 +5,7 @@ import LINKIMAGE from "@/public/link.svg";
 import PopupMessage from "@/components/modal/modal";
 import AddLinkModal from "@/components/modal/addLink/addLinkModal";
 import styles from "./AddInput.module.css";
+import { AddLinkProvier } from "@/components/modal/addLink/addLinkProvider";
 
 export default function AddInput() {
   const [inputValue, setInputValue] = useState("");
@@ -12,8 +13,11 @@ export default function AddInput() {
   const inputRef = useRef();
 
   const handlePopupMessage = () => {
-    inputRef.current.value ? setModalOpen(!modalOpen) : alert("링크를 추가해주세요");
+    inputRef.current.value
+      ? setModalOpen(!modalOpen)
+      : alert("링크를 추가해주세요");
   };
+
   const isClose = (value) => {
     setModalOpen(value);
   };
@@ -34,11 +38,13 @@ export default function AddInput() {
           <button className={styles.button} onClick={handlePopupMessage}>
             <span className={styles.text}>추가하기</span>
           </button>
-          <PopupMessage
-            modalOpen={modalOpen}
-            onClick={isClose}
-            component={<AddLinkModal />}
-          />
+          <AddLinkProvier>
+            <PopupMessage
+              modalOpen={modalOpen}
+              onClick={isClose}
+              component={<AddLinkModal />}
+            />
+          </AddLinkProvier>
         </div>
       </div>
     </div>

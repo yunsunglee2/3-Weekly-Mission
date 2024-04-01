@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import { addFolder } from "../api/Api";
-import { useContext, useState } from "react";
-import { TokenContext } from "../providers/authProvider";
 
-const Title = styled.div`
+export const Title = styled.div`
   color: var(--Linkbrary-gray100, #373740);
   font-family: "Pretendard-regular";
   font-size: 20px;
@@ -12,7 +9,7 @@ const Title = styled.div`
   line-height: normal;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   display: flex;
   width: 280px;
   padding: 18px 15px;
@@ -23,7 +20,7 @@ const Input = styled.input`
   background: var(--Linkbrary-white, #fff);
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   width: 280px;
   padding: 16px 20px;
@@ -44,7 +41,7 @@ const Button = styled.button`
   }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: inline-flex;
   padding: 32px 40px;
   flex-direction: column;
@@ -56,33 +53,9 @@ const Container = styled.div`
   background: var(--Linkbrary-white, #fff);
 `;
 
-const SubText = styled(Title)`
+export const SubText = styled(Title)`
   color: var(--Linkbrary-gray60, #9fa6b2);
   text-align: center;
   font-size: 14px;
   font-weight: 400;
 `;
-
-export default function AddFolderModal({ folder, isSubtext }) {
-  const { token } = useContext(TokenContext);
-  const [inputValue, setInputValue] = useState("");
-  const handleClick = () => {
-    addFolder(token, inputValue);
-  };
-  return (
-    <Container>
-      <Title>폴더 추가</Title>
-      {isSubtext ? (
-        <SubText>{folder}</SubText>
-      ) : (
-        <Input
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="내용 입력"
-        />
-      )}
-      <Button onClick={handleClick}>
-        <Title>추가하기</Title>
-      </Button>
-    </Container>
-  );
-}

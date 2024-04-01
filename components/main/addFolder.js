@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import addImage from "@/public/add.svg";
 import PopupMessage from "@/components/modal/modal.js";
-import AddFolderModal from "@/components/modal/addFolderModal.js";
+import AddFolderModal from "@/components/modal/addFolder/addFolderModal.js";
 import styles from "@/components/main/addFolder.module.css"
 
 export default function AddFolder() {
