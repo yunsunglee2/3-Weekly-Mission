@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from "react";
 import React from "react";
 import Image from "next/image";
 import LINKIMAGE from "@/public/link.svg";
-import PopupMessage from "@/components/modal/modal";
+import PopUpMessage from "../../modal/ui/popUpMessage";
 import AddLinkModal from "@/components/modal/addLink/addLinkModal";
 import styles from "./AddInput.module.css";
 import { AddLinkProvier } from "@/components/modal/addLink/addLinkProvider";
@@ -40,7 +40,7 @@ export default function AddInput() {
             <span className={styles.text}>추가하기</span>
           </button>
           <AddLinkProvier>
-            <PopupMessage
+            <PopUpMessage
               modalOpen={modalOpen}
               onClick={isClose}
               component={<AddLinkModal url={inputValue} />}
