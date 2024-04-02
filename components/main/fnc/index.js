@@ -1,8 +1,8 @@
 import { useState } from "react";
-import PopupMessage from "@/components/modal/modal";
-import ShareModal from "@/components/modal/shareModal";
-import ChangeNameModal from "@/components/modal/changeNameModal";
-import DeleteModal from "@/components/modal/deleteModal";
+import PopUpMessage from "@/components/modal/UI/popUpMessage";
+import ShareModal from "@/components/modal/shareFolder/shareModal";
+import ChangeNameModal from "@/components/modal/changeName/changeNameModal";
+import DeleteModal from "@/components/modal/deleteFolder/deleteModal";
 import styles from "./fnc.module.css"
 import Image from "next/image";
 
@@ -21,19 +21,19 @@ export default function Fnc({ folderId, value, src }) {
         {value}
       </div>
       {`${value}` === "삭제" ? (
-        <PopupMessage
+        <PopUpMessage
           component={<DeleteModal />}
           modalOpen={isModalOpen}
           onClick={handleClick}
         />
       ) : `${value}` === "공유" ? (
-        <PopupMessage
+        <PopUpMessage
           component={<ShareModal />}
           modalOpen={isModalOpen}
           onClick={handleClick}
         />
       ) : (
-        <PopupMessage
+        <PopUpMessage
           component={<ChangeNameModal folderId={folderId} />}
           modalOpen={isModalOpen}
           onClick={handleClick}

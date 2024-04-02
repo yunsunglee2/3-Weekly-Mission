@@ -1,7 +1,7 @@
 import { useState } from "react";
-import DeleteModal from "@/components/modal/deleteModal";
+import DeleteModal from "@/components/modal/deleteFolder/deleteModal";
 import AddFolderModal from "@/components/modal/addFolder/addFolderModal";
-import PopupMessage from "@/components/modal/modal";
+import PopUpMessage from "@/components/modal/UI/popUpMessage";
 import styles from './more.module.css';
 
 export default function More({ folder }) {
@@ -24,7 +24,7 @@ export default function More({ folder }) {
         삭제하기
       </span>
       {
-        <PopupMessage
+        <PopUpMessage
           modalOpen={isOpen}
           onClick={handlePopupMessage}
           component={

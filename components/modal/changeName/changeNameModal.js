@@ -1,5 +1,6 @@
-import { Container, Title, Input, Button } from "../ui/modalStyledComponents";
-import changeFolderName from "../../api/Api"
+import { Container, Title, Input, Button } from "@/components/modal/UI/modalStyledComponents";
+import changeFolderName from "../../api/Api";
+
 import { useContext, useState } from "react";
 
 export default function ChangeNameModal({ folderId }) {

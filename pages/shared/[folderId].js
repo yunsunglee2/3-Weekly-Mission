@@ -1,7 +1,8 @@
-const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
-import Nav from "@/components/nav/index.js";
+import Nav from "@/components/nav";
 import Main from "@/components/main";
 import Header from "@/components/header";
+
+const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 
 const SharedPageStyle = {
   display: "flex",
