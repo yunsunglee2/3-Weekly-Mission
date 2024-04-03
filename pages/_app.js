@@ -1,6 +1,7 @@
 import Head from "next/head";
 import "@/styles/globals.css";
 import Footer from "@/components/footer/Footer.js";
+import { Providers } from "@/components/providers";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -8,7 +9,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Linkbrary</title>
       </Head>
-      <Component {...pageProps} />
+      <Providers>
+        <Component {...pageProps} />
+      </Providers>
       <Footer />
     </>
   );

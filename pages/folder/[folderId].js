@@ -1,7 +1,6 @@
 const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
-import defaultProfile from "@/public/Avatar.svg";
 import Nav from "@/components/nav/index.js";
-import Main from "@/components/main/index.js";
+import { Main } from "@/components/main";
 import Header from "@/components/header";
 
 const FolderPageStyle = {
@@ -17,6 +16,7 @@ export async function getServerSideProps(context) {
   const cookies = req.cookies;
   const accessToken = cookies.accessToken;
   const { folderId } = context.query;
+  let links;
 
   // userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회
   try {
@@ -43,39 +43,62 @@ export async function getServerSideProps(context) {
     const getUserFolders = await fetch(
       `${API_BASE_URL}/users/${userId}/folders`
     );
-    const userFolders = await getUserFolders.json();
+    const folders = await getUserFolders.json();
 
-    const getUserLinks = await fetch(`${API_BASE_URL}/users/${userId}/links/${folderId ? `?folderId=${folderId}` : ''}`);
-    console.log(getUserLinks,'---------getUserLinks---------');
-    const userLinks = await getUserLinks.json();
+    if (folderId === "0") {
+      const getUserLinks = await fetch(`${API_BASE_URL}/users/${userId}/links`);
+      links = await getUserLinks.json();
+    } else {
+      const getFolderLinks = await fetch(
+        `${API_BASE_URL}/folders/${folderId}/links`
+      );
+      links = await getFolderLinks.json();
+    }
 
     return {
       props: {
+        accessToken,
         profile,
         owner,
         email,
-        folders: userFolders,
-        links: userLinks,
+        links,
+        folders,
       },
     };
   } catch (e) {
     console.log(e);
     return {
       props: {
-        profile: defaultProfile,
-        owner: "사용자 없음",
+        folders: [],
+        links: [],
+        accessToken: "",
+        profile: "",
+        owner: "",
+        email: "",
       },
     };
   }
 }
 // 서버 사이드 렌더링으로 받아온 profile과 owner를 props로 폴더 페이지에 내려줌
-export default function FolderPage({ email, profile, owner, folders, links }) {
+export default function FolderPage({
+  accessToken,
+  profile,
+  owner,
+  email,
+  links,
+  folders,
+}) {
   return (
     <>
       <Header profileImage={profile} name={owner} email={email} />
       <div className="FolderPage" style={FolderPageStyle}>
         <Nav profile={profile} owner={owner} serachIsLoading={false} />
-        <Main links={links} folders={folders} page="folder" />
+        <Main
+          accessToken={accessToken}
+          links={links}
+          folders={folders}
+          page="folder"
+        />
       </div>
     </>
   );

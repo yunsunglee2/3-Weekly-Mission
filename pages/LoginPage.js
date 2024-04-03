@@ -46,7 +46,7 @@ function LoginPage() {
   useEffect(() => {
     if (postState === 200) {
       console.log("성공");
-      router.push("/folder/1");
+      router.push("/folder/0");
     } else if (postState === 400) {
       console.log("실패");
       setErr({

@@ -5,8 +5,8 @@ export default function Document() {
     <Html lang="ko">
       <Head />
       <body>
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
       </body>
     </Html>
   );

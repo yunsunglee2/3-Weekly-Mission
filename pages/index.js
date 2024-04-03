@@ -42,7 +42,6 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        accessToken,
         userId,
         owner,
         profile,
@@ -63,16 +62,16 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function HomePage({ accessToken, userId, profile, owner, email }) {
+export default function HomePage({ profile, owner, email }) {
 
   return (
     <>
       <Nav profileImage={profile} name={owner} email={email} />
       <Header serachIsLoading={true} />
       <div className="HomePage" style={HomePageStyle}>
-        <Link href={`/Shared/${userId}`}>MOVE SHARED</Link>
+        <Link href={`/shared/0`}>MV SHARED</Link>
         <br />
-        <Link href={accessToken ? `/folder/${userId}` : '/SignupPage' }>MOVE FOLDER</Link>
+        <Link href={`/folder/0`}>MV FOLDER</Link>
       </div>
     </>
   );

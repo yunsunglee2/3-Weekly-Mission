@@ -1,7 +1,8 @@
-const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
-import Nav from "@/components/nav/index.js";
-import Main from "@/components/main/index.js";
+import Nav from "@/components/nav";
+import { Main } from "@/components/main";
 import Header from "@/components/header";
+
+const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 
 const SharedPageStyle = {
   display: "flex",
@@ -14,14 +15,10 @@ export async function getServerSideProps(context) {
   // context에서 req를 추출합니다.
   const { req } = context;
   const { folderId } = context.query;
-
-  // req 객체에서 쿠키를 가져옵니다.
   const cookies = req.cookies;
-
-
-  // 필요한 쿠키만 추출합니다.
   const accessToken = cookies.accessToken;
-  console.log(accessToken, '----accesssToken----');
+  let links;
+
   // 2. 액세스 토큰 확인 후 유저데이터 요청 보내기
   try {
     const userResponse = await fetch(`${API_BASE_URL}/users`, {
@@ -29,63 +26,78 @@ export async function getServerSideProps(context) {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-
     const userData = await userResponse.json();
     const userId = userData[0].id;
 
-    const getUserData = await fetch(`${API_BASE_URL}/users/${userId}`)
+    const getUserData = await fetch(`${API_BASE_URL}/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     const result = await getUserData.json();
     const profile = result[0].image_source;
     const owner = result[0].name;
     const email = result[0].email;
 
-    const folderResponse = await (
-      await fetch(`${API_BASE_URL}/users/${userId}/folders`)
-    ).json();
-
-    const linkResponse = await fetch(
-      `${API_BASE_URL}/users/${userId}/links/${folderId ? `?folderId=${folderId}` : ''}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+    const getUserFolders = await fetch(
+      `${API_BASE_URL}/users/${userId}/folders`
     );
-    const linkData = await linkResponse.json();
-
+    const folders = await getUserFolders.json();
+    // 전체는 folderId를 null로 설정
+    // 특정 폴더는 folderId: number 이므로 truthy 값이 들어온다
+    if (folderId === "0") {
+      const getUserLinks = await fetch(`${API_BASE_URL}/users/${userId}/links`);
+      links = await getUserLinks.json();
+    } else {
+      const getFolderLinks = await fetch(
+        `${API_BASE_URL}/folders/${folderId}/links`
+      );
+      links = await getFolderLinks.json();
+    }
     return {
       props: {
-        folders: folderResponse,
-        links: linkData,
-        accessToken: accessToken,
+        accessToken,
         profile,
         owner,
-        email
+        email,
+        links,
+        folders,
       },
     };
   } catch (e) {
     console.log(e);
-    return{
+    return {
       props: {
         folders: [],
         links: [],
-        accessToken: null,
-        profile: null,
-        owner: null,
-        email: null,  
-      }
-    }
+        accessToken: "",
+        profile: "",
+        owner: "",
+        email: "",
+      },
+    };
   }
 }
 
-export default function SharedPage({ profile, owner, email, links, folders, accessToken }) {
-  
+export default function SharedPage({
+  accessToken,
+  profile,
+  owner,
+  email,
+  links,
+  folders,
+}) {
   return (
     <>
       <Header profileImage={profile} name={owner} email={email} />
       <div className="Shared page" style={SharedPageStyle}>
-        <Nav serachIsLoading={true} />
-        <Main links={links} folders={folders} page="Shared" />
+        <Nav folders={folders} serachIsLoading={true} />
+        <Main
+          accessToken={accessToken}
+          links={links}
+          folders={folders}
+          page="shared"
+        />
       </div>
     </>
   );
