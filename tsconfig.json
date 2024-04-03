@@ -8,17 +8,17 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true, // export default 하지 않아도 export 하는 파일들을 허용해주는 문법
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "CommonJS",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",  // jsx 오류 부분 해결 
+    "jsx": "preserve",
     "baseUrl": "src"
   },
   "include": [
