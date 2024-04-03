@@ -13,7 +13,21 @@
   align-items: center;
   background-color: #F0F6FF;
 }
-
+/* .nav .box01 {
+  display: flex;
+  padding: 33px 200px 32px 200px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+.nav .box01 .item01 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch; 
+  position: relative;
+} */
 .nav .box02 {
   display: flex;
   width: 1440px;

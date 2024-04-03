@@ -1,9 +1,8 @@
 import Image from "next/image";
-import "@/components/modal/shareModal.module.css";
 import KAKAO from "@/public/kakao.svg";
 import FACEBOOK from "@/public/Facebook.svg";
 import COPYLINK from "@/public/copylink.svg";
-import styles from './shareModal.module.css';
+import styles from "@/components/modal/shareFolder/shareModal.module.css";
 
 function Share({ src, text }) {
   return (

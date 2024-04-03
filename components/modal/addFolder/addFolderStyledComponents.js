@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Title = styled.div`
+export const Title = styled.div`
   color: var(--Linkbrary-gray100, #373740);
   font-family: "Pretendard-regular";
   font-size: 20px;
@@ -9,24 +9,18 @@ const Title = styled.div`
   line-height: normal;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   display: flex;
   width: 280px;
-  padding: 18px 0 18px 0;
+  padding: 18px 15px;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
   background: var(--Linkbrary-white, #fff);
-  box-sizing: border-box;
-  text-indent: 1rem;
-
-  &::placeholder {
-    width: 80%;
-  }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   width: 280px;
   padding: 16px 20px;
@@ -47,7 +41,7 @@ const Button = styled.button`
   }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: inline-flex;
   padding: 32px 40px;
   flex-direction: column;
@@ -59,14 +53,9 @@ const Container = styled.div`
   background: var(--Linkbrary-white, #fff);
 `;
 
-export default function ChangeNameModal() {
-  return (
-    <Container>
-      <Title>폴더 이름 변경</Title>
-      <Input placeholder="유용한 팁" />
-      <Button>
-        <Title>변경하기</Title>
-      </Button>
-    </Container>
-  );
-}
+export const SubText = styled(Title)`
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+`;

@@ -9,7 +9,6 @@ export async function isSignupValid(info) {
     body: JSON.stringify(info),
   });
   const result = await res.json();
-  console.log(result);
   return result;
 }
 
@@ -22,7 +21,6 @@ export async function checkUserInfo(info) {
     body: JSON.stringify(info),
   });
   const result = await res.json();
-  console.log(result);
   return result;
 }
 
@@ -35,7 +33,6 @@ export async function postUserInfo(info) {
     body: JSON.stringify(info),
   });
   const result = await res.json();
-  // console.log(result, res);
   return { res, result };
 }
 
@@ -47,22 +44,16 @@ export async function getUserData(accessToken, userId) {
     },
   });
   const result = await response.json();
-  
+
   return result;
 }
 
-export async function getMyFolders() {
-  const API_BASE_URL_FOLDER = `${API_BASE_URL}/users/1/folders`;
+export async function getMyFolders({userId}) {
+  const API_BASE_URL_FOLDER = `${API_BASE_URL}/users/${userId}/folders`;
   const response = await fetch(API_BASE_URL_FOLDER);
   const alreadyFolders = await response.json();
   return alreadyFolders;
 }
-
-// export async function getOwner(userId) {
-//   const response = await fetch(`${API_BASE_URL}/users/${userId}`);
-//   const data = await response.json();
-//   return data;
-// }
 
 export async function getLinks(folderId) {
   const API_BASE_URL_LINKS = `${API_BASE_URL}/users/1/links${
@@ -70,6 +61,81 @@ export async function getLinks(folderId) {
   }`;
   const response = await fetch(API_BASE_URL_LINKS);
   const folders = await response.json();
-  console.log(folders);
   return folders;
+}
+
+/**
+ * modalApi
+ */
+
+export async function changeFolderName(folderId, content, token) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name: content,
+      }),
+    });
+    if (!response.ok) {
+      console.log("changeFolderName failed!");
+    } else {
+      console.log("changeFolderName success!");
+      console.log(response);
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function addFolder(token, content) {
+  const response = await fetch(`${API_BASE_URL}/folders`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name: content,
+    }),
+  });
+}
+
+export async function deleteFolder(token, folderId) {
+  const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
+}
+
+export async function deleteLink(token, linkId) {
+  const response = await fetch(`${API_BASE_URL}/links/${linkId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
+}
+
+export async function addLink(url, folderId, token) {
+  const response = await fetch(`${API_BASE_URL}/links`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      url: url,
+      folderId: folderId,
+    }),
+  });
 }

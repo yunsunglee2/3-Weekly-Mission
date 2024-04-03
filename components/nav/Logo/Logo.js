@@ -5,7 +5,7 @@ function Logo({value}) {
   const src = value
   return (
     <div className="Logo">
-      <Link href='/'><Image src={src} alt={value} /></Link>
+      <Link href='/'><Image src={src} alt={value} priority /></Link>
     </div>
   )
 }

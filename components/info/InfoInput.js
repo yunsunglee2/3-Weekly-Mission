@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./input.module.css";
 
 const InfoInput = ({
