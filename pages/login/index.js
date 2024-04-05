@@ -64,9 +64,9 @@ function LoginPage() {
 
   useEffect(() => {
     if (moveCheck) {
-      router.push("/SignupPage");
+      router.push("/singup");
     } else {
-      router.push("/LoginPage");
+      router.push("/login");
     }
   }, [moveCheck]);
 

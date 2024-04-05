@@ -85,7 +85,7 @@ export default function FolderPage({
   return (
     <>
       <Header profileImage={profile} name={owner} email={email} />
-      <div className={styles.FolderPage}>
+      <div className={styles.folderPage}>
         <Nav profile={profile} owner={owner} serachIsLoading={false} />
         <Main
           accessToken={accessToken}

@@ -26,10 +26,10 @@ function Account({ profileImage, name, email }) {
         </Link>
       ) : (
         <div className={styles.buttonsWrapper}>
-          <Link href={"/LoginPage"} style={{textDecoration: 'none'}}>
+          <Link href={"/login"} style={{textDecoration: 'none'}}>
             <Button className={styles.login_button}>로그인 </Button>
           </Link>
-          <Link href={"/SignupPage"} style={{textDecoration: 'none'}}>
+          <Link href={"/signup"} style={{textDecoration: 'none'}}>
             <Button className={styles.signup_button}>회원가입</Button>
           </Link>
         </div>
