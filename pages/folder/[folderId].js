@@ -2,13 +2,7 @@ const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 import Nav from "@/components/nav/index.js";
 import { Main } from "@/components/main";
 import Header from "@/components/header";
-
-const FolderPageStyle = {
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  gap: "40px",
-};
+import styles from "@/styles/folderPage.module.css";
 
 export async function getServerSideProps(context) {
   // 로그인해서 쿠키에 저장된 accessToken을 getServerSideProps의 context로 조회하기
@@ -91,7 +85,7 @@ export default function FolderPage({
   return (
     <>
       <Header profileImage={profile} name={owner} email={email} />
-      <div className="FolderPage" style={FolderPageStyle}>
+      <div className={styles.FolderPage}>
         <Nav profile={profile} owner={owner} serachIsLoading={false} />
         <Main
           accessToken={accessToken}

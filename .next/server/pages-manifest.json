@@ -2,9 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/Shared/[folderId]": "pages/Shared/[folderId].js",
-  "/folder/[folderId]": "pages/folder/[folderId].js",
-  "/SignupPage": "pages/SignupPage.js",
-  "/LoginPage": "pages/LoginPage.js"
+  "/shared/[folderId]": "pages/shared/[folderId].js"
 }
