@@ -105,10 +105,6 @@
   justify-content: center;
   gap: 0.6rem;
 }
-.Main .box .item02 .fileList .addFolderWrapper .text {
-  display: flex;
-  align-items: flex-end;
-}
 
 .Main .box .item02 .MainFiles{
   display: flex;

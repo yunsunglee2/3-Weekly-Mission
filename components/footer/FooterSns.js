@@ -1,11 +1,11 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-function FooterSns({value}) {
+function FooterSns({ value }) {
   return (
     <div className="FooterSns">
       <Image src={value} alt={value} />
     </div>
-  )
+  );
 }
 
 export default FooterSns;

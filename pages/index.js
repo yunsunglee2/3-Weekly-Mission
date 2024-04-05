@@ -62,16 +62,16 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function HomePage({ userId, profile, owner, email }) {
+export default function HomePage({ profile, owner, email }) {
 
   return (
     <>
       <Nav profileImage={profile} name={owner} email={email} />
       <Header serachIsLoading={true} />
       <div className="HomePage" style={HomePageStyle}>
-        <Link href={`/Shared/${userId}`}>MV SHARED</Link>
+        <Link href={`/shared/0`}>MV SHARED</Link>
         <br />
-        <Link href={`/folder/${userId}`}>MV FOLDER</Link>
+        <Link href={`/folder/0`}>MV FOLDER</Link>
       </div>
     </>
   );

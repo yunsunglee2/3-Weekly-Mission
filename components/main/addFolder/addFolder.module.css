@@ -1,0 +1,18 @@
+.addFolder {
+  display: flex;
+
+}
+
+.addImage {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.text {
+  display: flex;
+  align-items: flex-end;
+}
+.buttonWrapper,
+.addFolderWrapper {
+  display: flex;
+}

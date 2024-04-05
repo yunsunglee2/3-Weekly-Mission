@@ -31,6 +31,7 @@
   position: relative;
   width: 100%;
   height: 200px;
+  background-color: #F0F6FF;
 }
 
 .item02 {
@@ -91,4 +92,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal; 
+}
+
+.item02 .thumbnail {
+  cursor: pointer;
 }

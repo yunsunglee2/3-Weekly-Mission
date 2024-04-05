@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Title = styled.div`
+export const Title = styled.div`
   color: var(--Linkbrary-gray100, #373740);
   font-family: "Pretendard-regular";
   font-size: 20px;
@@ -9,18 +9,24 @@ const Title = styled.div`
   line-height: normal;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   display: flex;
   width: 280px;
-  padding: 18px 15px;
+  padding: 18px 0 18px 0;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
   background: var(--Linkbrary-white, #fff);
+  box-sizing: border-box;
+  text-indent: 1rem;
+
+  &::placeholder {
+    width: 80%;
+  }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   width: 280px;
   padding: 16px 20px;
@@ -41,7 +47,7 @@ const Button = styled.button`
   }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: inline-flex;
   padding: 32px 40px;
   flex-direction: column;
@@ -53,25 +59,41 @@ const Container = styled.div`
   background: var(--Linkbrary-white, #fff);
 `;
 
-const SubText = styled(Title)`
-  color: var(--Linkbrary-gray60, #9fa6b2);
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-`;
-
-export default function AddFolderModal({ folder, isSubtext }) {
-  return (
-    <Container>
-      <Title>폴더 추가</Title>
-      {isSubtext ? (
-        <SubText>{folder}</SubText>
-      ) : (
-        <Input placeholder="내용 입력" />
-      )}
-      <Button>
-        <Title>추가하기</Title>
-      </Button>
-    </Container>
-  );
+export const customImgStyle = {
+  width: "24px",
+  height: "24px",
+  position: "absolute",
+  right: "10px",
+  top: "8px",
 }
+
+export const customModalStyles = {
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    width: "100%",
+    height: "100vh",
+    zIndex: "10",
+    position: "fixed",
+    top: "0",
+    left: "0",
+  },
+  content: {
+    width: "45vh",
+    height: "45vh",
+    overflow: "visible",
+    zIndex: "150",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "10px",
+    boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+    backgroundColor: "white",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "24px",
+    padding: "32px 40px",
+  },
+};

@@ -16,6 +16,10 @@
   border-style: none;
   text-indent: 1.5rem;
 }
+.MainSearch .closeImage{
+  position: absolute;
+  right: 1rem;
+  }
 .MainSearch .readingGlasses{
   position: absolute;
   left: 1rem;
