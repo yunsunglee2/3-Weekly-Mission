@@ -28,8 +28,6 @@ export async function getServerSideProps(context) {
       links = await getFolderLinks(folderId);
     }
 
-    console.log(folders, '-----folders-----')
-
     return {
       props: {
         accessToken,
