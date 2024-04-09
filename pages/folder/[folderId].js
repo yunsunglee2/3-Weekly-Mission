@@ -6,19 +6,29 @@ import {
   getUserData,
   getUserFolders,
   getUserLinks,
+  getFolderLinks,
 } from "@/components/api/Api";
 import styles from "@/styles/folderPage.module.css";
 
 export async function getServerSideProps(context) {
   const { req } = context;
+  const { folderId } = context.query;
   const cookies = req.cookies;
   const accessToken = cookies.accessToken;
-  
+  let links;
+
   try {
     const userId = await getUserResponse(accessToken);
     const { profile, owner, email } = await getUserData(accessToken, userId);
     const folders = await getUserFolders(userId);
-    const links = await getUserLinks(userId);
+
+    if (folderId === "0") {
+      links = await getUserLinks(userId);
+    } else {
+      links = await getFolderLinks(folderId);
+    }
+
+    console.log(folders, '-----folders-----')
 
     return {
       props: {

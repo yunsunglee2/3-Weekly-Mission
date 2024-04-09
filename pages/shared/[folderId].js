@@ -33,7 +33,7 @@ export async function getServerSideProps(context) {
     } else {
       links = await getFolderLinks(folderId);
     }
-    
+
     return {
       props: {
         accessToken,

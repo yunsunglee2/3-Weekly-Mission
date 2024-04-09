@@ -76,7 +76,9 @@ export async function getUserLinks(userId) {
 // 특정 폴더 링크 가져오기
 export async function getFolderLinks(folderId) {
   const response = await fetch(`${API_BASE_URL}/folders/${folderId}/links`);
-  return await response.json();
+  const result =  await response.json();
+  return result;
+  // return await response.json();
 }
 
 /**
