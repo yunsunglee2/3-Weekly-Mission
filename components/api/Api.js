@@ -44,8 +44,7 @@ export async function getUserResponse(accessToken) {
     },
   });
   const userResponseResult = await response.json();
-  const userId = userResponseResult[0].id;
-  return userId;
+  return userResponseResult[0].id;
 }
 
 // 현재 유저 조회
@@ -55,7 +54,6 @@ export async function getUserData(accessToken, userId) {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  console.log(userId, '--------userId---------')
   const userData = await response.json();
   const profile = userData[0].image_source;
   const owner = userData[0].name;
@@ -66,15 +64,13 @@ export async function getUserData(accessToken, userId) {
 // 유저 폴더 목록 가져오기
 export async function getUserFolders(userId) {
   const response = await fetch(`${API_BASE_URL}/users/${userId}/folders`);
-  const folders = await response.json();
-  return folders;
+  return await response.json();
 }
 
 // 유저 전체 링크 가져오기
 export async function getUserLinks(userId) {
   const response = await fetch(`${API_BASE_URL}/users/${userId}/links`);
-  const links = await response.json();
-  return links;
+  return await response.json();
 }
 
 /**

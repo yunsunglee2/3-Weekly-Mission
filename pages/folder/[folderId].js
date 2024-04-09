@@ -13,11 +13,12 @@ export async function getServerSideProps(context) {
   const { req } = context;
   const cookies = req.cookies;
   const accessToken = cookies.accessToken;
+  
   try {
-    const { userId } = await getUserResponse(accessToken);
+    const userId = await getUserResponse(accessToken);
     const { profile, owner, email } = await getUserData(accessToken, userId);
-    const { folders } = await getUserFolders(userId);
-    const { links } = await getUserLinks(userId);
+    const folders = await getUserFolders(userId);
+    const links = await getUserLinks(userId);
 
     return {
       props: {

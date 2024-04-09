@@ -29,8 +29,6 @@ export function Main({ accessToken, links, folders }) {
   const [search, setSearch] = useState("");
   const [filteredLinks, setFilterdLinks] = useState(links);
 
-  console.log(clickedFolderList);
-
   // props 로 받은 accessToken 으로 token을 업데이트 해줍니다
   let { setToken } = useContext(TokenContextUpater);
   
