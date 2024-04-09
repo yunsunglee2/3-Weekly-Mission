@@ -36,6 +36,18 @@ export async function postUserInfo(info) {
   return { res, result };
 }
 
+// userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회
+export async function getUserResponse(accessToken) {
+  const response = await fetch(`${API_BASE_URL}/users`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+  const userResponseResult = await response.json();
+  const userId = userResponseResult[0].id;
+  return userId;
+}
+
 // 현재 유저 조회
 export async function getUserData(accessToken, userId) {
   const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
@@ -43,25 +55,26 @@ export async function getUserData(accessToken, userId) {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  const result = await response.json();
-
-  return result;
+  console.log(userId, '--------userId---------')
+  const userData = await response.json();
+  const profile = userData[0].image_source;
+  const owner = userData[0].name;
+  const email = userData[0].email;
+  return { profile, owner, email };
 }
 
-export async function getMyFolders({userId}) {
-  const API_BASE_URL_FOLDER = `${API_BASE_URL}/users/${userId}/folders`;
-  const response = await fetch(API_BASE_URL_FOLDER);
-  const alreadyFolders = await response.json();
-  return alreadyFolders;
-}
-
-export async function getLinks(folderId) {
-  const API_BASE_URL_LINKS = `${API_BASE_URL}/users/1/links${
-    folderId ? `?folderId=${folderId}` : " "
-  }`;
-  const response = await fetch(API_BASE_URL_LINKS);
+// 유저 폴더 목록 가져오기
+export async function getUserFolders(userId) {
+  const response = await fetch(`${API_BASE_URL}/users/${userId}/folders`);
   const folders = await response.json();
   return folders;
+}
+
+// 유저 전체 링크 가져오기
+export async function getUserLinks(userId) {
+  const response = await fetch(`${API_BASE_URL}/users/${userId}/links`);
+  const links = await response.json();
+  return links;
 }
 
 /**
@@ -131,7 +144,7 @@ export async function addLink(url, folderId, token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       url: url,
