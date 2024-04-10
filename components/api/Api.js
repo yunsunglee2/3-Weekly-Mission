@@ -2,38 +2,20 @@ const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
 import axios from "axios";
 
 export async function isSignupValid(info) {
-  const res = await axios.post(`${API_BASE_URL}/auth/sign-up`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(info),
-  });
-  const result = await res.json();
-  return result;
+  const response = await axios.post(`${API_BASE_URL}/auth/sign-up`, info);
+  console.log(response.data);
+  return response.data;
 }
 
 export async function checkUserInfo(info) {
-  const response = await axios.post(`${API_BASE_URL}/users/check-email`,
-  info,
-   {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await axios.post(`${API_BASE_URL}/users/check-email`, info);
   return response.data;
 }
 
 export async function postUserInfo(info) {
-  const res = await fetch(`${API_BASE_URL}/auth/sign-in`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(info),
-  });
-  const result = await res.json();
-  return { res, result };
+  const response = await axios.post(`${API_BASE_URL}/auth/sign-in`, info);
+  console.log(response);
+  return response
 }
 
 // userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회

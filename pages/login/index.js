@@ -29,11 +29,13 @@ function LoginPage() {
     e.preventDefault();
     if (info.email && info.password) {
       try {
-        const { res, result } = await postUserInfo(info);
-        const { status } = res;
+        const response = await postUserInfo(info);
+        const { status } = response;
         setPostState(status);
-        document.cookie = `accessToken=${result.accessToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
-        document.cookie = `refreshToken=${result.refreshToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+        const { accessToken } = response.data
+        const { refreshToken } = response.data
+        document.cookie = `accessToken=${accessToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
+        document.cookie = `refreshToken=${refreshToken}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`;
       } catch (e) {
         console.log(e);
       }
