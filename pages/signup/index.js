@@ -44,13 +44,10 @@ function SignupPage() {
 
   const checkEmail = async () => {
     try {
-      const { error, data } = await checkUserInfo({
+      const data = await checkUserInfo({
         email: `${info.email}`,
       });
-      if (error) {
-        alert(error?.message);
-      }
-      if (data?.isUsableNickname) {
+      if (data?.isUsableEmail) {
         alert("사용가능한 아이디 입니다.");
       }
     } catch (err) {

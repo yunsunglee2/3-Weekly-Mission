@@ -1,7 +1,8 @@
 const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
+import axios from "axios";
 
 export async function isSignupValid(info) {
-  const res = await fetch(`${API_BASE_URL}/api/sign-up`, {
+  const res = await axios.post(`${API_BASE_URL}/auth/sign-up`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,15 +14,14 @@ export async function isSignupValid(info) {
 }
 
 export async function checkUserInfo(info) {
-  const res = await fetch(`${API_BASE_URL}/check-email`, {
-    method: "POST",
+  const response = await axios.post(`${API_BASE_URL}/users/check-email`,
+  info,
+   {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(info),
   });
-  const result = await res.json();
-  return result;
+  return response.data;
 }
 
 export async function postUserInfo(info) {
@@ -38,47 +38,60 @@ export async function postUserInfo(info) {
 
 // userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회
 export async function getUserResponse(accessToken) {
-  const response = await fetch(`${API_BASE_URL}/users`, {
+  const userResponseResult = await axios.get(`${API_BASE_URL}/users`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  const userResponseResult = await response.json();
-  return userResponseResult[0].id;
+  return userResponseResult.data[0].id;
 }
 
 // 현재 유저 조회
 export async function getUserData(accessToken, userId) {
-  const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+  const userData = await axios.get(`${API_BASE_URL}/users/${userId}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  const userData = await response.json();
-  const profile = userData[0].image_source;
-  const owner = userData[0].name;
-  const email = userData[0].email;
+  const profile = userData.data[0].image_source;
+  const owner = userData.data[0].name;
+  const email = userData.data[0].email;
   return { profile, owner, email };
 }
 
 // 유저 폴더 목록 가져오기
 export async function getUserFolders(userId) {
-  const response = await fetch(`${API_BASE_URL}/users/${userId}/folders`);
-  return await response.json();
+  try {
+    const response = await axios.get(`${API_BASE_URL}/users/${userId}/folders`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching userFolders", error);
+    throw error;
+  }
 }
 
 // 유저 전체 링크 가져오기
 export async function getUserLinks(userId) {
-  const response = await fetch(`${API_BASE_URL}/users/${userId}/links`);
-  return await response.json();
+  try {
+    const response = await axios.get(`${API_BASE_URL}/users/${userId}/links`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching userFolders", error);
+    throw error;
+  }
 }
 
 // 특정 폴더 링크 가져오기
 export async function getFolderLinks(folderId) {
-  const response = await fetch(`${API_BASE_URL}/folders/${folderId}/links`);
-  const result =  await response.json();
-  return result;
-  // return await response.json();
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/folders/${folderId}/links`
+    );
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching userFolders", error);
+    throw error;
+  }
 }
 
 /**
