@@ -8,13 +8,17 @@ import {
   Button,
   Container,
 } from "./addFolderStyledComponents";
+import { useRouter } from "next/navigation";
 
-export default function AddFolderModal({ folder, isSubtext }) {
+export default function AddFolderModal({ folder, isSubtext, onClick }) {
   const { token } = useContext(TokenContext);
   const [inputValue, setInputValue] = useState("");
+  const router = useRouter();
   const handleClick = () => {
     if (inputValue) {
       addFolder(token, inputValue);
+      onClick(false)
+      router.push('/shared/0')
     } else {
       alert('폴더명을 입력해주세요.')
     }

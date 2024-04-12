@@ -1,40 +1,44 @@
-const API_BASE_URL = "https://bootcamp-api.codeit.kr/api/linkbrary/v1";
-import axios from "axios";
+import { instance, getTokenAxios } from "@/components/api/axiosInstance";
 
 export async function isSignupValid(info) {
-  const response = await axios.post(`${API_BASE_URL}/auth/sign-up`, info);
-  console.log(response.data);
+  const response = await instance.post("/auth/sign-up", info);
   return response.data;
 }
 
 export async function checkUserInfo(info) {
-  const response = await axios.post(`${API_BASE_URL}/users/check-email`, info);
+  const response = await instance.post("/users/check-email", info);
+  console.log(response);
   return response.data;
 }
 
+// export async function checkUserInfo(info) {
+//   const response = await fetch(`/users/check-email`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(info),
+//   });
+//   console.log(response);
+//   return response.data;
+// }
+
 export async function postUserInfo(info) {
-  const response = await axios.post(`${API_BASE_URL}/auth/sign-in`, info);
-  console.log(response);
-  return response
+  const response = await instance.post("/auth/sign-in", info);
+  return response;
 }
 
 // userId를 가져오기 위해 accessToken으로 서버에 유저 정보 조회
 export async function getUserResponse(accessToken) {
-  const userResponseResult = await axios.get(`${API_BASE_URL}/users`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
+  const tokenInstance = getTokenAxios(accessToken);
+  const userResponseResult = await tokenInstance.get("/users", {});
   return userResponseResult.data[0].id;
 }
 
 // 현재 유저 조회
 export async function getUserData(accessToken, userId) {
-  const userData = await axios.get(`${API_BASE_URL}/users/${userId}`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
+  const tokenInstance = getTokenAxios(accessToken);
+  const userData = await tokenInstance.get(`/users/${userId}`, {});
   const profile = userData.data[0].image_source;
   const owner = userData.data[0].name;
   const email = userData.data[0].email;
@@ -44,18 +48,48 @@ export async function getUserData(accessToken, userId) {
 // 유저 폴더 목록 가져오기
 export async function getUserFolders(userId) {
   try {
-    const response = await axios.get(`${API_BASE_URL}/users/${userId}/folders`);
+    const response = await instance.get(`/users/${userId}/folders`);
     return response.data;
   } catch (error) {
     console.log("Error fetching userFolders", error);
     throw error;
   }
 }
+// export async function getUserFolders(userId) {
+//   try {
+//     const response = await fetch(`/users/${userId}/folders`);
+//     if(response.ok) {
+//       console.log('Promise resolved and http status good')
+//       return response.data;
+//     } else {
+//       console.error('Promise resolved but http status failed')
+//     }
+
+//   } catch (error) {
+//     console.error("Promise rejected", error);
+//     throw error;
+//   }
+// }
+// export async function getUserFolders(userId) {
+//   try {
+//     const response = await fetch(`/users/${userId}/folders`);
+//     if (response.ok) {
+//       console.log("Promise resolved and http status good");
+//       return response.data;
+//     } else {
+//       if (response.status === 404) throw new Error("404에러 발생!");
+//       if (response.status === 500) throw new Error("500에러 발생!");
+//       throw new Error(response.status);
+//     }
+//   } catch (error) {
+//     console.error("Fetch error", error);
+//   }
+// }
 
 // 유저 전체 링크 가져오기
 export async function getUserLinks(userId) {
   try {
-    const response = await axios.get(`${API_BASE_URL}/users/${userId}/links`);
+    const response = await instance.get(`/users/${userId}/links`);
     return response.data;
   } catch (error) {
     console.log("Error fetching userFolders", error);
@@ -66,9 +100,7 @@ export async function getUserLinks(userId) {
 // 특정 폴더 링크 가져오기
 export async function getFolderLinks(folderId) {
   try {
-    const response = await axios.get(
-      `${API_BASE_URL}/folders/${folderId}/links`
-    );
+    const response = await instance.get(`/folders/${folderId}/links`);
     return response.data;
   } catch (error) {
     console.log("Error fetching userFolders", error);
@@ -80,74 +112,40 @@ export async function getFolderLinks(folderId) {
  * modalApi
  */
 
-export async function changeFolderName(folderId, content, token) {
+export async function changeFolderName(folderId, content, accessToken) {
+  const tokenInstance = getTokenAxios(accessToken);
   try {
-    const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        name: content,
-      }),
+    await tokenInstance.put(`/folders/${folderId}`, {
+      name: content,
     });
-    if (!response.ok) {
-      console.log("changeFolderName failed!");
-    } else {
-      console.log("changeFolderName success!");
-      console.log(response);
-    }
   } catch (error) {
     throw error;
   }
 }
 
-export async function addFolder(token, content) {
-  const response = await fetch(`${API_BASE_URL}/folders`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      name: content,
-    }),
+export async function addFolder(accessToken, content) {
+  const tokenInstance = getTokenAxios(accessToken);
+  await tokenInstance.post("/folders", {
+    name: content,
   });
 }
 
-export async function deleteFolder(token, folderId) {
-  const response = await fetch(`${API_BASE_URL}/folders/${folderId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export async function deleteFolder(accessToken, folderId) {
+  const tokenInstance = getTokenAxios(accessToken);
+  const response = await tokenInstance.delete(`/folders/${folderId}`);
   return response;
 }
 
-export async function deleteLink(token, linkId) {
-  const response = await fetch(`${API_BASE_URL}/links/${linkId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export async function deleteLink(accessToken, linkId) {
+  const tokenInstance = getTokenAxios(accessToken);
+  const response = await tokenInstance.delete(`/links/${linkId}`);
   return response;
 }
 
-export async function addLink(url, folderId, token) {
-  const response = await fetch(`${API_BASE_URL}/links`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      url: url,
-      folderId: folderId,
-    }),
+export async function addLink(url, folderId, accessToken) {
+  const tokenInstance = getTokenAxios(accessToken);
+  const response = await tokenInstance.post(`/links`, {
+    url: url,
+    folderId: folderId,
   });
 }

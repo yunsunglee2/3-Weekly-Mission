@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
   const cookies = req.cookies;
   const accessToken = cookies.accessToken;
   let links;
-
+  
   try {
     const userId = await getUserResponse(accessToken);
     const { profile, owner, email } = await getUserData(accessToken, userId);

@@ -26,10 +26,7 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { error, data } = await isSignupValid(info);
-      if (error) {
-        alert(error?.message);
-      }
+      const data = await isSignupValid(info);
       if (data) {
         alert("회원가입 성공");
         localStorage.setItem("login", data.accessToken);
@@ -51,7 +48,7 @@ function SignupPage() {
         alert("사용가능한 아이디 입니다.");
       }
     } catch (err) {
-      console.log(err);
+      console.log(err,'----에러 내가 콘솔 찍어준다----');
     }
   };
 

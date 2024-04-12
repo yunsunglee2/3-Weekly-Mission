@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
     const userId = await getUserResponse(accessToken);
     const { profile, owner, email } = await getUserData(accessToken, userId);
     const folders = await getUserFolders(userId);
-
+    
     if (folderId === "0") {
       links = await getUserLinks(userId);
     } else {

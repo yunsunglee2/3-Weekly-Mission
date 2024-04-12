@@ -17,7 +17,7 @@ export default function AddFolder() {
         <Image className={styles.addImage} src={addImage} alt="addImage" />
       </div>
       <PopUpMessage
-        component={<AddFolderModal />}
+        component={<AddFolderModal onClick={setIsopen} />}
         modalOpen={isOpen}
         onClick={handleClick}
       />
