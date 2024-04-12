@@ -33,6 +33,6 @@ const getTokenAxios = (accessToken) => {
   );
   return authInstance;
 };
-// 발급 받은 토큰이 만료 -> 만료된 토큰으로 요청 -> 401에러 발생 -> 
+// 발급 받은 토큰이 만료 -> 만료된 토큰으로 요청 -> 401에러 발생 ->
 
 export { instance, getTokenAxios };
