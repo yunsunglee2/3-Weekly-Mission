@@ -48,7 +48,7 @@ function SignupPage() {
         alert("사용가능한 아이디 입니다.");
       }
     } catch (err) {
-      console.log(err,'----에러 내가 콘솔 찍어준다----');
+      console.log(err);
     }
   };
 
