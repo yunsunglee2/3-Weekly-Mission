@@ -12,6 +12,7 @@ import DELETE_IMG from "@/public/deleteImg.svg";
 import CHANGE_IMG from "@/public/changeName.svg";
 import { TokenContextUpater } from "@/components/providers/authProvider";
 import DeleteLink from "./deleteLink";
+import getToken from "../util/getToken";
 
 export const clickedFolderContext = createContext();
 export const clickedFolderContextUpdater = createContext();
@@ -40,7 +41,6 @@ export function Main({ accessToken, links, folders }) {
     );
     setFilterdLinks(currentFilteredLinks);
   };
-
   useEffect(()=> {
     setToken(accessToken);
   },[])
